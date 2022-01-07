@@ -16,9 +16,17 @@
 INSTALL_YAY=false         # TODO test
 INSTALL_BREW=false        # TODO test
 INSTALL_MACPORTS=false    # TODO test
+
 # system setup
 CLONE_CONFIG_FILES=true
-INITIALIZE_PACMAN=false
+# arch
+SETUP_HOMEDIR=false      # TODO test
+SETUP_SUCKLESS=false     # TODO test
+INITIALIZE_PACMAN=false  # TODO test
+INITIALIZE_XORG=false    # TODO test
+# macOS
+SETUP_XCODE=false        # TODO test
+
 # packages
 INSTALL_PKGS=false
 INSTALL_PKGS_NODE=false
@@ -29,11 +37,12 @@ INSTALL_PKGS_TMUX=false
 INSTALL_PKGS_ZSH=false
 # more packages             TODO (rename section?)
 INSTALL_RUST=false        # TODO test
-INSTALL_EMACS_DOOM=false  # TODO test
+INSTALL_EMACS_DOOM=false   
 INSTALL_GIT=false
+
 # configuration
 CONFIGURE_GIT=false
-CREATE_SYMLINKS=false
+CREATE_SYMLINKS=true
 PULL_GIT_REPOS=false
 
 
@@ -74,6 +83,22 @@ fi
 
 if [ "$OS" = "arch" ] && [ "$INITIALIZE_PACMAN" = true ]; then
     $RICE/setup/arch/initialize_pacman.sh
+fi
+
+if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = true ]; then
+    $RICE/setup/arch/setup_home_dir.sh
+fi
+
+if [ "$OS" = "arch" ] && [ "$INITIALIZE_XORG" = true ]; then
+    $RICE/setup/arch/initialize_xorg.sh
+fi
+
+if [ "$OS" = "arch" ] && [ "$SETUP_SUCKLESS" = true ]; then
+    $RICE/setup/arch/setup_suckless.sh
+fi
+
+if [ "$OS" = "macOS" ] && [ "$SETUP_XCODE" = true ]; then
+    $RICE/setup/macOS/setup_xcode.sh
 fi
 
 
