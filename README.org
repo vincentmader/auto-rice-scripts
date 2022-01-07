@@ -11,5 +11,16 @@
   + separate partition? (when not running in Parallels)
   + create downloads/media/... directories
 - install suckless tools (dwm, st, dmenu, tabbed?)
+- update pacman mirrorlist
+  + "nano /etc/pacman.d/mirrorlist"
+  + uncomment German mirrors
 *** macOS-specfic
+- setup of default colors (solarized)
+  + iTerm
+- setup arch linux on Parallels Desktop
+  + return-rei's arch install on M1 macOS w/ ParallelsDesktop
+    - [[video][https://www.youtube.com/watch?v=dKvetujHjYQ]]
+    - [[important commands][https://gist.github.com/ReturnRei/1f30b44e2aaaabe1045599562d5bc838]] used in setup
+  + distrotube's arch install
+    - [[video][https://www.youtube.com/watch?v=PQgyW10xD8s]]
 
