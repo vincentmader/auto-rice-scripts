@@ -1,0 +1,15 @@
+* auto-rice scripts
+** TODOs
+*** default
+- install arch packages from ./install/os_arch/pkg_list_arch.txt
+- install stuff from ./install/os_macOS/pkg_list_brew*.txt
+- install stuff from ./install/os_macOS/pkg_list_macports.txt
+*** arch-specfic
+- add user (useradd $USER)
+- set default shell (chsh -s $(which zsh))
+- setup home directory
+  + separate partition? (when not running in Parallels)
+  + create downloads/media/... directories
+- install suckless tools (dwm, st, dmenu, tabbed?)
+*** macOS-specfic
+
