@@ -17,3 +17,6 @@ rustup default nightly
 cargo install -f wasm-bindgen-cli
 rustup target add wasm32-unknown-unknown
 
+# install language server stuff
+rustup component add rls rust-analysis rust-src
+
