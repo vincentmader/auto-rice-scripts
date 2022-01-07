@@ -15,6 +15,8 @@ rm $SYMLINKS/*
 # symlink to home, config
 ln -s $HOME $SYMLINKS/home
 ln -s $CONF $SYMLINKS/cf
+ln -s $HOME/.emacs.d $CONF/emacs
+ln -s $HOME/.doom.d $CONF/doom
 
 # symlink to documents & downloads  (also to iCloud, if on macOS)
 if [ "$OS" = "macOS" ]; then
