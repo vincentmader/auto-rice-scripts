@@ -16,6 +16,9 @@
 INSTALL_YAY=false         # TODO test
 INSTALL_BREW=false        # TODO test
 INSTALL_MACPORTS=false    # TODO test
+# system setup
+CLONE_CONFIG_FILES=true
+INITIALIZE_PACMAN=false
 # packages
 INSTALL_PKGS=false
 INSTALL_PKGS_NODE=false
@@ -28,7 +31,7 @@ INSTALL_PKGS_ZSH=false
 INSTALL_RUST=false        # TODO test
 INSTALL_EMACS_DOOM=false  # TODO test
 INSTALL_GIT=false
-
+# configuration
 CONFIGURE_GIT=false
 CREATE_SYMLINKS=false
 PULL_GIT_REPOS=false
@@ -59,6 +62,18 @@ elif [ "$OS" = "arch" ] ; then
 else
     echo "Please specify the OS ('arch' or 'macOS')"
     exit 1
+fi
+
+
+# INITIAL SETUP
+# =============================================================================
+
+if [ "$CLONE_CONFIG_FILES" = true ]; then
+    $RICE/setup/default/clone_config_files.sh
+fi
+
+if [ "$OS" = "arch" ] && [ "$INITIALIZE_PACMAN" = true ]; then
+    $RICE/setup/arch/initialize_pacman.sh
 fi
 
 
