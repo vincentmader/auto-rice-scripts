@@ -18,3 +18,6 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 
 fi
 
+# increase upload buffer size
+git config http.postBuffer 524288000
+
