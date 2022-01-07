@@ -1,9 +1,6 @@
 * auto-rice scripts
 ** TODOs
 *** default
-- install arch packages from ./install/os_arch/pkg_list_arch.txt
-- install stuff from ./install/os_macOS/pkg_list_brew*.txt
-- install stuff from ./install/os_macOS/pkg_list_macports.txt
 - install tmux plugins by running "prefix+I"
 - remove repos: "docs", "code", ...
 - find out: use emsdk?
