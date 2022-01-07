@@ -7,6 +7,9 @@
 SYMLINKS="$CONF/symlinks"
 mkdir -p $SYMLINKS
 rm $SYMLINKS/* 
+rm $CONF/emacs
+rm $CONF/doom
+rm $HOME/code
 
 
 # create symlinks
@@ -24,6 +27,7 @@ if [ "$OS" = "macOS" ]; then
     ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
     ln -s "$ICLOUD/Documents/org" $SYMLINKS/org
     ln -s $HOME/Downloads $SYMLINKS/dl
+    ln -s $HOME/Documents/code $HOME/code
 elif [ "$OS" = "arch" ]; then
     ln -s $HOME/docs $SYMLINKS/docs
     ln -s $HOME/downloads $SYMLINKS/dl
