@@ -1,4 +1,5 @@
 Colour
+Pillow
 antigravity
 autopep8
 bokeh
