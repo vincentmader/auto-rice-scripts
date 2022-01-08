@@ -4,8 +4,7 @@
 - install tmux plugins by running "prefix+I"
 *** arch-specific
 - update pacman mirrorlist
-  #+begin_src shell
-  nano /etc/pacman.d/mirrorlist #+end_src
+  + "nano /etc/pacman.d/mirrorlist"
   + uncomment German mirrors
 *** macOS-specific
 - setup iTerm & Terminal
