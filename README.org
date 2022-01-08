@@ -1,7 +1,37 @@
 * auto-rice scripts
-** TODOs
-*** default
+** Steps
+*** system-independent
 - install tmux plugins by running "prefix+I"
+*** arch-specific
+- update pacman mirrorlist
+  #+begin_src shell
+  nano /etc/pacman.d/mirrorlist
+  #+end_src
+  + uncomment German mirrors
+*** macOS-specific
+- setup iTerm & Terminal
+  + default colors (solarized)
+  + fonts
+    - Hack Nerd Mono
+- install MacTex
+  + from [[https://www.tug.org/mactex/mactex-download.html][here]]
+- install non-cask applications
+  + pages, keynote, numbers
+  + garageband, imovie
+  + xcode
+  + apple developer
+- enable visibility of ~/Library directory
+  + in Finder menu bar: "View/Show View Options"
+- enable visibility of hidden files
+  + in Finder: "cmd-Shift-."
+- setup arch linux on Parallels Desktop
+  + return-rei's arch install on M1 macOS w/ ParallelsDesktop
+    - [[https://www.youtube.com/watch?v=dKvetujHjYQ][video]]
+    - [[https://gist.github.com/ReturnRei/1f30b44e2aaaabe1045599562d5bc838][important commands]] used in setup
+  + distrotube's arch install
+    - [[https://www.youtube.com/watch?v=PQgyW10xD8s][video]]
+** TODOs
+*** system-independent
 - remove repos: "docs", "code", ...
 - find out: use emsdk?
   "git clone git@github.com:emscripten-core/emsdk.git $CONF/emsdk"
@@ -13,14 +43,11 @@
   + separate partition? (when not running in Parallels)
   + create downloads/media/... directories
 - install suckless tools (dwm, st, dmenu, tabbed?)
-- update pacman mirrorlist
-  + "nano /etc/pacman.d/mirrorlist"
-  + uncomment German mirrors
 - copy fonts to /usr/share/fonts
   + Hack Nerd Mono
 - enable parallel downloads for pacman/yay
   + in "/etc/pacman.conf", set: "ParallelDownloads = 5"
-- download mongodb
+- install mongodb
   + choose "mongodb-bin" (option 4)
 - install taskwarrior stuff (task, tasklib, tasksh, timew)
 - install various other packages
@@ -35,23 +62,6 @@
   + git-credential-manager-core configure
   + git config --global credential.credentialStore plaintext
 *** macOS-specfic
-- setup iTerm & Terminal
-  + default colors (solarized)
-  + fonts
-    - Hack Nerd Mono
-- setup arch linux on Parallels Desktop
-  + return-rei's arch install on M1 macOS w/ ParallelsDesktop
-    - [[video][https://www.youtube.com/watch?v=dKvetujHjYQ]]
-    - [[important commands][https://gist.github.com/ReturnRei/1f30b44e2aaaabe1045599562d5bc838]] used in setup
-  + distrotube's arch install
-    - [[video][https://www.youtube.com/watch?v=PQgyW10xD8s]]
-- install non-cask applications
-  + pages, keynote, numbers
-  + garageband, imovie
-  + xcode
-  + apple developer
-- enable visibility of ~/Library directory
-  + in Finder menu bar: "View/Show View Options"
-- enable visibility of hidden files
-  + in Finder: "cmd-Shift-."
+- use brew bundle  ->  skip already-installed warnings
+- install mongodb
 
