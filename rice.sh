@@ -13,7 +13,7 @@
 # -----------------------------------------------------------------------------
 
 # package managers
-INSTALL_YAY=false             # TODO test
+INSTALL_YAY=true              # TODO test
 INSTALL_BREW=false            # TODO test
 INSTALL_MACPORTS=false        # TODO test
 
@@ -22,7 +22,7 @@ CLONE_CONFIG_FILES=true
 # arch
 SETUP_HOMEDIR=false           # TODO test
 SETUP_SUCKLESS=false          # TODO test
-INITIALIZE_PACMAN=true        # TODO test
+INITIALIZE_PACMAN=true  
 INITIALIZE_XORG=false         # TODO test
 # macOS
 SETUP_XCODE=false             # TODO test
