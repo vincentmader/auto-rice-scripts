@@ -15,7 +15,6 @@ neofetch
 neovim
 nodejs
 npm
-python@3.9
 ranger
 ripgrep
 rtv 
