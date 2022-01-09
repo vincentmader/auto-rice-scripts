@@ -3,8 +3,8 @@ anki
 dropbox
 emacs
 font-hack-nerd-font
+google-chrome
 iterm2
-mactex
 minecraft
 notion
 omnigraffle
