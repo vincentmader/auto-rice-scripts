@@ -57,7 +57,7 @@ CONFIGURE_ZATHURA=true
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export OS="macOS"
 elif [[ "$OSTYPE" == "linux"* ]]; then
-    export OS="linux"  # TODO be more specific: arch / ubuntu / ... ?
+    export OS="arch"  # TODO be more specific: arch / ubuntu / ... ?
 fi
 
 # get location of auto-rice scripts (location of this file)
