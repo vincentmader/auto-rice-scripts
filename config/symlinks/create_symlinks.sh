@@ -20,8 +20,13 @@ rm $HOME/org 2> /dev/null
 # symlink to home, config
 ln -s $HOME $SYMLINKS/home
 ln -s $CONF $SYMLINKS/cf
-ln -s $HOME/.emacs.d $CONF/emacs
-ln -s $HOME/.doom.d $CONF/doom
+
+if [ -d $HOME/.emacs.d ]; then
+    ln -s $HOME/.emacs.d $CONF/emacs
+fi
+if [ -d $HOME/.doom.d ]; then
+    ln -s $HOME/.doom.d $CONF/doom
+fi
 
 # symlink to documents & downloads  (also to iCloud, if on macOS)
 if [ "$OS" = "macOS" ]; then
