@@ -28,7 +28,6 @@ selenium
 setuptools
 sklearn
 tasklib
-torch
 urllib3
 virtualenv
 xlrd

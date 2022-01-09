@@ -36,6 +36,7 @@
 - find out: use emsdk?
   "git clone git@github.com:emscripten-core/emsdk.git $CONF/emsdk"
 - install ranger image previewer (ueberzug)
+- install pytorch (not available for python 10)
 *** arch-specfic
 - add user (useradd $USER)
 - set default shell (chsh -s $(which zsh))
