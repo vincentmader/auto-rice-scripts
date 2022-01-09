@@ -20,8 +20,8 @@ INSTALL_MACPORTS=true         # TODO test
 # system setup
 CLONE_CONFIG_FILES=true
 # arch
-SETUP_HOMEDIR=false           # TODO test
-SETUP_SUCKLESS=true           # TODO test
+SETUP_HOMEDIR=true           # TODO test
+SETUP_SUCKLESS=true           # works! (TODO only half-way though)
 INITIALIZE_PACMAN=true  
 INITIALIZE_XORG=false         # TODO test
 # macOS
