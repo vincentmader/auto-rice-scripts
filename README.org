@@ -46,6 +46,8 @@
 - install suckless tools (dwm, st, dmenu, tabbed?)
 - copy fonts to /usr/share/fonts
   + Hack Nerd Mono
+- fix pip warning (setup PATH variable)
+- fix jupyter notebook warning (setup PATH variable)
 - enable parallel downloads for pacman/yay
   + in "/etc/pacman.conf", set: "ParallelDownloads = 5"
 - install latex
