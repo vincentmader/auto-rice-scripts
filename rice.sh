@@ -21,7 +21,7 @@ INSTALL_MACPORTS=true         # TODO test
 CLONE_CONFIG_FILES=true
 # arch
 SETUP_HOMEDIR=false           # works! (TODO change wallpaper dir)
-SETUP_SUCKLESS=true           # works! (TODO only half-way though)
+SETUP_SUCKLESS=false          # works! (TODO only half-way though)
 INITIALIZE_PACMAN=true  
 INITIALIZE_XORG=false         # TODO test
 # macOS
