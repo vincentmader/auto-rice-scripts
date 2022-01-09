@@ -31,9 +31,9 @@ UPDATE_CMD_LINE_TOOLS=false   # TODO test
 
 # packages
 INSTALL_PKGS=false            # works!
-INSTALL_PKGS_NODE=false
+INSTALL_PKGS_NODE=true
 INSTALL_PKGS_NVIM=false
-INSTALL_PKGS_PYTHON=true      # works!
+INSTALL_PKGS_PYTHON=false     # works!
 INSTALL_PKGS_RANGER=false
 INSTALL_PKGS_TMUX=false
 INSTALL_PKGS_ZSH=false
