@@ -53,12 +53,18 @@ CONFIGURE_ZATHURA=true        # TODO make this system-independent
 # setup parameters & environment 
 # -----------------------------------------------------------------------------
 
+USER="vinc"
+
 # get operating system 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export OS="macOS"
+    export HOME="/Users/$USER"
 elif [[ "$OSTYPE" == "linux"* ]]; then
     export OS="arch"  # TODO be more specific: arch / ubuntu / ... ?
+    export HOME="/home/$USER"
 fi
+
+export CONF="$HOME/.config"
 
 # get location of auto-rice scripts (location of this file)
 export RICE=$(dirname $0)
