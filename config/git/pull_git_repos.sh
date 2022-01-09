@@ -7,6 +7,7 @@ if [ $OS = "arch" ]; then
     # TODO sudo rm -r $CONF/symlinks/docs/wallpapers 2> /dev/null
     URL_TO_WALLPAPERS="https://github.com/vincentmader/wallpapers"
     git clone $URL_TO_WALLPAPERS $CONF/symlinks/docs/wallpapers
+    # TODO move to ~/media/wallpapers
     
     # TODO get code projects
     URL_TO_MXYZ="https://github.com/vincentmader/mader.xyz"
