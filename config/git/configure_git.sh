@@ -9,7 +9,7 @@ git config --global user.email "vincent@mader.xyz"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # auto-save creds to iCloud key-chain
-    git config --global credential.helper cache
+    git config --global credential.helper cache  # -> select "always-allow"
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
 
