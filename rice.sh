@@ -18,7 +18,7 @@ INSTALL_BREW=true             # TODO test
 INSTALL_MACPORTS=true         # TODO test
 
 # system setup
-CLONE_CONFIG_FILES=true
+CLONE_CONFIG_FILES=true       # needed
 # arch
 SETUP_HOMEDIR=false           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS=false          # works! (TODO only half-way though)
@@ -36,7 +36,7 @@ INSTALL_PKGS_NVIM=false
 INSTALL_PKGS_PYTHON=false     # works!
 INSTALL_PKGS_RANGER=false
 INSTALL_PKGS_TMUX=false
-INSTALL_PKGS_ZSH=false        # works! (TODO lock-file)
+INSTALL_PKGS_ZSH=true        # works! (TODO lock-file)
 export INSTALL_PKGS_MACPORTS=false
 # more packages                 TODO (rename section?)
 INSTALL_RUST=false            # TODO test
