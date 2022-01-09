@@ -30,7 +30,7 @@ UPDATE_SYSTEM=false           # TODO test
 UPDATE_CMD_LINE_TOOLS=false   # TODO test
 
 # packages
-INSTALL_PKGS=true
+INSTALL_PKGS=false
 INSTALL_PKGS_NODE=false
 INSTALL_PKGS_NVIM=false
 INSTALL_PKGS_PYTHON=true

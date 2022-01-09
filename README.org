@@ -47,6 +47,7 @@
   + Hack Nerd Mono
 - enable parallel downloads for pacman/yay
   + in "/etc/pacman.conf", set: "ParallelDownloads = 5"
+- install latex
 - install mongodb
   + choose "mongodb-bin" (option 4)
 - install taskwarrior stuff (task, tasklib, tasksh, timew)
