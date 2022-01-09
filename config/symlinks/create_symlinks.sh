@@ -6,10 +6,12 @@
 
 SYMLINKS="$CONF/symlinks"
 mkdir -p $SYMLINKS
-rm $SYMLINKS/* 
-rm $CONF/emacs
-rm $CONF/doom
-rm $HOME/code
+rm $SYMLINKS/* 2> /dev/null
+rm $CONF/emacs 2> /dev/null
+rm $CONF/doom 2> /dev/null
+rm $HOME/docs 2> /dev/null
+rm $HOME/code 2> /dev/null
+rm $HOME/org 2> /dev/null
 
 
 # create symlinks
@@ -27,6 +29,7 @@ if [ "$OS" = "macOS" ]; then
     ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
     ln -s "$ICLOUD/Documents/org" $SYMLINKS/org
     ln -s $HOME/Downloads $SYMLINKS/dl
+    ln -s $HOME/Documents $HOME/docs
     ln -s $HOME/Documents/code $HOME/code
 elif [ "$OS" = "arch" ]; then
     ln -s $HOME/docs $SYMLINKS/docs
@@ -41,6 +44,5 @@ ln -s $SYMLINKS/docs/code $SYMLINKS/code
 ln -s $SYMLINKS/code/mader.xyz $SYMLINKS/mxyz
 
 # symlink to org files
-rm $HOME/org
 ln -s $SYMLINKS/org $HOME/org
 

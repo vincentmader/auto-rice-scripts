@@ -41,7 +41,7 @@ INSTALL_EMACS_DOOM=false
 INSTALL_GIT=false
 
 # configuration
-CONFIGURE_GIT=false
+CONFIGURE_GIT=true
 CREATE_SYMLINKS=true
 PULL_GIT_REPOS=false
 
@@ -49,8 +49,12 @@ PULL_GIT_REPOS=false
 # setup parameters & environment 
 # -----------------------------------------------------------------------------
 
-# get operating system from script argument  (options: "macOS" or "arch")
-export OS="$1"    
+# get operating system 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export OS="macOS"
+elif [[ "$OSTYPE" == "linux"* ]]; then
+    export OS="linux"  # TODO be more specific: arch / ubuntu / ... ?
+fi
 
 # get location of auto-rice scripts (location of this file)
 export RICE=$(dirname $0)
