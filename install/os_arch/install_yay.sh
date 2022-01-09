@@ -5,6 +5,6 @@
 git clone https://aur.archlinux.org/yay.git $SRC/yay
 
 # install
-cd $SRC
+cd $SRC/yay
 makepkg -si
 

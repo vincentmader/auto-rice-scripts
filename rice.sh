@@ -81,7 +81,7 @@ mkdir -p $RICE/src
 if [ "$OS" = "macOS" ] ; then
     export PACKAGE_MANAGER="brew install"
 elif [ "$OS" = "arch" ] ; then
-    export PACKAGE_MANAGER="sudo pacman -S"  # TODO switch to yay?
+    export PACKAGE_MANAGER="yay -S"  # TODO switch to yay?
 else
     echo "Please specify the OS ('arch' or 'macOS')"
     exit 1
