@@ -28,6 +28,10 @@ if [ -d $HOME/.doom.d ]; then
     ln -s $HOME/.doom.d $CONF/doom
 fi
 
+# link bashrc
+rm $HOME/.bashrc 2> /dev/null
+ln -s $HOME/.bashrc $CONF/bash/bashrc
+
 # symlink to documents & downloads  (also to iCloud, if on macOS)
 if [ "$OS" = "macOS" ]; then
     ln -s $HOME/Documents $SYMLINKS/docs
