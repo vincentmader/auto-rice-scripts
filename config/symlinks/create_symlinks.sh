@@ -30,7 +30,7 @@ fi
 
 # link bashrc
 rm $HOME/.bashrc 2> /dev/null
-ln -s $HOME/.bashrc $CONF/bash/bashrc
+ln -s $CONF/bash/bashrc $HOME/.bashrc 
 
 # symlink to documents & downloads  (also to iCloud, if on macOS)
 if [ "$OS" = "macOS" ]; then
