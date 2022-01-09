@@ -1,6 +1,7 @@
 #!/bin/sh
 
 
+# exit if yay is already installed
 if command -v "yay" &> /dev/null
 then
     exit

@@ -25,8 +25,14 @@
     #     ~/.macports
 
 
-# re-install macports
+# (re-)install macports
 # -----------------------------------------------------------------------------
+
+# exit if port is already installed
+if command -v "port" &> /dev/null
+then
+    exit
+fi
 
 # move into src directory
 cd $RICE/src
