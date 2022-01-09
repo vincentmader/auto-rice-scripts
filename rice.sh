@@ -13,30 +13,33 @@
 # -----------------------------------------------------------------------------
 
 # package managers
-INSTALL_YAY=false          # TODO test
-INSTALL_BREW=false         # TODO test
-INSTALL_MACPORTS=false     # TODO test
+INSTALL_YAY=false             # TODO test
+INSTALL_BREW=false            # TODO test
+INSTALL_MACPORTS=false        # TODO test
 
 # system setup
 CLONE_CONFIG_FILES=true
 # arch
-SETUP_HOMEDIR=false        # TODO test
-SETUP_SUCKLESS=false       # TODO test
-INITIALIZE_PACMAN=false    # TODO test
-INITIALIZE_XORG=false      # TODO test
+SETUP_HOMEDIR=false           # TODO test
+SETUP_SUCKLESS=false          # TODO test
+INITIALIZE_PACMAN=false       # TODO test
+INITIALIZE_XORG=false         # TODO test
 # macOS
-SETUP_XCODE=false          # TODO test
+SETUP_XCODE=false             # TODO test
+UPDATE_SYSTEM=false           # TODO test
+UPDATE_CMD_LINE_TOOLS=false   # TODO test
 
 # packages
-INSTALL_PKGS=false
+INSTALL_PKGS=true
 INSTALL_PKGS_NODE=false
 INSTALL_PKGS_NVIM=false
 INSTALL_PKGS_PYTHON=false
 INSTALL_PKGS_RANGER=false
 INSTALL_PKGS_TMUX=false
 INSTALL_PKGS_ZSH=false
-# more packages             TODO (rename section?)
-INSTALL_RUST=false        # TODO test
+export INSTALL_PKGS_MACPORTS=false
+# more packages                 TODO (rename section?)
+INSTALL_RUST=false            # TODO test
 INSTALL_EMACS_DOOM=false   
 INSTALL_GIT=false
 
@@ -44,6 +47,7 @@ INSTALL_GIT=false
 CONFIGURE_GIT=true
 CREATE_SYMLINKS=true
 PULL_GIT_REPOS=false
+CONFIGURE_ZATHURA=true
 
 
 # setup parameters & environment 
@@ -99,6 +103,14 @@ fi
 
 if [ "$OS" = "arch" ] && [ "$SETUP_SUCKLESS" = true ]; then
     $RICE/setup/arch/setup_suckless.sh
+fi
+
+if [ "$OS" = "macOS" ] && [ "$UPDATE_SYSTEM" = true ]; then
+    $RICE/setup/macOS/update_system.sh
+fi
+
+if [ "$OS" = "macOS" ] && [ "$UPDATE_CMD_LINE_TOOLS" = true ]; then
+    $RICE/setup/macOS/update_cmd_line_tools.sh
 fi
 
 if [ "$OS" = "macOS" ] && [ "$SETUP_XCODE" = true ]; then
@@ -198,6 +210,10 @@ fi
 
 if [ "$CREATE_SYMLINKS" = true ]; then
     $RICE/config/symlinks/create_symlinks.sh
+fi
+
+if [ $OS = "macOS" ] && [ "$CONFIGURE_ZATHURA" = true ]; then
+    $RICE/config/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh
 fi
 
 
