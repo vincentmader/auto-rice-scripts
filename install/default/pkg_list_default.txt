@@ -10,6 +10,7 @@ fzf
 gotop
 imagemagick
 lolcat 
+mupdf
 neofetch 
 neovim
 nodejs
@@ -25,3 +26,5 @@ tmux
 toilet
 vim
 wget
+zathura
+zathura-pdf-mupdf

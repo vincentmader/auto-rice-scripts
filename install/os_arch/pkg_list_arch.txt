@@ -5,9 +5,9 @@ curl
 feh
 imagemagick
 inetutils
+latexmk
 lsof
 mpv
-mupdf
 ncdu
 neomutt
 net-tools
@@ -19,6 +19,7 @@ rmtrash
 simplescreenrecorder 
 slack-desktop
 spotify
+texlive-most
 unzip
 vlc 
 wget
@@ -28,6 +29,5 @@ xcompmgr
 xorg
 xorg-xinit
 xterm
-zathura
 zip
 zsh

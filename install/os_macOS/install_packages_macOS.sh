@@ -20,9 +20,12 @@ brew install --cask $(cat $RICE/install/os_macOS/pkg_list_brew_cask.txt);
 # -----------------------------------------------------------------------------
 
 # install macports packages
-for i in $(cat $RICE/install/os_macOS/pkg_list_macports.txt); do
-    sudo port install "$i";   # TODO why?
-done
+if [ $INSTALL_PKGS_MACPORTS = true ]; then
+    for i in $(cat $RICE/install/os_macOS/pkg_list_macports.txt); do
+        # echo "Please enter password for MacPorts installations."   # TODO
+        sudo port install "$i"; 
+    done
+fi
 
 
 # post-install configuration

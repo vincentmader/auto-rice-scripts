@@ -1,5 +1,5 @@
 * auto-rice scripts
-** Steps
+** Setup steps
 *** system-independent
 - install tmux plugins by running "prefix+I"
 *** arch-specific
@@ -13,6 +13,7 @@
     - Hack Nerd Mono
 - install MacTex
   + from [[https://www.tug.org/mactex/mactex-download.html][here]]
+  + open "TexLive Utility", update -> download latexmk
 - install non-cask applications
   + pages, keynote, numbers
   + garageband, imovie
@@ -30,6 +31,7 @@
     - [[https://www.youtube.com/watch?v=PQgyW10xD8s][video]]
 ** TODOs
 *** system-independent
+- make emacs-config OS-dependent
 - remove repos: "docs", "code", ...
 - find out: use emsdk?
   "git clone git@github.com:emscripten-core/emsdk.git $CONF/emsdk"
