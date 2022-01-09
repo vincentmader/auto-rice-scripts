@@ -21,7 +21,7 @@ INSTALL_MACPORTS=true         # TODO test
 CLONE_CONFIG_FILES=true
 # arch
 SETUP_HOMEDIR=false           # TODO test
-SETUP_SUCKLESS=false          # TODO test
+SETUP_SUCKLESS=true          # TODO test
 INITIALIZE_PACMAN=true  
 INITIALIZE_XORG=false         # TODO test
 # macOS
