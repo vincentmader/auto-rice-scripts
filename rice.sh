@@ -31,12 +31,12 @@ UPDATE_CMD_LINE_TOOLS=false   # TODO test
 
 # packages
 INSTALL_PKGS=false            # works!
-INSTALL_PKGS_NODE=true
+INSTALL_PKGS_NODE=false       # TODO fix
 INSTALL_PKGS_NVIM=false
 INSTALL_PKGS_PYTHON=false     # works!
 INSTALL_PKGS_RANGER=false
 INSTALL_PKGS_TMUX=false
-INSTALL_PKGS_ZSH=false
+INSTALL_PKGS_ZSH=true
 export INSTALL_PKGS_MACPORTS=false
 # more packages                 TODO (rename section?)
 INSTALL_RUST=false            # TODO test
