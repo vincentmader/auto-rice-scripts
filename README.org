@@ -29,6 +29,7 @@
     - [[https://gist.github.com/ReturnRei/1f30b44e2aaaabe1045599562d5bc838][important commands]] used in setup
   + distrotube's arch install
     - [[https://www.youtube.com/watch?v=PQgyW10xD8s][video]]
+  + setup lock files
 ** TODOs
 *** system-independent
 - make emacs-config OS-dependent
