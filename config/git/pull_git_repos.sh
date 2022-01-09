@@ -29,7 +29,7 @@ if [ $OS = "arch" ]; then
     fi
     
     # get org files
-    PATH_TO_ORG="$HOME/org"
+    PATH_TO_ORG="$CONF/SYMLINKS/docs/org"
     if [ -d $PATH_TO_ORG ]; then
         cd $PATH_TO_ORG
         git pull
