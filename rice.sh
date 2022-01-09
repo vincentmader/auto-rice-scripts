@@ -22,7 +22,7 @@ CLONE_CONFIG_FILES=true
 # arch
 SETUP_HOMEDIR=false           # TODO test
 SETUP_SUCKLESS=false          # TODO test
-INITIALIZE_PACMAN=false       # TODO test
+INITIALIZE_PACMAN=true        # TODO test
 INITIALIZE_XORG=false         # TODO test
 # macOS
 SETUP_XCODE=false             # TODO test
