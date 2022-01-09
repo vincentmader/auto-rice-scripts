@@ -12,8 +12,8 @@ ncdu
 neomutt
 net-tools
 openssh
-pip
 python
+python-pip
 qutebrowser 
 rmtrash
 simplescreenrecorder 
