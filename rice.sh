@@ -23,7 +23,7 @@ CLONE_CONFIG_FILES=true
 SETUP_HOMEDIR=false           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS=false          # works! (TODO only half-way though)
 INITIALIZE_PACMAN=true  
-INITIALIZE_XORG=false         # TODO test
+INITIALIZE_XORG=true         # TODO test
 # macOS
 SETUP_XCODE=false             # TODO test
 UPDATE_SYSTEM=false           # TODO test
