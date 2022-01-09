@@ -21,7 +21,7 @@ INSTALL_MACPORTS=true         # TODO test
 CLONE_CONFIG_FILES=true
 # arch
 SETUP_HOMEDIR=false           # TODO test
-SETUP_SUCKLESS=true          # TODO test
+SETUP_SUCKLESS=true           # TODO test
 INITIALIZE_PACMAN=true  
 INITIALIZE_XORG=false         # TODO test
 # macOS
@@ -36,7 +36,7 @@ INSTALL_PKGS_NVIM=false
 INSTALL_PKGS_PYTHON=false     # works!
 INSTALL_PKGS_RANGER=false
 INSTALL_PKGS_TMUX=false
-INSTALL_PKGS_ZSH=true
+INSTALL_PKGS_ZSH=false        # TODO make sure it works
 export INSTALL_PKGS_MACPORTS=false
 # more packages                 TODO (rename section?)
 INSTALL_RUST=false            # TODO test
