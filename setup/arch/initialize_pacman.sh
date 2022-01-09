@@ -1,6 +1,6 @@
 #!/bin/sh
 
 
-pacman-key --init
-pacman -Syu
+sudo pacman-key --init
+sudo pacman -Syu
 

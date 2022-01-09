@@ -47,7 +47,7 @@ INSTALL_GIT=false
 CONFIGURE_GIT=true
 CREATE_SYMLINKS=true
 PULL_GIT_REPOS=false
-CONFIGURE_ZATHURA=true
+CONFIGURE_ZATHURA=true        # TODO make this system-independent
 
 
 # setup parameters & environment 
