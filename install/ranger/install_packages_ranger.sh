@@ -2,5 +2,6 @@
 
 
 sudo rm -r $CONF/ranger/plugins/ranger_devicons >> /dev/null
-git clone https://github.com/alexanderjeurissen/ranger_devicons.git $CONF/ranger/plugins/ranger_devicons
+URL_TO_ICONS="https://github.com/alexanderjeurissen/ranger_devicons.git"
+git clone $URL_TO_ICONS $CONF/ranger/plugins/ranger_devicons
 
