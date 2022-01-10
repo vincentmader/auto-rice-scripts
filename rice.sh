@@ -16,7 +16,7 @@
 INSTALL_YAY="true" 
 INSTALL_BREW="true"             # TODO test
 INSTALL_MACPORTS="true"         # TODO test
-INSTALL_GIT="false"
+INSTALL_GIT="true"
 
 # system setup
 CLONE_CONFIG_FILES="true"       # needed
