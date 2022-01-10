@@ -41,7 +41,7 @@ INSTALL_PKGS_TMUX="false"       # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
 export INSTALL_PKGS_MACPORTS="false"
 # more packages                 TODO (rename section?)
-INSTALL_RUST="false"            # works (?)
+INSTALL_RUST="true"            # works (?)
 INSTALL_EMACS_DOOM="false"   
 
 # configuration
