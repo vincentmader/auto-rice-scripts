@@ -2,7 +2,7 @@
 
 
 # uninstall rust (if installed)
-if command -v "yay" &> /dev/null; then
+if command -v "rustup" &> /dev/null; then
     rustup self uninstall
     # brew uninstall rust  # TODO needed?
 fi
