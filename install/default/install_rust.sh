@@ -2,8 +2,10 @@
 
 
 # uninstall rust (if installed)
-rustup self uninstall
-# brew uninstall rust  # TODO needed?
+if [ command -v "rustup" ]; then
+    rustup self uninstall
+    # brew uninstall rust  # TODO needed?
+fi
 
 # download & install base rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
