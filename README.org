@@ -40,6 +40,7 @@
 - install pytorch (not available for python 10)
 *** arch-specfic
 - add user (useradd $USER)
+- setup personal access token for git
 - set default shell (chsh -s $(which zsh))
 - setup home directory
   + separate partition? (when not running in Parallels)
