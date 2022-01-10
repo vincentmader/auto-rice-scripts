@@ -2,7 +2,6 @@ archlinux-keyring
 chromium
 colorpicker
 curl
-feh
 imagemagick
 inetutils
 lsof

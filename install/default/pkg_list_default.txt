@@ -5,6 +5,7 @@ cmatrix
 colordiff
 cowsay 
 exa
+feh
 figlet 
 fzf
 gotop

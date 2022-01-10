@@ -9,7 +9,7 @@ export RUNZSH=no;
 URL_TO_INSTALL="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 sh -c "$(curl -fsSL $URL_TO_INSTALL)";
 
-if [ "$OS" = "arch" ]; then
+if [ "$OS" = "arch" ] && [ -d $HOME/.oh-my-zsh ]; then
     mv $HOME/.oh-my-zsh $CONF/zsh/oh-my-zsh
 fi
 
