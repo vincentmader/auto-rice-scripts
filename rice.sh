@@ -40,8 +40,8 @@ INSTALL_PKGS_TMUX=false       # works!
 INSTALL_PKGS_ZSH=false        # works! (TODO lock-file)
 export INSTALL_PKGS_MACPORTS=false
 # more packages                 TODO (rename section?)
-INSTALL_RUST=false            # TODO test
-INSTALL_EMACS_DOOM=false   
+INSTALL_RUST=true            # TODO test
+INSTALL_EMACS_DOOM=true   
 INSTALL_GIT=false
 
 # configuration
@@ -49,6 +49,7 @@ CONFIGURE_GIT=true
 CREATE_SYMLINKS=true
 PULL_GIT_REPOS=true
 CONFIGURE_ZATHURA=true        # TODO make this system-independent
+SETUP_NVIM=false              # TODO fix & test (not working...)
 
 
 # setup parameters & environment 
@@ -225,6 +226,10 @@ fi
 
 if [ $OS = "macOS" ] && [ "$CONFIGURE_ZATHURA" = true ]; then
     $RICE/config/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh
+fi
+
+if [ $OS = "arch" ] && [ "$SETUP_NVIM" = true ]; then
+    $RICE/config/nvim/setup_nvim.sh
 fi
 
 

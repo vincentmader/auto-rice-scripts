@@ -5,3 +5,4 @@ emoji-finder
 eslint
 nasa-cli 
 weather-cli
+yarn
