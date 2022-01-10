@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+echo "Pulling personal git repos..."
+
 if [ $OS = "arch" ]; then
 
     # clone wallpapers

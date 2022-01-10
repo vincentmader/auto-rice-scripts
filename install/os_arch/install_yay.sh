@@ -1,9 +1,12 @@
 #!/bin/sh
 
 
+echo "Installing yay..."
+
 # exit if yay is already installed
 if command -v "yay" &> /dev/null
 then
+    echo "  -> yay is already installed!"
     exit
 fi
 

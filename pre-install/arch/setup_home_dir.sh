@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+echo "Setting up home directory at $HOME"
+
 mkdir $HOME/downloads
 
 mkdir -p $HOME/docs

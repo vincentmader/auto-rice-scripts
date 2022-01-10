@@ -1,29 +1,7 @@
 #!/bin/sh
 
 
-# uninstall macports  (if installed)
-# -----------------------------------------------------------------------------
-
-# uninstall all macports packages
-    # sudo port -fp uninstall installed
-
-# delete macports users & groups
-    # sudo dscl . -delete /Users/macports
-    # sudo dscl . -delete /Groups/macports
-
-# remove the rest of macports
-    # sudo rm -rf \
-    #     /opt/local \
-    #     /Applications/DarwinPorts \
-    #     /Applications/MacPorts \
-    #     /Library/LaunchDaemons/org.macports.* \
-    #     /Library/Receipts/DarwinPorts*.pkg \
-    #     /Library/Receipts/MacPorts*.pkg \
-    #     /Library/StartupItems/DarwinPortsStartup \
-    #     /Library/Tcl/darwinports1.0 \
-    #     /Library/Tcl/macports1.0 \
-    #     ~/.macports
-
+echo "Installing macports..."
 
 # (re-)install macports
 # -----------------------------------------------------------------------------
@@ -31,7 +9,30 @@
 # exit if port is already installed
 if command -v "port" &> /dev/null
 then
+    echo "  -> macports is already installed!"
     exit
+    # uninstall macports  (if installed)
+    # -----------------------------------------------------------------------------
+    
+    # uninstall all macports packages
+        # sudo port -fp uninstall installed
+    
+    # delete macports users & groups
+        # sudo dscl . -delete /Users/macports
+        # sudo dscl . -delete /Groups/macports
+    
+    # remove the rest of macports
+        # sudo rm -rf \
+        #     /opt/local \
+        #     /Applications/DarwinPorts \
+        #     /Applications/MacPorts \
+        #     /Library/LaunchDaemons/org.macports.* \
+        #     /Library/Receipts/DarwinPorts*.pkg \
+        #     /Library/Receipts/MacPorts*.pkg \
+        #     /Library/StartupItems/DarwinPortsStartup \
+        #     /Library/Tcl/darwinports1.0 \
+        #     /Library/Tcl/macports1.0 \
+        #     ~/.macports
 fi
 
 # move into src directory

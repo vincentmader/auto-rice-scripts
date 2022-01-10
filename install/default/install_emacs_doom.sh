@@ -12,14 +12,16 @@
     # sudo pacman -S emacs
 
 # install base emacs to ~/.emacs.d
+echo "Cloning emacs-doom-config..."
 if [[ -d $HOME/.emacs.d ]]; then
-    echo "emacs config is already cloned to ~/.emacs.d"
+    echo "  -> emacs config is already cloned to ~/.emacs.d"
 else
     URL_TO_EMACS_REPO="https://github.com/vincentmader/doom-emacs"
     git clone --depth 1 $URL_TO_EMACS_REPO $HOME/.emacs.d >> /dev/null
 fi
 
 # install doom
+echo "Installing emacs-doom..."
 ~/.emacs.d/bin/doom install
 
 # theme setup
@@ -28,5 +30,6 @@ rm $PATH_TO_THEME
 ln -s $HOME/.doom.d/lisp/themes/solarized-custom.el $PATH_TO_THEME
 
 # sync doom
+echo "Syncing emacs-doom..."
 ~/.emacs.d/bin/doom sync
 

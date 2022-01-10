@@ -1,9 +1,12 @@
 #!/bin/sh
 
 
+echo "Installing brew..."
+
 # exit if brew is already installed
 if command -v "brew" &> /dev/null
 then
+    echo "  -> brew is already installed!"
     exit
 fi
 

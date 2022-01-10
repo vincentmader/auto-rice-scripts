@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+echo "Installing tmux plugins using tpm..."
+
 # remove installed tmux plugins (if existent)
 sudo rm -r $CONF/tmux/plugins 2> /dev/null
 mkdir $CONF/tmux/plugins

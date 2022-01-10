@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+echo "Creating symlinks..."
+
 # setup symlink directory in ~/.config (delete old, if existing)
 # -----------------------------------------------------------------------------
 
@@ -43,6 +45,7 @@ if [ "$OS" = "macOS" ]; then
 elif [ "$OS" = "arch" ]; then
     ln -s $HOME/docs $SYMLINKS/docs
     ln -s $HOME/downloads $SYMLINKS/dl
+    ln -s "$HOME/docs/org" $SYMLINKS/org
 fi
 ln -s $SYMLINKS/docs $SYMLINKS/dox
 ln -s $SYMLINKS/docs/education/uni $SYMLINKS/uni

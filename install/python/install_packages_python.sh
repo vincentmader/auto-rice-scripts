@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+echo "Installing python packages using pip3..."
+
 pip3 install --upgrade pip
 pip3 install -r $RICE/install/python/pkg_list_python.txt 
 
