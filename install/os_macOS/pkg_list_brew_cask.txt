@@ -12,7 +12,6 @@ parallels
 slack
 spotify
 steam
-virtualbox
 vlc
 whatsapp
 webtorrent
