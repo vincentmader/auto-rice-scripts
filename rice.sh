@@ -32,10 +32,10 @@ UPDATE_CMD_LINE_TOOLS=false   # TODO test
 # packages
 INSTALL_PKGS=false            # works!
 INSTALL_PKGS_NODE=false       # TODO fix
-INSTALL_PKGS_NVIM=false
+INSTALL_PKGS_NVIM=true
 INSTALL_PKGS_PYTHON=false     # works!
-INSTALL_PKGS_RANGER=false
-INSTALL_PKGS_TMUX=true
+INSTALL_PKGS_RANGER=true
+INSTALL_PKGS_TMUX=false       # works!
 INSTALL_PKGS_ZSH=false        # works! (TODO lock-file)
 export INSTALL_PKGS_MACPORTS=false
 # more packages                 TODO (rename section?)
