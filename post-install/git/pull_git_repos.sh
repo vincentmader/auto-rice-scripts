@@ -41,6 +41,6 @@ if [ $OS = "arch" ]; then
     fi
 
 elif [ $OS = "macOS" ]; then
-    echo "repo sync is done automatically on macOS (via iCloud)"
+    echo "  -> repo sync is done automatically on macOS (via iCloud)"
 fi
 
