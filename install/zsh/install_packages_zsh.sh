@@ -14,7 +14,7 @@ if [ "$OS" = "arch" ]; then
 fi
 
 # delete newly-created $HOME/.zshrc files (& use my own instead)
-rm $HOME/.zshrc $HOME/.zshrc.pre-oh-my-zsh* 2> /dev/null;
+rm $HOME/.zshrc $HOME/.*.pre-oh-my-zsh* 2> /dev/null;
 ln -s $CONF/zsh/zshrc $HOME/.zshrc
 
 # install syntax highlighting
