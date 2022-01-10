@@ -20,7 +20,13 @@ else
 fi
 
 # install doom
-~/.emacs.d/bin/doom install
+# ~/.emacs.d/bin/doom install
+
+# download doom config
+PATH_TO_DOOM="$HOME/.doom.d"
+URL_TO_DOOM="https://github.com/vincentmader/doom-emacs-conf"
+sudo rm -r $PATH_TO_DOOM
+git clone $URL_TO_DOOM $PATH_TO_DOOM
 
 # theme setup
 PATH_TO_THEME="$HOME/.emacs.d/.local/straight/build-27.2/doom-themes/doom-solarized-dark-theme.el"
