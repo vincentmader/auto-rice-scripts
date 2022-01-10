@@ -20,7 +20,7 @@ else
 fi
 
 # install doom
-# ~/.emacs.d/bin/doom install
+~/.emacs.d/bin/doom install
 
 # theme setup
 PATH_TO_THEME="$HOME/.emacs.d/.local/straight/build-27.2/doom-themes/doom-solarized-dark-theme.el"

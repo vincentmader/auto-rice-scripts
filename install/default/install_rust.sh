@@ -8,6 +8,7 @@ if command -v "rustup" &> /dev/null; then
 fi
 
 # download & install base rust
+echo "NOTE: choose nightly build"  # TODO
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # use nightly rust build as default
