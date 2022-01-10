@@ -6,6 +6,7 @@ echo "Pulling personal git repos..."
 if [ $OS = "arch" ]; then
 
     # clone wallpapers
+    echo "  - wallpapers"
     PATH_TO_WALLPAPERS="$CONF/symlinks/docs/wallpapers"  # TODO move to ~/media/wallpapers (?)
     if [ -d $PATH_TO_WALLPAPERS ]; then
         cd $PATH_TO_WALLPAPERS
@@ -21,6 +22,7 @@ if [ $OS = "arch" ]; then
     # get code projects  (TODO get others)
     PATH_TO_CODE="$CONF/symlinks/code"
 
+    echo "  - mader.xyz"
     PATH_TO_MXYZ="$PATH_TO_CODE/mader.xyz"
     if [ -d $PATH_TO_MXYZ ]; then
         cd $PATH_TO_MXYZ
@@ -31,7 +33,8 @@ if [ $OS = "arch" ]; then
     fi
     
     # get org files
-    PATH_TO_ORG="$CONF/SYMLINKS/docs/org"
+    echo "  - org"
+    PATH_TO_ORG="$CONF/symlinks/docs/org"
     if [ -d $PATH_TO_ORG ]; then
         cd $PATH_TO_ORG
         git pull
