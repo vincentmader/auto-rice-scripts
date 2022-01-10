@@ -24,6 +24,7 @@ SETUP_HOMEDIR=false           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS=false          # works! (TODO only half-way though)
 INITIALIZE_PACMAN=false       # works!  
 INITIALIZE_XORG=true          # TODO test
+SETUP_FONTS=true
 # macOS
 SETUP_XCODE=false             # TODO test
 UPDATE_SYSTEM=false           # TODO test
@@ -105,6 +106,10 @@ fi
 
 if [ "$OS" = "arch" ] && [ "$INITIALIZE_XORG" = true ]; then
     $RICE/setup/arch/initialize_xorg.sh
+fi
+
+if [ "$OS" = "arch" ] && [ "$SETUP_FONTS" = true ]; then
+    $RICE/setup/arch/setup_fonts.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$SETUP_SUCKLESS" = true ]; then
