@@ -94,39 +94,39 @@ fi
 # =============================================================================
 
 if [ "$CLONE_CONFIG_FILES" = true ]; then
-    $RICE/setup/default/clone_config_files.sh
+    $RICE/pre-install/default/clone_config_files.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$INITIALIZE_PACMAN" = true ]; then
-    $RICE/setup/arch/initialize_pacman.sh
+    $RICE/pre-install/arch/initialize_pacman.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = true ]; then
-    $RICE/setup/arch/setup_home_dir.sh
+    $RICE/pre-install/arch/setup_home_dir.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$INITIALIZE_XORG" = true ]; then
-    $RICE/setup/arch/initialize_xorg.sh
+    $RICE/pre-install/arch/initialize_xorg.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$SETUP_FONTS" = true ]; then
-    $RICE/setup/arch/setup_fonts.sh
+    $RICE/pre-install/arch/setup_fonts.sh
 fi
 
 if [ "$OS" = "arch" ] && [ "$SETUP_SUCKLESS" = true ]; then
-    $RICE/setup/arch/setup_suckless.sh
+    $RICE/pre-install/arch/setup_suckless.sh
 fi
 
 if [ "$OS" = "macOS" ] && [ "$UPDATE_SYSTEM" = true ]; then
-    $RICE/setup/macOS/update_system.sh
+    $RICE/pre-install/macOS/update_system.sh
 fi
 
 if [ "$OS" = "macOS" ] && [ "$UPDATE_CMD_LINE_TOOLS" = true ]; then
-    $RICE/setup/macOS/update_cmd_line_tools.sh
+    $RICE/pre-install/macOS/update_cmd_line_tools.sh
 fi
 
 if [ "$OS" = "macOS" ] && [ "$SETUP_XCODE" = true ]; then
-    $RICE/setup/macOS/setup_xcode.sh
+    $RICE/pre-install/macOS/setup_xcode.sh
 fi
 
 
@@ -217,19 +217,19 @@ fi
 # =============================================================================
 
 if [ "$CONFIGURE_GIT" = true ]; then
-    $RICE/config/git/configure_git.sh
+    $RICE/post-install/git/configure_git.sh
 fi
 
 if [ "$CREATE_SYMLINKS" = true ]; then
-    $RICE/config/symlinks/create_symlinks.sh
+    $RICE/post-install/symlinks/create_symlinks.sh
 fi
 
 if [ $OS = "macOS" ] && [ "$CONFIGURE_ZATHURA" = true ]; then
-    $RICE/config/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh
+    $RICE/post-install/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh
 fi
 
 if [ $OS = "arch" ] && [ "$SETUP_NVIM" = true ]; then
-    $RICE/config/nvim/setup_nvim.sh
+    $RICE/post-install/nvim/setup_nvim.sh
 fi
 
 
@@ -237,6 +237,6 @@ fi
 # =============================================================================
 
 if [ "$PULL_GIT_REPOS" = true ]; then
-    $RICE/config/git/pull_git_repos.sh
+    $RICE/post-install/git/pull_git_repos.sh
 fi
 
