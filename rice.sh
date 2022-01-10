@@ -233,6 +233,11 @@ if [ "$CONFIGURE_GIT" = "true" ]; then
     $RICE/post-install/git/configure_git.sh
 fi
 
+# pull git repos
+if [ "$PULL_GIT_REPOS" = "true" ]; then
+    $RICE/post-install/git/pull_git_repos.sh
+fi
+
 # configure zathura
 if [ $OS = "macOS" ] && [ "$CONFIGURE_ZATHURA" = "true" ]; then
     $RICE/post-install/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh  # TODO rename
@@ -241,10 +246,5 @@ fi
 # configure neovim
 if [ $OS = "arch" ] && [ "$SETUP_NVIM" = "true" ]; then
     $RICE/post-install/nvim/setup_nvim.sh  # TODO rename
-fi
-
-# pull git repos
-if [ "$PULL_GIT_REPOS" = "true" ]; then
-    $RICE/post-install/git/pull_git_repos.sh
 fi
 
