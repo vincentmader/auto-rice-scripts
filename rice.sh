@@ -34,7 +34,7 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO test
 # packages
 INSTALL_PKGS="false"            # works!
 INSTALL_PKGS_NODE="false"       # TODO fix
-INSTALL_PKGS_NVIM="false"       # TODO coc.nvim yarn install
+INSTALL_PKGS_NVIM="false"       # works!
 INSTALL_PKGS_PYTHON="false"     # works!
 INSTALL_PKGS_RANGER="false"     # works (I guess, icons should be fixed with font)
 INSTALL_PKGS_TMUX="false"       # works!

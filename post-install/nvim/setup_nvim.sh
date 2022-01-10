@@ -3,6 +3,9 @@
 
 echo "Configuring neovim..."
 
-cd $CONF/coc/extensions
+cd $CONF/nvim/plugged/coc.vim
 yarn install
+
+# cd $CONF/coc/extensions
+# yarn install
 
