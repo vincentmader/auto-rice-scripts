@@ -32,7 +32,7 @@ UPDATE_SYSTEM="false"           # TODO test
 UPDATE_CMD_LINE_TOOLS="false"   # TODO test
 
 # packages
-INSTALL_PKGS="false"            # works!
+INSTALL_PKGS="true"            # works!
 INSTALL_PKGS_NODE="false"       # TODO fix
 INSTALL_PKGS_NVIM="false"       # works!
 INSTALL_PKGS_PYTHON="false"     # works!
@@ -68,7 +68,8 @@ fi
 # get location of config files
 export CONF="$HOME/.config"
 # get location of auto-rice scripts (location of this file)
-export RICE=$(dirname $0)
+cd "$(dirname $0)"
+export RICE=$(pwd)
 export SRC=$RICE/src
 # create directory for source code files
 mkdir -p $RICE/src

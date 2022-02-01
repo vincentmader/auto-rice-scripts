@@ -22,6 +22,10 @@ source $HOME/.cargo/env
 cargo install -f wasm-bindgen-cli
 rustup target add wasm32-unknown-unknown
 
+# install diesel
+# TODO cargo install diesel-cli
+# TODO run: brew services start postgre
+
 # install language server stuff
 rustup component add rust-analysis rust-src  # rls  TODO not yet possible :(
 
