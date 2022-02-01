@@ -3,9 +3,11 @@ Pillow
 antigravity
 autopep8
 bokeh
+bs4
 flask
 gspread
 imageio
+instaloader
 jedi
 jupyter
 keras
@@ -20,6 +22,7 @@ pep8
 pillow
 pygame
 pytube3
+redvid
 requests
 ricksay
 scipy
@@ -28,7 +31,9 @@ selenium
 setuptools
 sklearn
 tasklib
+tqdm
 urllib3
 virtualenv
 xlrd
 yfinance
+youtube-dl

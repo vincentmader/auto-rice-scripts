@@ -6,6 +6,7 @@ colordiff
 cowsay 
 exa
 feh
+ffmpeg
 figlet 
 fzf
 gotop
@@ -19,6 +20,7 @@ npm
 ranger
 ripgrep
 rtv 
+skype
 sl 
 thefuck
 tldr 

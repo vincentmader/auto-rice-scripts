@@ -1,2 +1,5 @@
 archey
+libpq
+mysqlclient
+postgresql
 python@3.9
