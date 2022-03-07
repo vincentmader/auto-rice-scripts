@@ -184,11 +184,6 @@ fi
 # INSTALL PACKAGES
 # =============================================================================
 
-# "default" packages     (-> via brew or pacman/yay)
-if [ "$INSTALL_PKGS" = "true" ]; then
-    $RICE/install/default/install_packages_default.sh
-fi
-
 # mac-specfic packages   (-> via brew)
 if [ "$INSTALL_PKGS" = "true" ] && [ "$OS" = "macOS" ]; then
     $RICE/install/os_macOS/install_packages_macOS.sh
@@ -197,6 +192,11 @@ fi
 # arch-specfic packages  (-> via pacman/yay)
 if [ "$INSTALL_PKGS" = "true" ] && [ "$OS" = "arch" ]; then
     $RICE/install/os_arch/install_packages_arch.sh
+fi
+
+# "default" packages     (-> via brew or pacman/yay)
+if [ "$INSTALL_PKGS" = "true" ]; then
+    $RICE/install/default/install_packages_default.sh
 fi
 
 # zsh plugins            (-> via ohmyzsh)
