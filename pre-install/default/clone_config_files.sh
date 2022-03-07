@@ -3,7 +3,7 @@
 
 if [ -d $CONF ]; then
 
-    echo "Pulling config files from GitHub repo..."
+    echo "$COLOR_BLUE\nPulling config files from GitHub repo...$COLOR_DEFAULT"
     cd $CONF
     git pull
 

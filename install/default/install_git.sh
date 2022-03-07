@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "Installing git..."
+echo "$COLOR_BLUE\nInstalling git...$COLOR_DEFAULT"
 
 # exit if git is already installed
 if command -v "git" &> /dev/null

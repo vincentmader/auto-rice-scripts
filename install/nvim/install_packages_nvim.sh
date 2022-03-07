@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "Installing neovim plugins using vim-plug..."
+echo "$COLOR_BLUE\nInstalling neovim plugins using vim-plug...$COLOR_DEFAULT"
 
 # install nvim plugins using junegunn/vim-plug
 nvim -c PlugInstall &  

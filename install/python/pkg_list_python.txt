@@ -17,6 +17,7 @@ neovim
 nltk
 numpy
 oauth2client
+openpyxl
 pandas
 pep8
 pillow

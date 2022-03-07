@@ -5,18 +5,26 @@
 # -----------------------------------------------------------------------------
 
 # tap into brew package sources
-echo "Tapping into macOS repositories using brew..."
+echo "$COLOR_BLUE\nTapping into macOS repositories using brew...$COLOR_DEFAULT"
 for i in $(cat $RICE/install/os_macOS/pkg_list_brew_taps.txt); do
     brew tap "$i"
 done
 
 # install brew packages
-echo "Installing macOS packages using brew..."
-brew install $(cat $RICE/install/os_macOS/pkg_list_brew.txt);
+echo "$COLOR_BLUE\nInstalling macOS packages using brew...$COLOR_DEFAULT"
+cat "$RICE/install/os_macOS/pkg_list_brew.txt" | while read line; do
+    echo "  - $line"
+    brew info "${line}" | grep --quiet "Not installed" && 
+    brew install "${line}"
+done
 
 # install brew cask packages
-echo "Installing macOS packages using brew-cask..."
-brew install --cask $(cat $RICE/install/os_macOS/pkg_list_brew_cask.txt);
+echo "$COLOR_BLUE\nInstalling macOS packages using brew-cask...$COLOR_DEFAULT"
+cat "$RICE/install/os_macOS/pkg_list_brew_cask.txt" | while read line; do
+    echo "  - $line"
+    brew info "${line}" | grep --quiet "Not installed" && 
+    brew install --cask "${line}"
+done
 
 
 # macports installs
@@ -24,7 +32,7 @@ brew install --cask $(cat $RICE/install/os_macOS/pkg_list_brew_cask.txt);
 
 # install macports packages
 if [ $INSTALL_PKGS_MACPORTS = true ]; then
-    echo "Installing macOS packages using macports..."
+    echo "$COLOR_BLUE\nInstalling macOS packages using macports...$COLOR_DEFAULT"
     for i in $(cat $RICE/install/os_macOS/pkg_list_macports.txt); do
         # echo "Please enter password for MacPorts installations."   # TODO
         sudo port install "$i"; 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "Installing macports..."
+echo "$COLOR_BLUE\nInstalling macports...$COLOR_DEFAULT"
 
 # (re-)install macports
 # -----------------------------------------------------------------------------

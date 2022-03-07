@@ -1,5 +1,6 @@
 archey
 libpq
-mysqlclient
+mysql-client
 postgresql
 python@3.9
+telnet

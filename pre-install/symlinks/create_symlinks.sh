@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "Creating symlinks..."
+echo "$COLOR_BLUE\nCreating symlinks...$COLOR_DEFAULT"
 
 # setup symlink directory in ~/.config (delete old, if existing)
 # -----------------------------------------------------------------------------
@@ -47,7 +47,7 @@ if [ "$OS" = "macOS" ]; then
     ICLOUD="$MOBILE_DOCS/com~apple~CloudDocs/"
 
     # link iCloud files to ~/cloud
-    # ln -s "$ICLOUD" $SYMLINKS/cloud           
+    ln -s "$ICLOUD" $SYMLINKS/icloud           
 
     # link beorg 
     BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"

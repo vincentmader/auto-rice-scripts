@@ -14,8 +14,8 @@
 
 # package managers
 INSTALL_YAY="true" 
-INSTALL_BREW="true"             # TODO test
-INSTALL_MACPORTS="true"         # TODO test
+INSTALL_BREW="true"             # TODO test installer-download & -setup
+INSTALL_MACPORTS="true"         # TODO test installer-download & -setup
 INSTALL_GIT="true"
 
 # system setup
@@ -27,22 +27,22 @@ INITIALIZE_PACMAN="false"       # works!
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="true"
 # macOS
-SETUP_XCODE="false"             # TODO test
-UPDATE_SYSTEM="false"           # TODO test
-UPDATE_CMD_LINE_TOOLS="false"   # TODO test
+SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
+UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
+UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point) 
 
 # packages
-INSTALL_PKGS="true"            # works!
+INSTALL_PKGS="true"             # works!
 INSTALL_PKGS_NODE="false"       # TODO fix
 INSTALL_PKGS_NVIM="false"       # works!
-INSTALL_PKGS_PYTHON="false"     # works!
+INSTALL_PKGS_PYTHON="true"      # works!
 INSTALL_PKGS_RANGER="false"     # works (I guess, icons should be fixed with font)
 INSTALL_PKGS_TMUX="false"       # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
 export INSTALL_PKGS_MACPORTS="false"
 # more packages                 TODO (rename section?)
 INSTALL_RUST="false"            # works (?)
-INSTALL_EMACS_DOOM="false"   
+INSTALL_EMACS_DOOM="false"      # works (?)
 
 # configuration
 CONFIGURE_GIT="true"
@@ -75,18 +75,32 @@ export SRC=$RICE/src
 mkdir -p $RICE/src
 
 
-# define package manager
+# define package manager (os-dependent)
 # -----------------------------------------------------------------------------
 
-# define package manager  (arch -> pacman, macOS -> brew)
+# arch -> pacman
 if [ "$OS" = "macOS" ] ; then
     export PACKAGE_MANAGER="brew install"
+# macOS -> brew
 elif [ "$OS" = "arch" ] ; then
     export PACKAGE_MANAGER="yay -S"  # TODO switch to yay?
+# exit on undefined
 else
     echo "Please specify the OS ('arch' or 'macOS')"
     exit 1
 fi
+
+
+# PRINTING SETUP
+export COLOR_DEFAULT="\033[0m"
+export COLOR_BLACK="\033[0;40m"
+export COLOR_RED="\033[0;31m"
+export COLOR_GREEN="\033[0;32m"
+export COLOR_YELLOW="\033[1;33m"
+export COLOR_BLUE="\033[1;34m"
+export COLOR_MAGENTA="\033[1;35m"
+export COLOR_CYAN="\033[1;36m"
+export COLOR_WHITE="\033[1;37m"
 
 
 # PRE-INSTALL SETUP
