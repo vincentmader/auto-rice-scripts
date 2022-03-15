@@ -12,6 +12,7 @@ rm $SYMLINKS/* 2> /dev/null
 rm $CONF/emacs 2> /dev/null
 rm $CONF/doom 2> /dev/null
 rm $HOME/docs 2> /dev/null
+rm $HOME/docs/dpsg 2> /dev/null
 rm $HOME/code 2> /dev/null
 rm $HOME/org 2> /dev/null
 
@@ -55,6 +56,7 @@ if [ "$OS" = "macOS" ]; then
 
     # link ~/Documents and ~/Downloads
     ln -s "$HOME/Documents" $HOME/docs            # home/Docs   -> home/docs
+    ln -s "$SYMLINKS/icloud" $HOME/icloud         # sl/icloud   -> home/icloud
     ln -s "$HOME/Documents" $SYMLINKS/docs        # home/Docs   -> sl/docs
     ln -s "$HOME/Downloads" $SYMLINKS/dl          # home/Dl     -> sl/dl
 
@@ -70,6 +72,7 @@ fi
 ln -s $SYMLINKS/docs $SYMLINKS/dox                # sl/docs     -> sl/dox
 ln -s $SYMLINKS/docs/education/uni $SYMLINKS/uni  # docs/un     -> sl/uni
 ln -s $SYMLINKS/docs/work $SYMLINKS/work          # docs/work   -> sl/work
+ln -s $SYMLINKS/docs/dpsg $SYMLINKS/dpsg          # docs/work   -> sl/work
 
 # symlinks to code
 # ln -s $SYMLINKS/docs/code $SYMLINKS/code          # docs/code   -> sl/code

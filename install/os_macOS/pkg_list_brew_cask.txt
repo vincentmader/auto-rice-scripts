@@ -1,3 +1,4 @@
+amethyst
 anki
 blender
 curseforge
