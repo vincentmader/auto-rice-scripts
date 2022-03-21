@@ -6,8 +6,9 @@
 
 # tap into brew package sources
 echo "$COLOR_BLUE\nTapping into macOS-specific repositories using brew...$COLOR_DEFAULT"
-for i in $(cat $RICE/install/os_macOS/pkg_list_brew_taps.txt); do
-    brew tap "$i"
+for line in $(cat $RICE/install/os_macOS/pkg_list_brew_taps.txt); do
+    echo "  - $line"
+    brew tap "$line"
 done
 
 # install brew packages

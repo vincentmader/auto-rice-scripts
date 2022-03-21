@@ -2,6 +2,7 @@ archlinux-keyring
 chromium
 colorpicker
 curl
+docker
 emacs
 imagemagick
 inetutils

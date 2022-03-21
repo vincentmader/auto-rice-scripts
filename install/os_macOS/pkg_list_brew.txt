@@ -1,4 +1,5 @@
 archey
+koekeishiya/formulae/yabai
 libpq
 mysql-client
 postgresql

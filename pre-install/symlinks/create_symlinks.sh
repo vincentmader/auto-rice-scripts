@@ -15,6 +15,7 @@ rm $HOME/docs 2> /dev/null
 rm $HOME/docs/dpsg 2> /dev/null
 rm $HOME/code 2> /dev/null
 rm $HOME/org 2> /dev/null
+rm $HOME/icloud 2> /dev/null
 
 
 # create symlinks
@@ -78,8 +79,8 @@ ln -s $SYMLINKS/docs/dpsg $SYMLINKS/dpsg          # docs/work   -> sl/work
 # ln -s $SYMLINKS/docs/code $SYMLINKS/code          # docs/code   -> sl/code
 # ln -s $SYMLINKS/docs/code $HOME/code              # docs/code   -> home/code
 ln -s $HOME/code $SYMLINKS/code          # docs/code   -> sl/code
-ln -s $SYMLINKS/code/mader.xyz $SYMLINKS/mxyz     # code/mxyz   -> sl/mxyz
-ln -s $SYMLINKS/code/auto-rice-scripts $SYMLINKS/rice     # code/mxyz   -> sl/mxyz
+ln -s $SYMLINKS/code/projects/mader.xyz $SYMLINKS/mxyz     # code/mxyz   -> sl/mxyz
+ln -s $SYMLINKS/code/projects/auto-rice-scripts $SYMLINKS/rice     # code/mxyz   -> sl/mxyz
 
 # symlink to org files from home
 ln -s $SYMLINKS/org $HOME/org                     # sl/org      -> home/org

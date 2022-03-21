@@ -1,3 +1,4 @@
 homebrew/cask-fonts
 d12frosted/emacs-plus
+koekeishiya/formulae
 zegervdv/zathura
