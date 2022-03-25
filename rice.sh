@@ -9,54 +9,24 @@
 # RICE-CONFIG
 # =============================================================================
 
-# specify: what should be installed and/or setup?
-# -----------------------------------------------------------------------------
-
-# INITIALIZATION
-
 DO_FULL_SYSTEM_UPGRADE="false"     # 
 
-# package managers
-INSTALL_GIT="true"
-INSTALL_BREW="true"             # TODO test installer-download & -setup
-INSTALL_MACPORTS="true"         # TODO test installer-download & -setup
-INSTALL_YAY="true" 
-INITIALIZE_PACMAN="false"       # works!  
-# config
-CLONE_CONFIG_FILES="true"       # needed
-# arch
+# ARCH-SPECIFIC
 SETUP_HOMEDIR="false"           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="true"
-# macOS
+# MACOS-SPECIFIC
 SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
 UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
-# system setup
 UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point) 
 
 # PACKAGE_INSTALLATION
-# packages
-INSTALL_PKGS="true"             # DEFAULT, works!
-INSTALL_PKGS_NODE="true"        # DEFAULT, TODO fix
-INSTALL_PKGS_PYTHON="true"      # DEFAULT, works!
-
+INSTALL_EMACS_DOOM="false"      # works (?)
+INSTALL_RUST="false"            # works (?)
 INSTALL_PKGS_NVIM="false"       # works!
-INSTALL_PKGS_RANGER="false"     # works (I guess, icons should be fixed with font)
 INSTALL_PKGS_TMUX="false"       # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
-export INSTALL_PKGS_MACPORTS="false"  # TODO fix
-# more packages                 TODO (rename section?)
-INSTALL_RUST="false"            # works (?)
-INSTALL_EMACS_DOOM="false"      # works (?)
-
-# PACKAGE_CONFIGURATION
-# configuration
-CONFIGURE_GIT="true"
-CREATE_SYMLINKS="true"
-PULL_GIT_REPOS="true"
-CONFIGURE_ZATHURA="true"        # TODO make this system-independent
-SETUP_NVIM="false"              # TODO fix & test (not working...)
 
 
 # RICE-SETUP
@@ -139,27 +109,22 @@ function install_from_pkg_file {
 }
 export -f install_from_pkg_file
 
-function echo_separator_1 {
-    printf $COLOR_BLUE
+function echo_separator {
+    CHAR="$1"
+    SEPARATOR="$COLOR_BLUE"
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
-        printf "-"
+        SEPARATOR="$SEPARATOR$CHAR"
     done
-    printf $COLOR_DEFAULT
+    SEPARATOR="$SEPARATOR$COLOR_DEFAULT"
+    echo $SEPARATOR
 }
-export -f echo_separator_1
+export SEPARATOR_1=$(echo_separator "-")
+export SEPARATOR_2=$(echo_separator "=")
 
-function echo_separator_2 {
-    printf $COLOR_BLUE
-    for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
-        printf "="
-    done
-    printf $COLOR_DEFAULT
-}
-export -f echo_separator_2
 
 # TITLE
 # =============================================================================
-echo "\n$(echo_separator_1)"
+echo "\n$SEPARATOR_1"
 AUTHOR="Vincent C. Mader"
 TITLE="AUTO-RICE SCRIPTS"
 printf "$COLOR_BLUE$TITLE$COLOR_DEFAULT"
@@ -169,41 +134,36 @@ for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
     printf " "
 done
 printf "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
-echo "\n$(echo_separator_1)"
+echo "\n$SEPARATOR_1"
 
 # PRE-INSTALL INITIALIZATION/SETUP
 # =============================================================================
-echo "\n$(echo_separator_2)$COLOR_BLUE\nINITIALIZATION\n$COLOR_DEFAULT$(echo_separator_2)"
+echo "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
 
 # INSTALL PACKAGE MANAGERS & VERSION CONTROL SYSTEM(S)
 # -----------------------------------------------------------------------------
 
 # [X] install git version control system
-if [ "$INSTALL_GIT" = "true" ]; then
-    "$RICE/initialization/default/install_git.sh"
-fi
+"$RICE/initialization/default/install_git.sh"
 
+# [ ] arch-specific initialization
 if [ "$OS" = "arch" ]; then
+    echo                           # TODO remove line
 
-    # [ ] initialize pacman (only if running on arch)          TODO: test
-    if [ $INITIALIZE_PACMAN = "true" ]; then
-        "$RICE/initialization/os_arch/initialize_pacman.sh"
-    fi
-    # [ ] install yay       (only if running on arch)          TODO: test
-    if [ $INSTALL_YAY = "true" ]; then
-        "$RICE/initialization/os_arch/install_yay.sh"
-    fi
+    # [ ] initialize pacman          TODO: test
+    # "$RICE/initialization/os_arch/initialize_pacman.sh"
 
+    # [ ] install yay                TODO: test
+    # "$RICE/initialization/os_arch/install_yay.sh"
+
+# [X] macOS-specific initialization
 elif [ "$OS" = "macOS" ]; then
 
-    # [X] install brew      (only if running on macOS)
-    if [ $INSTALL_BREW = "true" ]; then
-        "$RICE/initialization/os_macOS/install_brew.sh"
-    fi
-    # install macports      (only if running on macOS)
-    if [ $INSTALL_MACPORTS = "true" ]; then
-        "$RICE/initialization/os_macOS/install_macports.sh"
-    fi
+    # [X] install brew 
+    "$RICE/initialization/os_macOS/install_brew.sh"
+
+    # [ ] install macports
+    "$RICE/initialization/os_macOS/install_macports.sh"
 
 fi
 
@@ -217,14 +177,10 @@ if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = "true" ]; then
 fi
 
 # [ ] clone config-dotfiles
-if [ "$CLONE_CONFIG_FILES" = "true" ]; then
-    "$RICE/initialization/default/clone_config_files.sh"
-fi
+"$RICE/initialization/default/clone_config_files.sh"
 
 # [X] create symlinks
-if [ "$CREATE_SYMLINKS" = "true" ]; then
-    "$RICE/initialization/symlinks/create_symlinks.sh"
-fi
+"$RICE/initialization/symlinks/create_symlinks.sh"
 
 # OS-SPECIFIC: ARCH LINUX
 # -----------------------------------------------------------------------------
@@ -273,21 +229,14 @@ fi
 
 # INSTALL PACKAGES
 # =============================================================================
-echo "\n\n$(echo_separator_2)$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$(echo_separator_2)"
+echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
-# [X] mac-specfic packages   (-> via brew)
-if [ "$INSTALL_PKGS" = "true" ] && [ "$OS" = "macOS" ]; then
+# [X] os-independent packages    -> via brew or pacman/yay
+"$RICE/package-installation/default/install_packages_default.sh"
+if [ "$OS" = "macOS" ]; then   # -> via brew
     "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
-fi
-
-# [X] arch-specfic packages  (-> via pacman/yay)
-if [ "$INSTALL_PKGS" = "true" ] && [ "$OS" = "arch" ]; then
+elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
     "$RICE/package-installation/os_arch/install_packages_arch.sh"
-fi
-
-# "default" packages     (-> via brew or pacman/yay)
-if [ "$INSTALL_PKGS" = "true" ]; then
-    "$RICE/package-installation/default/install_packages_default.sh"
 fi
 
 # zsh plugins            (-> via ohmyzsh)
@@ -296,14 +245,10 @@ if [ "$INSTALL_PKGS_ZSH" = "true" ]; then
 fi
 
 # python packages        (-> via pip3)
-if [ "$INSTALL_PKGS_PYTHON" = "true" ]; then
-    "$RICE/package-installation/python/install_packages_python.sh"
-fi
+"$RICE/package-installation/python/install_packages_python.sh"
 
 # node packages          (-> via npm)
-if [ "$INSTALL_PKGS_NODE" = "true" ]; then
-    "$RICE/package-installation/node/install_packages_node.sh"
-fi
+"$RICE/package-installation/node/install_packages_node.sh"
 
 # nvim plugins           (-> via vim-plug + conquer-of-completion)
 if [ "$INSTALL_PKGS_NVIM" = "true" ]; then
@@ -316,9 +261,7 @@ if [ "$INSTALL_PKGS_TMUX" = "true" ]; then
 fi
 
 # ranger plugins         (-> via git)
-if [ "$INSTALL_PKGS_RANGER" = "true" ]; then
-    "$RICE/package-installation/ranger/install_packages_ranger.sh"
-fi
+"$RICE/package-installation/ranger/install_packages_ranger.sh"
 
 # rust                   (-> via installer script)
 if [ "$INSTALL_RUST" = "true" ]; then
@@ -333,7 +276,7 @@ fi
 
 # POST-INSTALL CONFIGURATION
 # =============================================================================
-echo "\n\n$(echo_separator_2)$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$(echo_separator_2)"
+echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
 # configure git
 if [ "$CONFIGURE_GIT" = "true" ]; then
@@ -345,22 +288,18 @@ if [ "$PULL_GIT_REPOS" = "true" ]; then
     "$RICE/package-setup/git/pull_git_repos.sh"
 fi
 
-# configure zathura
-if [ $OS = "macOS" ] && [ "$CONFIGURE_ZATHURA" = "true" ]; then
+# configure zathura       # TODO make this system-independent
+if [ $OS = "macOS" ]; then
     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"  # TODO rename
-fi
-
-# configure neovim
-if [ $OS = "arch" ] && [ "$SETUP_NVIM" = "true" ]; then
-    "RICE/package-setup/nvim/setup_nvim.sh"  # TODO rename
 fi
 
 # configure mactex install:
 echo "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
     eval "$(/usr/libexec/path_helper)"
+    echo "Configured macTeX."
 
 # configure automatic startup-launch of mongod
 echo "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
-    echo "Started mongod"
     brew services start mongodb/brew/mongodb-community > /dev/null
+    echo "Started mongod."
 

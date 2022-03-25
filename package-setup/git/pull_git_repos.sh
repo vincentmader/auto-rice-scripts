@@ -25,12 +25,12 @@ fi
 PATH_TO_CODE="$CONF/symlinks/code"
 
 echo "\n$COLOR_BLUE**$COLOR_DEFAULT mader.xyz"  # TODO adjust path
+echo "Skipping for now..."
 # PATH_TO_MXYZ="$PATH_TO_CODE/projects/mader.xyz/main"  
 # if [ -d $PATH_TO_MXYZ ]; then
 #     cd $PATH_TO_MXYZ
 #     git pull
 # else
-#     echo ay
 #     # URL_TO_MXYZ="https://github.com/vincentmader/mader.xyz"
 #     # git clone $URL_TO_MXYZ $PATH_TO_MXYZ
 # fi
@@ -42,8 +42,7 @@ if [ -d $PATH_TO_ORG ]; then
     cd $PATH_TO_ORG
     git pull
 else
-    echo ay
-    # URL_TO_ORG="https://github.com/vincentmader/org"
-    # git clone $URL_TO_ORG $PATH_TO_ORG
+    URL_TO_ORG="https://github.com/vincentmader/org"
+    git clone $URL_TO_ORG $PATH_TO_ORG
 fi
 

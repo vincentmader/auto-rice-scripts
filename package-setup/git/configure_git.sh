@@ -23,3 +23,5 @@ fi
 # increase upload buffer size
 git config http.postBuffer 524288000
 
+echo "Configured git."
+

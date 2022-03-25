@@ -1,8 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nInstalling system packages...$COLOR_DEFAULT"
-echo_separator_1
+echo "$COLOR_BLUE\nInstalling system packages...$COLOR_DEFAULT\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/default/pkgs_default/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/default/pkgs_default/installed.txt"
