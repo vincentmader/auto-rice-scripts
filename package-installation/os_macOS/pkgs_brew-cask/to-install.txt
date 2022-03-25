@@ -2,6 +2,7 @@ amethyst
 anki
 blender
 curseforge
+docker
 discord
 dropbox
 flutter

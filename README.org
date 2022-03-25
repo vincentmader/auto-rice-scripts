@@ -76,4 +76,5 @@
 - setup yabai
   + [[https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)][docs]]
   + [[https://github.com/julian-heng/yabai-config/blob/master/yabairc][sample config]]
+- make skhd auto-start on login
 

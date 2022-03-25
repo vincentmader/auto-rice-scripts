@@ -49,15 +49,14 @@ fi
 export CONF="$HOME/.config"
 # get location of auto-rice scripts (location of this file)
 cd "$(dirname $0)"
-export RICE=$(pwd)
-export SRC=$RICE/src
+export RICE="$(pwd)"
+export SRC="$RICE/src"
 # create directory for source code files
-mkdir -p $RICE/src
+mkdir -p "$RICE/src"
 
 if [ "$DO_FULL_SYSTEM_UPGRADE" = "true" ]; then
     for i in $RICE/package-installation/**/pkgs_*/installed.txt; do
-        > $i
-        # echo $i
+        > $i  # clear file content
     done
 fi
 
@@ -121,20 +120,26 @@ function echo_separator {
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
 
+function echo_title {
+    echo "\n$SEPARATOR_1"
+    AUTHOR="Vincent C. Mader"
+    PROJECT_NAME="AUTO-RICE SCRIPTS"
+    printf "$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
 
-# TITLE
+    START_IDX=0
+    END_IDX=$(( $(tput cols) - ${#PROJECT_NAME} - ${#AUTHOR} - 1 ))
+    for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
+        printf " "
+    done
+
+    printf "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
+    echo "\n$SEPARATOR_1"
+}
+
+
+# MAIN SCRIPT
 # =============================================================================
-echo "\n$SEPARATOR_1"
-AUTHOR="Vincent C. Mader"
-TITLE="AUTO-RICE SCRIPTS"
-printf "$COLOR_BLUE$TITLE$COLOR_DEFAULT"
-START_IDX=0
-END_IDX=$(( $(tput cols) - ${#TITLE} - ${#AUTHOR} - 1 ))
-for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
-    printf " "
-done
-printf "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
-echo "\n$SEPARATOR_1"
+echo_title
 
 # PRE-INSTALL INITIALIZATION/SETUP
 # =============================================================================
@@ -148,13 +153,12 @@ echo "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
 
 # [ ] arch-specific initialization
 if [ "$OS" = "arch" ]; then
-    echo                           # TODO remove line
 
     # [ ] initialize pacman          TODO: test
-    # "$RICE/initialization/os_arch/initialize_pacman.sh"
+    "$RICE/initialization/os_arch/initialize_pacman.sh"
 
     # [ ] install yay                TODO: test
-    # "$RICE/initialization/os_arch/install_yay.sh"
+    "$RICE/initialization/os_arch/install_yay.sh"
 
 # [X] macOS-specific initialization
 elif [ "$OS" = "macOS" ]; then
@@ -279,27 +283,41 @@ fi
 echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
 # configure git
-if [ "$CONFIGURE_GIT" = "true" ]; then
-    "$RICE/package-setup/git/configure_git.sh"
-fi
+"$RICE/package-setup/git/configure_git.sh"
 
 # pull git repos
-if [ "$PULL_GIT_REPOS" = "true" ]; then
-    "$RICE/package-setup/git/pull_git_repos.sh"
-fi
+"$RICE/package-setup/git/pull_git_repos.sh"
 
-# configure zathura       # TODO make this system-independent
 if [ $OS = "macOS" ]; then
-    "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"  # TODO rename
-fi
 
-# configure mactex install:
-echo "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
+    # configure zathura       # TODO make this system-independent
+    "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
+
+    # configure mactex install  TODO move to own file?
+    echo "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
     eval "$(/usr/libexec/path_helper)"
     echo "Configured macTeX."
 
-# configure automatic startup-launch of mongod
-echo "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
+    # configure automatic startup-launch of mongod 
+    # TODO make this system-independent
+    # TODO move to own file/
+    echo "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
     brew services start mongodb/brew/mongodb-community > /dev/null
     echo "Started mongod."
+
+    # configure skhd  TODO auto-start on login?
+    echo "$COLOR_BLUE\nConfiguring skhd...$COLOR_DEFAULT"
+    # brew services start skhd > /dev/null
+    echo "$COLOR_YELLOW> WARN: This might need manual setup!"
+    echo "        Run 'brew services start skhd' to start the daemon."
+    echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
+    # echo "Started skhd."
+
+    # configure yabai # TODO auto-start on login?
+    echo "$COLOR_BLUE\nConfiguring yabai...$COLOR_DEFAULT"
+    echo "$COLOR_YELLOW> WARN: This might need manual setup!"
+    echo "        Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
+
+fi
+
 
