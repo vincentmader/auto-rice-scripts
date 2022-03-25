@@ -2,11 +2,11 @@
 
 
 if [ -d $CONF ]; then
-    echo "$COLOR_BLUE\nPulling config files from GitHub repo...$COLOR_DEFAULT"
+    echo "$COLOR_BLUE\nPulling personal config-dotfile repository...$COLOR_DEFAULT"
     cd $CONF
     git pull
 else
-    echo "Cloning config files to $HOME/.config"
+    echo "$COLOR_BLUE\nCloning personal config-dotfiles to ~/.config...$COLOR_DEFAULT"
     URL_TO_DOTFILES="https://github.com/vincentmader/config-dotfiles"
     git clone --recurse-submodules $URL_TO_DOTFILES $CONF
 fi

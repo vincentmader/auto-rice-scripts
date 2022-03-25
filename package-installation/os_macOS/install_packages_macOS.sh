@@ -9,6 +9,7 @@ PATH_TO_MACOS_INSTALLERS="$RICE/package-installation/os_macOS"
 
 # tap into brew package sources
 echo "$COLOR_BLUE\nTapping into macOS-specific repositories using brew...$COLOR_DEFAULT"
+echo_separator_1
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-taps/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-taps/installed.txt"
 function INSTALLER() {
@@ -18,6 +19,7 @@ install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 
 # install brew packages   # TODO write function for this! (change path for installed)
 echo "$COLOR_BLUE\nInstalling macOS-specific packages using brew...$COLOR_DEFAULT"
+echo_separator_1
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew/installed.txt"
 function INSTALLER {
@@ -28,6 +30,7 @@ install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 
 # # install brew cask packages
 echo "$COLOR_BLUE\nInstalling macOS-specific packages using brew-cask...$COLOR_DEFAULT"
+echo_separator_1
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-cask/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-cask/installed.txt"
 function INSTALLER {
@@ -41,6 +44,8 @@ install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 # -----------------------------------------------------------------------------
 
 # install macports packages
+echo "$COLOR_BLUE\nInstalling macOS-specific packages using mac-ports...$COLOR_DEFAULT"
+echo_separator_1
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_macports/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_macports/installed.txt"
 function INSTALLER {
@@ -58,14 +63,4 @@ install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 # brew bundle install --file=etc/taskcluster/macos/Brewfile-build
 # pip install virtualenv
 # ./mach bootstrap
-
-
-# post-install configuration
-# -----------------------------------------------------------------------------
-
-# for mactex install:
-eval "$(/usr/libexec/path_helper)"
-
-# for automatic startup-launch of mongod
-brew services start mongodb/brew/mongodb-community
 

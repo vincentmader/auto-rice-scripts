@@ -8,7 +8,7 @@ echo "$COLOR_BLUE\nInstalling macports...$COLOR_DEFAULT"
 
 # exit if port is already installed
 if command -v "port" &> /dev/null; then
-    echo "  -> already installed!"
+    echo "Already installed."
     # uninstall all macports packages
         # sudo port -fp uninstall installed
     

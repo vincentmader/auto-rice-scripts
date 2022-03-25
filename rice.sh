@@ -14,6 +14,8 @@
 
 # INITIALIZATION
 
+DO_FULL_SYSTEM_UPGRADE="false"     # 
+
 # package managers
 INSTALL_GIT="true"
 INSTALL_BREW="true"             # TODO test installer-download & -setup
@@ -82,6 +84,13 @@ export SRC=$RICE/src
 # create directory for source code files
 mkdir -p $RICE/src
 
+if [ "$DO_FULL_SYSTEM_UPGRADE" = "true" ]; then
+    for i in $RICE/package-installation/**/pkgs_*/installed.txt; do
+        > $i
+        # echo $i
+    done
+fi
+
 
 # define package manager (os-dependent)
 # -----------------------------------------------------------------------------
@@ -120,9 +129,9 @@ function install_from_pkg_file {
 
     cat $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
-            echo "  $COLOR_BLUE**$COLOR_DEFAULT $line"
+            echo "$COLOR_BLUE**$COLOR_DEFAULT $line"
         else 
-            echo "  $COLOR_GREEN++$COLOR_DEFAULT $line"
+            echo "$COLOR_GREEN++$COLOR_DEFAULT $line"
             $1 "$line"  # run installer-function passed as 1st argument
             echo "$line" >> "$ALREADY_INSTALLED"
         fi
@@ -130,9 +139,41 @@ function install_from_pkg_file {
 }
 export -f install_from_pkg_file
 
+function echo_separator_1 {
+    printf $COLOR_BLUE
+    for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
+        printf "-"
+    done
+    printf $COLOR_DEFAULT
+}
+export -f echo_separator_1
+
+function echo_separator_2 {
+    printf $COLOR_BLUE
+    for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
+        printf "="
+    done
+    printf $COLOR_DEFAULT
+}
+export -f echo_separator_2
+
+# TITLE
+# =============================================================================
+echo "\n$(echo_separator_1)"
+AUTHOR="Vincent C. Mader"
+TITLE="AUTO-RICE SCRIPTS"
+printf "$COLOR_BLUE$TITLE$COLOR_DEFAULT"
+START_IDX=0
+END_IDX=$(( $(tput cols) - ${#TITLE} - ${#AUTHOR} - 1 ))
+for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
+    printf " "
+done
+printf "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
+echo "\n$(echo_separator_1)"
 
 # PRE-INSTALL INITIALIZATION/SETUP
 # =============================================================================
+echo "\n$(echo_separator_2)$COLOR_BLUE\nINITIALIZATION\n$COLOR_DEFAULT$(echo_separator_2)"
 
 # INSTALL PACKAGE MANAGERS & VERSION CONTROL SYSTEM(S)
 # -----------------------------------------------------------------------------
@@ -142,23 +183,30 @@ if [ "$INSTALL_GIT" = "true" ]; then
     "$RICE/initialization/default/install_git.sh"
 fi
 
-# [ ] initialize pacman (only if running on arch)          TODO: test
-if [ "$OS" = "arch" ] && [ $INITIALIZE_PACMAN = "true" ]; then
-    "$RICE/initialization/os_arch/initialize_pacman.sh"
-fi
-# [ ] install yay       (only if running on arch)          TODO: test
-if [ "$OS" = "arch" ] && [ $INSTALL_YAY = "true" ]; then
-    "$RICE/initialization/os_arch/install_yay.sh"
+if [ "$OS" = "arch" ]; then
+
+    # [ ] initialize pacman (only if running on arch)          TODO: test
+    if [ $INITIALIZE_PACMAN = "true" ]; then
+        "$RICE/initialization/os_arch/initialize_pacman.sh"
+    fi
+    # [ ] install yay       (only if running on arch)          TODO: test
+    if [ $INSTALL_YAY = "true" ]; then
+        "$RICE/initialization/os_arch/install_yay.sh"
+    fi
+
+elif [ "$OS" = "macOS" ]; then
+
+    # [X] install brew      (only if running on macOS)
+    if [ $INSTALL_BREW = "true" ]; then
+        "$RICE/initialization/os_macOS/install_brew.sh"
+    fi
+    # install macports      (only if running on macOS)
+    if [ $INSTALL_MACPORTS = "true" ]; then
+        "$RICE/initialization/os_macOS/install_macports.sh"
+    fi
+
 fi
 
-# [X] install brew      (only if running on macOS)
-if [ "$OS" = "macOS" ] && [ $INSTALL_BREW = "true" ]; then
-    "$RICE/initialization/os_macOS/install_brew.sh"
-fi
-# install macports      (only if running on macOS)
-if [ "$OS" = "macOS" ] && [ $INSTALL_MACPORTS = "true" ]; then
-    "$RICE/initialization/os_macOS/install_macports.sh"
-fi
 
 # PERSONAL FILES
 # -----------------------------------------------------------------------------
@@ -181,42 +229,51 @@ fi
 # OS-SPECIFIC: ARCH LINUX
 # -----------------------------------------------------------------------------
 
-# [ ] download/setup fonts
-if [ "$OS" = "arch" ] && [ "$SETUP_FONTS" = "true" ]; then
-    "$RICE/initialization/os_arch/setup_fonts.sh"
-fi
+if [ "$OS" = "arch" ]; then
 
-# [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
-if [ "$OS" = "arch" ] && [ "$SETUP_SUCKLESS" = "true" ]; then
-    "$RICE/initialization/os_arch/setup_suckless.sh"
-fi
+    # [ ] download/setup fonts
+    if [ "$SETUP_FONTS" = "true" ]; then
+        "$RICE/initialization/os_arch/setup_fonts.sh"
+    fi
+    
+    # [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
+    if [ "$SETUP_SUCKLESS" = "true" ]; then
+        "$RICE/initialization/os_arch/setup_suckless.sh"
+    fi
+    
+    # [ ] initialize xorg
+    if [ "$INITIALIZE_XORG" = "true" ]; then
+        "$RICE/initialization/os_arch/initialize_xorg.sh"
+    fi
 
-# [ ] initialize xorg
-if [ "$OS" = "arch" ] && [ "$INITIALIZE_XORG" = "true" ]; then
-    "$RICE/initialization/os_arch/initialize_xorg.sh"
 fi
 
 # OS-SPECIFIC: MAC OS
 # -----------------------------------------------------------------------------
 
-# [ ] perform macOS system update
-if [ "$OS" = "macOS" ] && [ "$UPDATE_SYSTEM" = "true" ]; then
-    "$RICE/initialization/os_macOS/update_system.sh"
-fi
+if [ "$OS" = "macOS" ]; then
 
-# [ ] perform macOS cmd-line-tools update
-if [ "$OS" = "macOS" ] && [ "$UPDATE_CMD_LINE_TOOLS" = "true" ]; then
-    "$RICE/initialization/os_macOS/update_cmd_line_tools.sh"
-fi
+    # [ ] perform macOS system update
+    if [ "$UPDATE_SYSTEM" = "true" ]; then
+        "$RICE/initialization/os_macOS/update_system.sh"
+    fi
+    
+    # [ ] perform macOS cmd-line-tools update
+    if [ "$UPDATE_CMD_LINE_TOOLS" = "true" ]; then
+        "$RICE/initialization/os_macOS/update_cmd_line_tools.sh"
+    fi
+    
+    # [ ] setup xcode
+    if [ "$SETUP_XCODE" = "true" ]; then
+        "$RICE/initialization/os_macOS/setup_xcode.sh"
+    fi
 
-# [ ] setup xcode
-if [ "$OS" = "macOS" ] && [ "$SETUP_XCODE" = "true" ]; then
-    "$RICE/initialization/os_macOS/setup_xcode.sh"
 fi
 
 
 # INSTALL PACKAGES
 # =============================================================================
+echo "\n\n$(echo_separator_2)$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$(echo_separator_2)"
 
 # [X] mac-specfic packages   (-> via brew)
 if [ "$INSTALL_PKGS" = "true" ] && [ "$OS" = "macOS" ]; then
@@ -276,6 +333,7 @@ fi
 
 # POST-INSTALL CONFIGURATION
 # =============================================================================
+echo "\n\n$(echo_separator_2)$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$(echo_separator_2)"
 
 # configure git
 if [ "$CONFIGURE_GIT" = "true" ]; then
@@ -296,4 +354,13 @@ fi
 if [ $OS = "arch" ] && [ "$SETUP_NVIM" = "true" ]; then
     "RICE/package-setup/nvim/setup_nvim.sh"  # TODO rename
 fi
+
+# configure mactex install:
+echo "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
+    eval "$(/usr/libexec/path_helper)"
+
+# configure automatic startup-launch of mongod
+echo "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
+    echo "Started mongod"
+    brew services start mongodb/brew/mongodb-community > /dev/null
 

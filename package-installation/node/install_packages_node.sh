@@ -2,6 +2,7 @@
 
 
 echo "$COLOR_BLUE\nInstalling node packages using npm...$COLOR_DEFAULT"
+echo_separator_1
 
 TO_INSTALL="$RICE/package-installation/node/pkgs_node/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/node/pkgs_node/installed.txt"

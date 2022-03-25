@@ -6,7 +6,7 @@ echo "\n$COLOR_BLUE\nInstalling yay...$COLOR_DEFAULT"
 # exit if yay is already installed
 if command -v "yay" &> /dev/null
 then
-    echo "  -> yay is already installed!"
+    echo "Already installed."
     exit
 fi
 
