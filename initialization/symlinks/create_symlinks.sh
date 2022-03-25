@@ -53,7 +53,8 @@ if [ "$OS" = "macOS" ]; then
 
     # link beorg 
     BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"
-    ln -s "$BEORG/org"      $SYMLINKS/org         # cloud/org   -> sl/org
+    # ln -s "$BEORG/org"      $SYMLINKS/org         # cloud/org   -> sl/org
+    ln -s $HOME/org $SYMLINKS/org                 # home/org    -> sl/org
 
     # link ~/Documents and ~/Downloads
     ln -s "$HOME/Documents" $HOME/docs            # home/Docs   -> home/docs
@@ -63,7 +64,8 @@ if [ "$OS" = "macOS" ]; then
 
 elif [ "$OS" = "arch" ]; then
 
-    ln -s "$HOME/docs/org" $SYMLINKS/org          # docs/org    -> sl/org  
+    # ln -s "$HOME/docs/org" $SYMLINKS/org          # docs/org    -> sl/org  
+    ln -s "$HOME/org" $SYMLINKS/org               # home/org    -> sl/org  
     ln -s $HOME/docs $SYMLINKS/docs               # home/docs   -> sl/docs
     ln -s $HOME/downloads $SYMLINKS/dl            # home/dl     -> sl/dl
 
@@ -83,7 +85,7 @@ ln -s $SYMLINKS/code/projects/mader.xyz $SYMLINKS/mxyz     # code/mxyz   -> sl/m
 ln -s $SYMLINKS/code/projects/auto-rice-scripts $SYMLINKS/rice     # code/mxyz   -> sl/mxyz
 
 # symlink to org files from home
-ln -s $SYMLINKS/org $HOME/org                     # sl/org      -> home/org
+# ln -s $SYMLINKS/org $HOME/org                     # sl/org      -> home/org
 
 echo "  -> created symlinks"
 

@@ -1,5 +1,6 @@
 Colour
 Pillow
+PyPDF2
 antigravity
 autopep8
 bokeh
@@ -18,11 +19,15 @@ nltk
 numpy
 oauth2client
 openpyxl
+opencv-python
 pandas
+pdfreader
 pep8
 pillow
 pygame
+pymongo
 pytube3
+quandl
 redvid
 requests
 ricksay
@@ -32,6 +37,7 @@ selenium
 setuptools
 sklearn
 tasklib
+torchvision
 tqdm
 urllib3
 virtualenv

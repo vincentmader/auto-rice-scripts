@@ -4,10 +4,11 @@ blender
 curseforge
 discord
 dropbox
-homebrew/cask/emacs
+flutter
 font-hack-nerd-font
 google-chrome
 google-earth-pro
+homebrew/cask/emacs
 iterm2
 microsoft-excel
 microsoft-word
@@ -21,6 +22,7 @@ qlvideo
 slack
 spotify
 steam
+telegram
 vlc
 xscreensaver
 webtorrent

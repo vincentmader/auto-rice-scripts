@@ -1,7 +1,9 @@
 archey
+koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 libpq
 mysql-client
+mongodb-community@5.0
 postgresql
 python@3.9
 telnet

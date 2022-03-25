@@ -7,13 +7,8 @@ echo "$COLOR_BLUE\nInstalling macports...$COLOR_DEFAULT"
 # -----------------------------------------------------------------------------
 
 # exit if port is already installed
-if command -v "port" &> /dev/null
-then
-    echo "  -> macports is already installed!"
-    exit
-    # uninstall macports  (if installed)
-    # -----------------------------------------------------------------------------
-    
+if command -v "port" &> /dev/null; then
+    echo "  -> already installed!"
     # uninstall all macports packages
         # sudo port -fp uninstall installed
     
@@ -33,25 +28,25 @@ then
         #     /Library/Tcl/darwinports1.0 \
         #     /Library/Tcl/macports1.0 \
         #     ~/.macports
+else
+    # move into src directory
+    cd $RICE/src
+    
+    # download source & unpack to ./src directory  TODO make version-independent
+    curl -O "https://distfiles.macports.org/MacPorts/MacPorts-2.7.1.tar.bz2"
+    tar xf "MacPorts-2.7.1.tar.bz2"
+    rm "MacPorts-2.7.1.tar.bz2"
+    
+    # install
+    cd "./MacPorts-2.7.1/"
+    ./configure
+    make
+    sudo make install 
+    
+    # update macports
+    sudo port -v selfupdate
+    
+    # move back to rice-script root directory
+    cd $RICE;
 fi
-
-# move into src directory
-cd $RICE/src
-
-# download source & unpack to ./src directory
-curl -O https://distfiles.macports.org/MacPorts/MacPorts-2.7.1.tar.bz2
-tar xf MacPorts-2.7.1.tar.bz2
-rm MacPorts-2.7.1.tar.bz2
-
-# install
-cd ./MacPorts-2.7.1/
-./configure
-make
-sudo make install 
-
-# update macports
-sudo port -v selfupdate
-
-# move back to rice-script root directory
-cd $RICE;
 
