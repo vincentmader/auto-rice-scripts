@@ -3,87 +3,107 @@
 
 echo "$COLOR_BLUE\nCreating symlinks...$COLOR_DEFAULT"
 
-# setup symlink directory in ~/.config (delete old, if existing)
-# -----------------------------------------------------------------------------
+
+# define function for setting up link from origin to target in a clean way
+# =============================================================================
+
+setup_symlink() {
+    ORIGIN="$1"
+    TARGET="$2"
+    # check if symlink at link-target path already exists -> delete if true 
+    if [ -L "$TARGET" ]; then
+        rm "$TARGET"
+    # check if non-symlink file/dir exists at link-target path -> skip if true
+    else
+        if [[ -d "$TARGET" || -f "$TARGET" ]]; then
+            printf "$COLOR_RED"
+            printf "ERROR: "
+            printf "$COLOR_DEFAULT"
+            printf "Path \"$TARGET\" already exists! -> Skipping link\n"
+            return
+        fi
+    fi
+    # link from origin to link-target path
+    ln -sv "$ORIGIN" "$TARGET"
+}
+
+# setup symlink directory in ~/.config 
+# =============================================================================
 
 SYMLINKS="$CONF/symlinks"
 mkdir -p $SYMLINKS
+# delete old, if existing
 rm $SYMLINKS/* 2> /dev/null
-rm $CONF/emacs 2> /dev/null
-rm $CONF/doom 2> /dev/null
-rm $HOME/docs 2> /dev/null
-rm $HOME/docs/dpsg 2> /dev/null
-rm $HOME/code 2> /dev/null
-rm $HOME/org 2> /dev/null
-rm $HOME/icloud 2> /dev/null
 
+# CONFIG FILES
+# =============================================================================
 
-# create symlinks
-# -----------------------------------------------------------------------------
+setup_symlink       "$CONF/zsh/zprofile"            "$HOME/.zprofile"
+setup_symlink       "$CONF/zsh/profile"             "$HOME/.profile"
+setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 
-# symlink to home & config
-ln -sv $HOME $SYMLINKS/home
-ln -sv $CONF $SYMLINKS/cf
+setup_symlink       "$CONF"                         "$SYMLINKS/cf"
+setup_symlink       "$HOME"                         "$SYMLINKS/home"
 
-# symlink to .emacs.d & .doom.d from ~/.config
 if [ -d $HOME/.emacs.d ]; then
-    ln -sv $HOME/.emacs.d $CONF/emacs
+    setup_symlink   "$HOME/.emacs.d"                "$CONF/emacs"
 fi
 if [ -d $HOME/.doom.d ]; then
-    ln -sv $HOME/.doom.d $CONF/doom
+    setup_symlink   "$HOME/.doom.d"                 "$CONF/doom"
 fi
 
-# symlink to bashrc
-rm $HOME/.bashrc 2> /dev/null
-ln -sv $CONF/bash/bashrc $HOME/.bashrc 
+# HOME/DOCS
+# =============================================================================
 
-# symlink to documents & downloads  (also to iCloud, if on macOS)
+# code
+CODE="$HOME/code"
+PROJECTS="$CODE/projects"
+setup_symlink       "$CODE"                         "$SYMLINKS/code"
+setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
+setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
+
+# macOS-specific links
 if [ "$OS" = "macOS" ]; then
 
-    # link library to symlinks/lib
     LIBRARY="$HOME/Library"
-    ln -sv "$HOME/Library"   $SYMLINKS/lib
-
-    # needed for the iCloud & beorg
     MOBILE_DOCS="$LIBRARY/Mobile Documents"
     ICLOUD="$MOBILE_DOCS/com~apple~CloudDocs/"
 
-    # link iCloud files to ~/cloud
-    ln -sv "$ICLOUD" $SYMLINKS/icloud           
+    # link library
+    setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
 
-    # link beorg 
-    BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"
-    # ln -sv "$BEORG/org"      $SYMLINKS/org         # cloud/org   -> sl/org
-    ln -sv $HOME/org $SYMLINKS/org                 # home/org    -> sl/org
+    # link icloud
+    setup_symlink   "$ICLOUD"                       "$SYMLINKS/icloud"
+    setup_symlink   "$ICLOUD"                       "$HOME/icloud"
 
-    # link ~/Documents and ~/Downloads
-    ln -sv "$HOME/Documents" $HOME/docs            # home/Docs   -> home/docs
-    ln -sv "$SYMLINKS/icloud" $HOME/icloud         # sl/icloud   -> home/icloud
-    ln -sv "$HOME/Documents" $SYMLINKS/docs        # home/Docs   -> sl/docs
-    ln -sv "$HOME/Downloads" $SYMLINKS/dl          # home/Dl     -> sl/dl
+    # link beorg
+        setup_symlink   "$HOME/org"                 "$SYMLINKS/org"
+        # BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"
+        # setup_symlink   "$BEORG/org"                "$SYMLINKS/org"
 
+    # link docs & downloads
+    setup_symlink   "$HOME/Documents"               "$HOME/docs"
+    setup_symlink   "$HOME/Documents"               "$SYMLINKS/docs"
+    setup_symlink   "$HOME/Downloads"               "$SYMLINKS/dl"
+
+    # link dpsg
+    ONEDRIVE="$LIBRARY/CloudStorage/OneDrive-DPSGUlm-Söflingen"
+    setup_symlink   "$SYMLINKS/docs/dpsg"           "$SYMLINKS/dpsg"
+    setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
+    setup_symlink   "$ONEDRIVE"                     "$SYMLINKS/dpsg/OneDrive"
+
+# arch-specific links
 elif [ "$OS" = "arch" ]; then
 
-    # ln -sv "$HOME/docs/org" $SYMLINKS/org          # docs/org    -> sl/org  
-    ln -sv "$HOME/org" $SYMLINKS/org               # home/org    -> sl/org  
-    ln -sv $HOME/docs $SYMLINKS/docs               # home/docs   -> sl/docs
-    ln -sv $HOME/downloads $SYMLINKS/dl            # home/dl     -> sl/dl
+    setup_symlink   "$HOME/org"                     "$SYMLINKS/org"
+    setup_symlink   "$HOME/docs"                    "$SYMLINKS/docs"
+    setup_symlink   "$HOME/downloads"               "$SYMLINKS/dl"
 
 fi
 
-# symlinks to documents
-ln -sv $SYMLINKS/docs $SYMLINKS/dox                # sl/docs     -> sl/dox
-ln -sv $SYMLINKS/docs/education/uni $SYMLINKS/uni  # docs/un     -> sl/uni
-ln -sv $SYMLINKS/docs/work $SYMLINKS/work          # docs/work   -> sl/work
-ln -sv $SYMLINKS/docs/dpsg $SYMLINKS/dpsg          # docs/work   -> sl/work
-
-# symlinks to code
-# ln -sv $SYMLINKS/docs/code $SYMLINKS/code          # docs/code   -> sl/code
-# ln -sv $SYMLINKS/docs/code $HOME/code              # docs/code   -> home/code
-ln -sv $HOME/code $SYMLINKS/code          # docs/code   -> sl/code
-ln -sv $SYMLINKS/code/projects/mader.xyz $SYMLINKS/mxyz     # code/mxyz   -> sl/mxyz
-ln -sv $SYMLINKS/code/projects/auto-rice-scripts $SYMLINKS/rice     # code/mxyz   -> sl/mxyz
-
-# symlink to org files from home
-# ln -sv $SYMLINKS/org $HOME/org                     # sl/org      -> home/org
+# documents
+UNI="$SYMLINKS/docs/education/uni"
+setup_symlink       "$SYMLINKS/docs"                "$SYMLINKS/dox"
+setup_symlink       "$UNI"                          "$SYMLINKS/uni"
+setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
 
