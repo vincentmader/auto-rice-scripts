@@ -4,6 +4,7 @@ colorpicker
 curl
 docker
 emacs
+flutter
 imagemagick
 inetutils
 lsof
