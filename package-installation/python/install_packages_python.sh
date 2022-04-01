@@ -6,8 +6,11 @@
 
 echo "$COLOR_BLUE\nUpgrading pip3...$COLOR_DEFAULT\n$SEPARATOR_1"
 
-pip3 install --upgrade pip
-
+if [[ "$OS" = "macOS" ]]; then
+    brew upgrade python
+else 
+    pip3 install --upgrade pip
+fi
 
 # INSTALLING PYTHON PACKAGES
 # -----------------------------------------------------------------------------            
