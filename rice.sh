@@ -96,6 +96,10 @@ function install_from_pkg_file {
     TO_INSTALL="$2"
     ALREADY_INSTALLED="$3"
 
+    if [[ ! -f "$ALREADY_INSTALLED" ]]; then
+        touch "$ALREADY_INSTALLED"
+    fi
+
     cat $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
             echo "$COLOR_BLUE**$COLOR_DEFAULT $line"
@@ -242,6 +246,7 @@ if [ "$OS" = "macOS" ]; then   # -> via brew
 elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
     "$RICE/package-installation/os_arch/install_packages_arch.sh"
 fi
+"$RICE/package-installation/gem/install_packages_gem.sh"
 
 # zsh plugins            (-> via ohmyzsh)
 if [ "$INSTALL_PKGS_ZSH" = "true" ]; then
