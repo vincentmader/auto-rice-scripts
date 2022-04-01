@@ -12,6 +12,7 @@ fortune
 fzf
 gotop
 imagemagick
+lf
 lolcat 
 mupdf
 neofetch 

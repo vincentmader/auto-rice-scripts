@@ -10,7 +10,7 @@ fi
 # download & install base rust
 echo "\n$COLOR_BLUE\nInstalling rust...$COLOR_DEFAULT"
 echo "NOTE: choose nightly build"  # TODO
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
 
 # use nightly rust build as default
 rustup toolchain install nightly
