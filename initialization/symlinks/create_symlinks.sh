@@ -43,6 +43,7 @@ setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
 setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
 setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
 setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
+setup_symlink       "$CONF/git/gitconfig"           "$HOME/.gitconfig"
 
 setup_symlink       "$CONF"                         "$SYMLINKS/cf"
 setup_symlink       "$HOME"                         "$SYMLINKS/home"

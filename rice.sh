@@ -299,8 +299,8 @@ echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATO
 # =============================================================================
 echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
-# # configure git
-# "$RICE/package-setup/git/configure_git.sh"
+# configure git
+"$RICE/package-setup/git/configure_git.sh"   # after symlinks
 
 # # pull git repos
 # "$RICE/package-setup/git/pull_git_repos.sh"
