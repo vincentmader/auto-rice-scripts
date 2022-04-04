@@ -13,7 +13,7 @@ DO_FULL_SYSTEM_UPGRADE="false"     #
 
 # ARCH-SPECIFIC
 SETUP_HOMEDIR="false"           # works! (TODO change wallpaper dir)
-SETUP_SUCKLESS="true"          # works! (TODO only half-way though)
+SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="false"
 # MACOS-SPECIFIC
