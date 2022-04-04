@@ -1,11 +1,11 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nPulling personal git repos...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nPulling personal git repos...$COLOR_DEFAULT"
 
 
 # clone wallpapers
-echo "\n$COLOR_BLUE**$COLOR_DEFAULT wallpapers"
+echo -e "\n$COLOR_BLUE**$COLOR_DEFAULT wallpapers"
 PATH_TO_WALLPAPERS="$CONF/symlinks/docs/wallpapers"  # TODO move to ~/media/wallpapers (?)
 if [ -d $PATH_TO_WALLPAPERS ]; then
     cd $PATH_TO_WALLPAPERS
@@ -24,7 +24,7 @@ fi
 # get code projects  (TODO get others)
 PATH_TO_CODE="$CONF/symlinks/code"
 
-echo "\n$COLOR_BLUE**$COLOR_DEFAULT mader.xyz"  # TODO adjust path
+echo -e "\n$COLOR_BLUE**$COLOR_DEFAULT mader.xyz"  # TODO adjust path
 echo "Skipping for now..."
 # PATH_TO_MXYZ="$PATH_TO_CODE/projects/mader.xyz/main"  
 # if [ -d $PATH_TO_MXYZ ]; then
@@ -36,7 +36,7 @@ echo "Skipping for now..."
 # fi
 
 # get org files
-echo "\n$COLOR_BLUE**$COLOR_DEFAULT org"
+echo -e "\n$COLOR_BLUE**$COLOR_DEFAULT org"
 PATH_TO_ORG="$CONF/symlinks/org"
 if [ -d $PATH_TO_ORG ]; then
     cd $PATH_TO_ORG

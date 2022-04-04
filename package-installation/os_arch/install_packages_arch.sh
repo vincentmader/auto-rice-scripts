@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nInstalling arch-specific packages...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nInstalling arch-specific packages...$COLOR_DEFAULT"
 
 TO_INSTALL="$RICE/package-installation/os_arch/pkgs_arch/to-install.txt"
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nConfiguring git...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nConfiguring git...$COLOR_DEFAULT"
 
 # setup git-commit username & email address
 git config --global user.name "Vincent C. Mader"

@@ -12,7 +12,7 @@
     # sudo pacman -S emacs
 
 # install base emacs to ~/.emacs.d
-echo "Cloning emacs-doom..."
+echo -e "Cloning emacs-doom..."
 if [[ -d $HOME/.emacs.d ]]; then
     echo "  -> emacs config is already cloned to ~/.emacs.d"
 else
@@ -21,7 +21,7 @@ else
 fi
 
 # install doom
-echo "$COLOR_BLUE\nInstalling emacs-doom...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nInstalling emacs-doom...$COLOR_DEFAULT"
 ~/.emacs.d/bin/doom install
 
 # clone doom config

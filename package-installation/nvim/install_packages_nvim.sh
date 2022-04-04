@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nInstalling neovim plugins using vim-plug...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nInstalling neovim plugins using vim-plug...$COLOR_DEFAULT"
 
 
 if [ $OS = "arch" ]; then

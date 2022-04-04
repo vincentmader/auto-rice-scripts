@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nInstalling tmux plugins using tpm...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nInstalling tmux plugins using tpm...$COLOR_DEFAULT"
 
 # remove installed tmux plugins (if existent)
 sudo rm -r $CONF/tmux/plugins 2> /dev/null

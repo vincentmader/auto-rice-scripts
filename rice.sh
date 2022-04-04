@@ -108,9 +108,9 @@ function install_from_pkg_file {
 
     grep -v '^#' $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
-            echo "$COLOR_BLUE**$COLOR_DEFAULT $line"
+            echo -e "$COLOR_BLUE**$COLOR_DEFAULT $line"
         else 
-            echo "$COLOR_GREEN++$COLOR_DEFAULT $line"
+            echo -e "$COLOR_GREEN++$COLOR_DEFAULT $line"
             $1 "$line"  # run installer-function passed as 1st argument
             echo "$line" >> "$ALREADY_INSTALLED"
         fi
@@ -124,7 +124,7 @@ function echo_separator {
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
         SEPARATOR="$SEPARATOR$CHAR"
     done
-    echo "$SEPARATOR$COLOR_DEFAULT"
+    echo -e "$SEPARATOR$COLOR_DEFAULT"
 }
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
@@ -243,7 +243,7 @@ fi
 
 # INSTALL PACKAGES
 # =============================================================================
-echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATOR_2"
+echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
 # [X] os-independent packages    -> via brew or pacman/yay
 # "$RICE/package-installation/default/install_packages_default.sh"
@@ -311,29 +311,29 @@ echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT
 #     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
 
 #     # configure mactex install  TODO move to own file?
-#     echo "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
+#     echo -e "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
 #     eval "$(/usr/libexec/path_helper)"
 #     echo "Configured macTeX."
 
 #     # configure automatic startup-launch of mongod 
 #     # TODO make this system-independent
 #     # TODO move to own file/
-#     echo "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
+#     echo -e "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
 #     brew services start mongodb/brew/mongodb-community > /dev/null
 #     echo "Started mongod."
 
 #     # configure skhd  TODO auto-start on login?
-#     echo "$COLOR_BLUE\nConfiguring skhd...$COLOR_DEFAULT"
+#     echo -e "$COLOR_BLUE\nConfiguring skhd...$COLOR_DEFAULT"
 #     # brew services start skhd > /dev/null
-#     echo "$COLOR_YELLOW> WARN: This might need manual setup!"
+#     echo -e "$COLOR_YELLOW> WARN: This might need manual setup!"
 #     echo "        Run 'brew services start skhd' to start the daemon."
 #     echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
 #     # echo "Started skhd."
 
 #     # configure yabai # TODO auto-start on login?
-#     echo "$COLOR_BLUE\nConfiguring yabai...$COLOR_DEFAULT"
-#     echo "$COLOR_YELLOW> WARN: This might need manual setup!"
-#     echo "        Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
+#     echo -e "$COLOR_BLUE\nConfiguring yabai...$COLOR_DEFAULT"
+#     echo -e "$COLOR_YELLOW> WARN: This might need manual setup!"
+#     echo -e "        Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
 # fi
 

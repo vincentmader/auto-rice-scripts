@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "$COLOR_BLUE\nCreating symlinks...$COLOR_DEFAULT"
+echo -e "$COLOR_BLUE\nCreating symlinks...$COLOR_DEFAULT"
 
 
 # define function for setting up link from origin to target in a clean way

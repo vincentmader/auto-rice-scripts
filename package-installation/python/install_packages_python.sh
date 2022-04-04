@@ -4,7 +4,7 @@
 # UPGRADING PIP3
 # -----------------------------------------------------------------------------            
 
-echo "$COLOR_BLUE\nUpgrading pip3...$COLOR_DEFAULT\n$SEPARATOR_1"
+echo -e "$COLOR_BLUE\nUpgrading pip3...$COLOR_DEFAULT\n$SEPARATOR_1"
 
 if [[ "$OS" = "macOS" ]]; then
     brew upgrade python
@@ -15,7 +15,7 @@ fi
 # INSTALLING PYTHON PACKAGES
 # -----------------------------------------------------------------------------            
 
-echo "$COLOR_BLUE\nInstalling python packages using pip3...$COLOR_DEFAULT\n$SEPARATOR_1"
+echo -e "$COLOR_BLUE\nInstalling python packages using pip3...$COLOR_DEFAULT\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/python/pkgs_python/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/python/pkgs_python/to-install.txt"
