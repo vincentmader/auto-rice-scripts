@@ -124,25 +124,31 @@ function echo_separator {
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
         SEPARATOR="$SEPARATOR$CHAR"
     done
-    echo -e "$SEPARATOR$COLOR_DEFAULT"
+    echo "$SEPARATOR$COLOR_DEFAULT"
 }
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
 
 function echo_title {
-    echo "\n$SEPARATOR_1"
+    MSG="\n$SEPARATOR_1"
+    # echo -e "\n$SEPARATOR_1"
     AUTHOR="Vincent C. Mader"
     PROJECT_NAME="AUTO-RICE SCRIPTS"
-    printf "$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
+    MSG="$MSG$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
+    # printf "$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
 
     START_IDX=0
     END_IDX=$(( $(tput cols) - ${#PROJECT_NAME} - ${#AUTHOR} - 1 ))
     for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
-        printf " "
+        # printf " "
+        MSG="$MSG "
     done
 
-    printf "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
-    echo "\n$SEPARATOR_1"
+    MSG="$MSG$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
+    MSG="$MSG\n$SEPARATOR_1"
+    echo -e "$MSG"
+    # echo -e "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
+    # echo "\n$SEPARATOR_1"
 }
 
 
