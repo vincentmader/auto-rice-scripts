@@ -95,6 +95,8 @@ export COLOR_MAGENTA="\033[1;35m"
 export COLOR_CYAN="\033[1;36m"
 export COLOR_WHITE="\033[1;37m"
 
+alias echo="echo -e"
+
 # INSTALL FROM PKG-FILE
 # -----------------------------------------------------------------------------
 function install_from_pkg_file {
@@ -108,9 +110,9 @@ function install_from_pkg_file {
 
     grep -v '^#' $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
-            echo -e "\n$COLOR_BLUE**$COLOR_DEFAULT$line"
+            echo "\n$COLOR_BLUE**$COLOR_DEFAULT$line"
         else 
-            echo -e "\n$COLOR_GREEN++$COLOR_DEFAULT$line"
+            echo "\n$COLOR_GREEN++$COLOR_DEFAULT$line"
             $1 "$line"  # run installer-function passed as 1st argument
             echo "$line" >> "$ALREADY_INSTALLED"
         fi
@@ -120,7 +122,7 @@ export -f install_from_pkg_file
 
 function printc {
     MSG="$1"
-    echo -e "\n$COLOR_BLUE$MSG$COLOR_DEFAULT"
+    echo "\n$COLOR_BLUE$MSG$COLOR_DEFAULT"
 }
 export -f printc
 
@@ -130,7 +132,7 @@ function echo_separator {
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
         SEPARATOR="$SEPARATOR$CHAR"
     done
-    echo -e "$SEPARATOR"
+    echo "$SEPARATOR"
 }
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
@@ -324,15 +326,15 @@ printc "$SEPARATOR_2\nPOST-INSTALL CONFIGURATION\n$SEPARATOR_2"
 #     # configure skhd  TODO auto-start on login?
 #     printc "\nConfiguring skhd..."
 #     # brew services start skhd > /dev/null
-#     echo -e "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+#     echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
 #     echo "        Run 'brew services start skhd' to start the daemon."
 #     echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
 #     # echo "Started skhd."
 
 #     # configure yabai # TODO auto-start on login?
 #     printc "Configuring yabai..."
-#     echo -e "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
-#     echo -e "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
+#     echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+#     echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
 # fi
 

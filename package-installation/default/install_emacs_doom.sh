@@ -21,7 +21,7 @@ else
 fi
 
 # install doom
-echo -e "$COLOR_BLUE\nInstalling emacs-doom...$COLOR_DEFAULT"
+echo "$COLOR_BLUE\nInstalling emacs-doom...$COLOR_DEFAULT"
 ~/.emacs.d/bin/doom install
 
 # clone doom config
