@@ -18,7 +18,7 @@ fi
 printc "Installing python packages using pip3...\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/python/pkgs_python/to-install.txt"
-ALREADY_INSTALLED="$RICE/package-installation/python/pkgs_python/to-install.txt"
+ALREADY_INSTALLED="$RICE/package-installation/python/pkgs_python/installed.txt"
 
 function INSTALLER() {
     pip3 install "$1"

@@ -16,7 +16,7 @@ INITIALIZE_PACMAN="true"
 SETUP_HOMEDIR="true"            # works! (TODO change wallpaper dir)
 
 # ARCH-SPECIFIC
-SETUP_SUCKLESS="true"           # works! (TODO only half-way though)
+SETUP_SUCKLESS="false"           # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="true"
 # MACOS-SPECIFIC
@@ -25,14 +25,15 @@ UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point)
 UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point) 
 
 # PACKAGE_INSTALLATION
-INSTALL_EMACS_DOOM="false"      # works (?)
+INSTALL_PKGS="false"
+INSTALL_EMACS_DOOM="true"      # works (?)
 INSTALL_RUST="false"            # works (?)
-INSTALL_PKGS_NVIM="false"       # works!
-INSTALL_PKGS_TMUX="false"       # works!
+INSTALL_PKGS_TMUX="true"        # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
-INSTALL_PKGS_RANGER="false"     # works!
-INSTALL_PKGS_PYTHON="false"     # works!
+INSTALL_PKGS_RANGER="true"     # works!
+INSTALL_PKGS_PYTHON="true"      # works!
 INSTALL_PKGS_NODE="false"       # works!
+INSTALL_PKGS_NVIM="false"       # works! (but not really needed)
 
 
 # RICE-SETUP
@@ -112,9 +113,9 @@ function install_from_pkg_file {
 
     grep -v '^#' $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
-            echo "\n$COLOR_BLUE**$COLOR_DEFAULT$line"
+            echo "$COLOR_BLUE** $line$COLOR_DEFAULT"
         else 
-            echo "\n$COLOR_GREEN++$COLOR_DEFAULT$line"
+            echo "$COLOR_GREEN++ $line$COLOR_DEFAULT"
             $1 "$line"  # run installer-function passed as 1st argument
             echo "$line" >> "$ALREADY_INSTALLED"
         fi
@@ -208,12 +209,10 @@ if [ "$OS" = "arch" ]; then
     if [ "$SETUP_FONTS" = "true" ]; then  # TODO fix for st
         "$RICE/initialization/os_arch/setup_fonts.sh"
     fi
-    
-    # [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
+    # [X] setup suckless software (dwm + st + dmenu + tabbed)
     if [ "$SETUP_SUCKLESS" = "true" ]; then
         "$RICE/initialization/os_arch/setup_suckless.sh"
     fi
-    
     # [ ] initialize xorg
     if [ "$INITIALIZE_XORG" = "true" ]; then
         "$RICE/initialization/os_arch/initialize_xorg.sh"
@@ -221,27 +220,27 @@ if [ "$OS" = "arch" ]; then
 
 fi
 
-# # OS-SPECIFIC: MAC OS
-# # -----------------------------------------------------------------------------
+# OS-SPECIFIC: MAC OS
+# -----------------------------------------------------------------------------
 
-# if [ "$OS" = "macOS" ]; then
+if [ "$OS" = "macOS" ]; then
 
-#     # [ ] perform macOS system update
-#     if [ "$UPDATE_SYSTEM" = "true" ]; then
-#         "$RICE/initialization/os_macOS/update_system.sh"
-#     fi
+    # [ ] perform macOS system update
+    if [ "$UPDATE_SYSTEM" = "true" ]; then
+        "$RICE/initialization/os_macOS/update_system.sh"
+    fi
     
-#     # [ ] perform macOS cmd-line-tools update
-#     if [ "$UPDATE_CMD_LINE_TOOLS" = "true" ]; then
-#         "$RICE/initialization/os_macOS/update_cmd_line_tools.sh"
-#     fi
+    # [ ] perform macOS cmd-line-tools update
+    if [ "$UPDATE_CMD_LINE_TOOLS" = "true" ]; then
+        "$RICE/initialization/os_macOS/update_cmd_line_tools.sh"
+    fi
     
-#     # [ ] setup xcode
-#     if [ "$SETUP_XCODE" = "true" ]; then
-#         "$RICE/initialization/os_macOS/setup_xcode.sh"
-#     fi
+    # [ ] setup xcode
+    if [ "$SETUP_XCODE" = "true" ]; then
+        "$RICE/initialization/os_macOS/setup_xcode.sh"
+    fi
 
-# fi
+fi
 
 
 # INSTALL PACKAGES
@@ -249,53 +248,62 @@ fi
 printc "$SEPARATOR_2\nPACKAGE INSTALLATION\n$SEPARATOR_2"
 
 # [X] os-independent packages    -> via brew or pacman/yay
-# "$RICE/package-installation/default/install_packages_default.sh"
-# if [ "$OS" = "macOS" ]; then   # -> via brew
-#    "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
-# elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
-#     "$RICE/package-installation/os_arch/install_packages_arch.sh"
-# fi
-# "$RICE/package-installation/gem/install_packages_gem.sh"
+if [ "$INSTALL_PKGS" = "true" ]; then
 
-# # zsh plugins            (-> via ohmyzsh)
-# if [ "$INSTALL_PKGS_ZSH" = "true" ]; then
-#     "$RICE/package-installation/zsh/install_packages_zsh.sh"
-# fi
+    # TODO fix error on
+    # - archey 
+    # - gotop 
+    # - lf
 
-# # python packages        (-> via pip3)
-# if [ "$INSTALL_PKGS_PYTHON" = "true" ]; then
-#     "$RICE/package-installation/python/install_packages_python.sh"
-# fi
+    "$RICE/package-installation/default/install_packages_default.sh"
+    if [ "$OS" = "macOS" ]; then   # -> via brew
+       "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
+    elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
+        "$RICE/package-installation/os_arch/install_packages_arch.sh"
+    fi
+    # "$RICE/package-installation/gem/install_packages_gem.sh"
+    
+    # zsh plugins            (-> via ohmyzsh)
+    if [ "$INSTALL_PKGS_ZSH" = "true" ]; then
+        "$RICE/package-installation/zsh/install_packages_zsh.sh"
+    fi
+    
+    # python packages        (-> via pip3)
+    if [ "$INSTALL_PKGS_PYTHON" = "true" ]; then
+        "$RICE/package-installation/python/install_packages_python.sh"
+    fi
+    
+    # node packages          (-> via npm)
+    if [ "$INSTALL_PKGS_NODE" = "true" ]; then
+        "$RICE/package-installation/node/install_packages_node.sh"
+    fi
+    
+    # nvim plugins           (-> via vim-plug + conquer-of-completion)
+    if [ "$INSTALL_PKGS_NVIM" = "true" ]; then
+        "$RICE/package-installation/nvim/install_packages_nvim.sh"
+    fi
+    
+    # tmux plugins           (-> via tpm)
+    if [ "$INSTALL_PKGS_TMUX" = "true" ]; then
+        "$RICE/package-installation/tmux/install_packages_tmux.sh"
+    fi
+    
+    # ranger plugins         (-> via git)
+    if [ "$INSTALL_PKGS_RANGER" = "true" ]; then
+        "$RICE/package-installation/ranger/install_packages_ranger.sh"
+    fi
 
-# # node packages          (-> via npm)
-# if [ "$INSTALL_PKGS_NODE" = "true" ]; then
-#     "$RICE/package-installation/node/install_packages_node.sh"
-# fi
+    # rust                   (-> via installer script)
+    if [ "$INSTALL_RUST" = "true" ]; then
+        "$RICE/package-installation/default/install_rust.sh"
+    fi
 
-# # nvim plugins           (-> via vim-plug + conquer-of-completion)
-# if [ "$INSTALL_PKGS_NVIM" = "true" ]; then
-#     "$RICE/package-installation/nvim/install_packages_nvim.sh"
-# fi
+    # emacs (+ doom)
+    if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
+        "$RICE/package-installation/default/install_emacs_doom.sh"
+    fi
+fi
 
-# # tmux plugins           (-> via tpm)
-# if [ "$INSTALL_PKGS_TMUX" = "true" ]; then
-#     "$RICE/package-installation/tmux/install_packages_tmux.sh"
-# fi
-
-# # ranger plugins         (-> via git)
-# if [ "$INSTALL_PKGS_RANGER" = "true" ]; then
-#     "$RICE/package-installation/ranger/install_packages_ranger.sh"
-# fi
-
-# # rust                   (-> via installer script)
-# if [ "$INSTALL_RUST" = "true" ]; then
-#     "$RICE/package-installation/default/install_rust.sh"
-# fi
-
-# # emacs (+ doom)
-# if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
-#     "$RICE/package-installation/default/install_emacs_doom.sh"
-# fi
 
 
 # POST-INSTALL CONFIGURATION
@@ -308,36 +316,35 @@ printc "$SEPARATOR_2\nPOST-INSTALL CONFIGURATION\n$SEPARATOR_2"
 # # pull git repos
 # "$RICE/package-setup/git/pull_git_repos.sh"
 
-# if [ $OS = "macOS" ]; then
+if [ "$OS" = "macOS" ]; then
 
-#     # configure zathura       # TODO make this system-independent
-#     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
+    # configure zathura       # TODO make this system-independent
+    "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
 
-#     # configure mactex install  TODO move to own file?
-#     printc "\nConfiguring macTeX..."
-#     eval "$(/usr/libexec/path_helper)"
-#     echo "Configured macTeX."
+    # configure mactex install  TODO move to own file?
+    printc "\nConfiguring macTeX..."
+    eval "$(/usr/libexec/path_helper)"
+    echo "Configured macTeX."
 
-#     # configure automatic startup-launch of mongod 
-#     # TODO make this system-independent
-#     # TODO move to own file/
-#     printc "\nConfiguring mongodb..."
-#     brew services start mongodb/brew/mongodb-community > /dev/null
-#     echo "Started mongod."
+    # configure automatic startup-launch of mongod 
+    # TODO make this system-independent
+    # TODO move to own file/
+    printc "\nConfiguring mongodb..."
+    brew services start mongodb/brew/mongodb-community > /dev/null
+    echo "Started mongod."
 
-#     # configure skhd  TODO auto-start on login?
-#     printc "\nConfiguring skhd..."
-#     # brew services start skhd > /dev/null
-#     echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
-#     echo "        Run 'brew services start skhd' to start the daemon."
-#     echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
-#     # echo "Started skhd."
+    # configure skhd  TODO auto-start on login?
+    printc "\nConfiguring skhd..."
+    # brew services start skhd > /dev/null
+    echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+    echo "        Run 'brew services start skhd' to start the daemon."
+    echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
+    # echo "Started skhd."
 
-#     # configure yabai # TODO auto-start on login?
-#     printc "Configuring yabai..."
-#     echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
-#     echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
+    # configure yabai   # TODO auto-start on login?
+    printc "Configuring yabai..."
+    echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+    echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
-# fi
-
+fi
 

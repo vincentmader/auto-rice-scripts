@@ -21,3 +21,7 @@ ln -s $CONF/tmux/resurrect_saves ~/.tmux/resurrect >> /dev/null
 
 tmux source ~/.config/tmux/tmux.conf
 
+printf "$COLOR_YELLOW"
+echo "\nNOTE: Run Ctrl-Shift-I, then Ctrl-A Ctrl-R"
+printf "$COLOR_DEFAULT"
+
