@@ -12,10 +12,10 @@
 DO_FULL_SYSTEM_UPGRADE="false"     # 
 
 # SETUP
-INITIALIZE_PACMAN="true"
+INITIALIZE_PACMAN="false"
+SETUP_HOMEDIR="true"           # works! (TODO change wallpaper dir)
 
 # ARCH-SPECIFIC
-SETUP_HOMEDIR="true"           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="false"
