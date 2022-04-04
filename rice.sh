@@ -95,7 +95,9 @@ export COLOR_MAGENTA="\033[1;35m"
 export COLOR_CYAN="\033[1;36m"
 export COLOR_WHITE="\033[1;37m"
 
-alias echo="echo -e"
+if [ "$OS" = "arch" ] ; then
+    alias echo="echo -e"
+fi
 
 # INSTALL FROM PKG-FILE
 # -----------------------------------------------------------------------------
