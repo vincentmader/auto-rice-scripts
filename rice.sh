@@ -130,25 +130,18 @@ export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
 
 function echo_title {
-    MSG="\n$SEPARATOR_1"
-    # echo -e "\n$SEPARATOR_1"
     AUTHOR="Vincent C. Mader"
     PROJECT_NAME="AUTO-RICE SCRIPTS"
-    MSG="$MSG$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
-    # printf "$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
+    MSG="\n$SEPARATOR_1$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
 
     START_IDX=0
     END_IDX=$(( $(tput cols) - ${#PROJECT_NAME} - ${#AUTHOR} - 1 ))
     for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
-        # printf " "
         MSG="$MSG "
     done
 
-    MSG="$MSG$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
-    MSG="$MSG\n$SEPARATOR_1"
+    MSG="$MSG$COLOR_BLUE$AUTHOR$COLOR_DEFAULT\n$SEPARATOR_1"
     echo -e "$MSG"
-    # echo -e "$COLOR_BLUE$AUTHOR$COLOR_DEFAULT"
-    # echo "\n$SEPARATOR_1"
 }
 
 
@@ -158,7 +151,7 @@ echo_title
 
 # PRE-INSTALL INITIALIZATION/SETUP
 # =============================================================================
-echo "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
+echo -e "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
 
 # INSTALL PACKAGE MANAGERS & VERSION CONTROL SYSTEM(S)
 # -----------------------------------------------------------------------------
@@ -302,9 +295,9 @@ echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATO
 # fi
 
 
-# # POST-INSTALL CONFIGURATION
-# # =============================================================================
-# echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
+# POST-INSTALL CONFIGURATION
+# =============================================================================
+echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
 # # configure git
 # "$RICE/package-setup/git/configure_git.sh"
