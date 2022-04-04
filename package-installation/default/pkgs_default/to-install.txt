@@ -8,7 +8,6 @@ exa
 feh
 ffmpeg
 figlet 
-fortune
 fzf
 gotop
 imagemagick

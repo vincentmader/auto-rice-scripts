@@ -1,4 +1,5 @@
 archey
+fortune
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 libpq

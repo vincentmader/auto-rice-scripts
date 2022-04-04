@@ -5,6 +5,7 @@ curl
 docker
 emacs
 flutter
+fortune-mod
 imagemagick
 inetutils
 lsof
