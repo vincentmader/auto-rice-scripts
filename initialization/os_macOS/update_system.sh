@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo "Performing macOS system update"
+printc "Performing macOS system update..."
 
 softwareupdate --all --install --force
 

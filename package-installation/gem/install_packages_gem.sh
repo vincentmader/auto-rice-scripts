@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nInstalling ruby packages (gems)...$COLOR_DEFAULT"
+printc "Installing ruby packages (gems)...\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/gem/pkgs_gem/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/gem/pkgs_gem/installed.txt"

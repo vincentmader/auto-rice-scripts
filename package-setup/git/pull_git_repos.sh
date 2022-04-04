@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nPulling personal git repos...$COLOR_DEFAULT"
+printc "Pulling personal git repos..."
 
 
 # clone wallpapers

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nCreating symlinks...$COLOR_DEFAULT"
+printc "Creating symlinks..."
 
 
 # define function for setting up link from origin to target in a clean way
@@ -32,8 +32,6 @@ setup_symlink() {
 
 SYMLINKS="$CONF/symlinks"
 mkdir -p $SYMLINKS
-# delete old, if existing
-rm $SYMLINKS/* 2> /dev/null
 
 # CONFIG FILES
 # =============================================================================
@@ -45,9 +43,6 @@ setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
 setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 setup_symlink       "$CONF/git/gitconfig"           "$HOME/.gitconfig"
 
-setup_symlink       "$CONF"                         "$SYMLINKS/cf"
-setup_symlink       "$HOME"                         "$SYMLINKS/home"
-
 if [ -d $HOME/.emacs.d ]; then
     setup_symlink   "$HOME/.emacs.d"                "$CONF/emacs"
 fi
@@ -55,8 +50,12 @@ if [ -d $HOME/.doom.d ]; then
     setup_symlink   "$HOME/.doom.d"                 "$CONF/doom"
 fi
 
-# HOME/DOCS
+setup_symlink       "$CONF"                         "$SYMLINKS/cf"
+
+# HOME/CODE/DOCS
 # =============================================================================
+
+setup_symlink       "$HOME"                         "$SYMLINKS/home"
 
 # code
 CODE="$HOME/code"
@@ -65,7 +64,15 @@ setup_symlink       "$CODE"                         "$SYMLINKS/code"
 setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
 setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
 
+# documents
+UNI="$SYMLINKS/docs/education/uni"
+setup_symlink       "$SYMLINKS/docs"                "$SYMLINKS/dox"
+setup_symlink       "$UNI"                          "$SYMLINKS/uni"
+setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
+
 # macOS-specific links
+# =============================================================================
+
 if [ "$OS" = "macOS" ]; then
 
     LIBRARY="$HOME/Library"
@@ -96,18 +103,16 @@ if [ "$OS" = "macOS" ]; then
     setup_symlink   "$ONEDRIVE"                     "$SYMLINKS/dpsg/OneDrive"
 
 # arch-specific links
+# =============================================================================
+
 elif [ "$OS" = "arch" ]; then
 
     setup_symlink   "$HOME/org"                     "$SYMLINKS/org"
     setup_symlink   "$HOME/docs"                    "$SYMLINKS/docs"
     setup_symlink   "$HOME/downloads"               "$SYMLINKS/dl"
+
+    sudo rm /etc/X11/xinit/xinitrc
     sudo ln -sv     "$CONF/x/xinitrc"               "/etc/X11/xinit/xinitrc"
 
 fi
-
-# documents
-UNI="$SYMLINKS/docs/education/uni"
-setup_symlink       "$SYMLINKS/docs"                "$SYMLINKS/dox"
-setup_symlink       "$UNI"                          "$SYMLINKS/uni"
-setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
 

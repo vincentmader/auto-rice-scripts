@@ -12,7 +12,7 @@
     # sudo pacman -S emacs
 
 # install base emacs to ~/.emacs.d
-echo -e "Cloning emacs-doom..."
+echo "Cloning emacs-doom..."
 if [[ -d $HOME/.emacs.d ]]; then
     echo "  -> emacs config is already cloned to ~/.emacs.d"
 else

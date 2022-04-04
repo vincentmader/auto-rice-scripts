@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nInstalling ranger plugins...$COLOR_DEFAULT\n$SEPARATOR_1"
+printc "Installing ranger plugins...\n$SEPARATOR_1"
 PATH_TO_RANGER_PLUGINS="$CONF/ranger/plugins"
 
 # ranger-devicons

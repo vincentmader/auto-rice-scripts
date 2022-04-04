@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nSetting up pacman...$COLOR_DEFAULT"
+printc "Setting up pacman..."
 
 sudo pacman-key --init
 sudo pacman -Syu

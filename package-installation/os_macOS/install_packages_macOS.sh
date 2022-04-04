@@ -8,7 +8,7 @@ PATH_TO_MACOS_INSTALLERS="$RICE/package-installation/os_macOS"
 # -----------------------------------------------------------------------------
 
 # tap into brew package sources
-echo -e "$COLOR_BLUE\nTapping into macOS-specific repositories using brew...$COLOR_DEFAULT\n$SEPARATOR_1"
+printc "Tapping into macOS-specific repositories using brew...\n$SEPARATOR_1"
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-taps/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-taps/installed.txt"
 function INSTALLER() {
@@ -17,7 +17,7 @@ function INSTALLER() {
 install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 
 # install brew packages   # TODO write function for this! (change path for installed)
-echo -e "$COLOR_BLUE\nInstalling macOS-specific packages using brew...$COLOR_DEFAULT\n$SEPARATOR_1"
+printc "Installing macOS-specific packages using brew...\n$SEPARATOR_1"
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew/installed.txt"
 function INSTALLER {
@@ -27,7 +27,7 @@ function INSTALLER {
 install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 
 # # install brew cask packages
-echo -e "$COLOR_BLUE\nInstalling macOS-specific packages using brew-cask...$COLOR_DEFAULT\n$SEPARATOR_1"
+printc "Installing macOS-specific packages using brew-cask...\n$SEPARATOR_1"
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-cask/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_brew-cask/installed.txt"
 function INSTALLER {
@@ -41,7 +41,7 @@ install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
 # -----------------------------------------------------------------------------
 
 # install macports packages
-echo -e "$COLOR_BLUE\nInstalling macOS-specific packages using mac-ports...$COLOR_DEFAULT\n$SEPARATOR_1"
+printc "Installing macOS-specific packages using mac-ports...\n$SEPARATOR_1"
 TO_INSTALL="$PATH_TO_MACOS_INSTALLERS/pkgs_macports/to-install.txt"
 ALREADY_INSTALLED="$PATH_TO_MACOS_INSTALLERS/pkgs_macports/installed.txt"
 function INSTALLER {

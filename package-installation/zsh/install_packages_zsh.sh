@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nInstalling oh-my-zsh & zsh plugins...$COLOR_DEFAULT"
+printc "Installing oh-my-zsh & zsh plugins..."
 
 # remove old oh-my-zsh files (if existent)
 sudo rm -r $CONF/zsh/oh-my-zsh >> /dev/null;

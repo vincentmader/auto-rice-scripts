@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nInstalling yay...$COLOR_DEFAULT"
+printc "Installing yay..."
 
 # exit if yay is already installed
 if command -v "yay" &> /dev/null

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nInstalling brew...$COLOR_DEFAULT"
+printc "Installing brew..."
 
 # exit if brew is already installed
 if command -v "brew" &> /dev/null; then

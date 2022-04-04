@@ -1,32 +1,25 @@
 #!/bin/sh
 
 
-# dwm
-    echo "Setting up dwm..."
-    sudo rm -r $CONF/dwm 2> /dev/null
-    URL_TO_DWM="https://github.com/vincentmader/dwm"
-    git clone $URL_TO_DWM $CONF/dwm
-    cd $CONF/dwm
-    rm config.h 2> /dev/null
+function clone_suckless_repo {
+    PATH_TO_SRC="$CONF/$1"
+    printc "Setting up $1 at \"$PATH_TO_SRC\"..."
+
+    if [ -d "$PATH_TO_SRC" ]; then
+        cd "$PATH_TO_SRC"
+        git pull
+    else
+        URL_TO_REPO="https://github.com/vincentmader/$1"
+        git clone "$URL_TO_REPO" "$PATH_TO_SRC"
+        cd "$PATH_TO_SRC"
+    fi
+
     sudo make clean install
+    echo "$1 setup complete"
+}
 
-# st
-    echo "Setting up st..."
-    sudo rm -r $CONF/st 2> /dev/null
-    URL_TO_ST="https://github.com/vincentmader/st"
-    git clone $URL_TO_ST $CONF/st
-    cd $CONF/st
-    rm config.h 2> /dev/null
-    sudo make clean install
-
-# dmenu
-    # echo "Setting up dmenu..."
-    # sudo rm -r $CONF/dmenu 2> /dev/null
-    # URL_TO_DMENU="https://github.com/vincentmader/dmenu"
-    # git clone $URL_TO_DMENU $CONF/dmenu
-    # cd $CONF/dmenu
-    # rm config.h 2> /dev/null
-    # sudo make clean install
-
-# TODO tabbed 
+clone_suckless_repo "dwm"
+clone_suckless_repo "st"
+clone_suckless_repo "dmenu"
+clone_suckless_repo "tabbed"
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo -e "$COLOR_BLUE\nConfiguring zathura...$COLOR_DEFAULT"
+printc "Configuring zathura..."
 
 mkdir -p $(brew --prefix zathura)/lib/zathura
 

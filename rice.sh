@@ -12,13 +12,13 @@
 DO_FULL_SYSTEM_UPGRADE="false"     # 
 
 # SETUP
-INITIALIZE_PACMAN="false"
-SETUP_HOMEDIR="true"           # works! (TODO change wallpaper dir)
+INITIALIZE_PACMAN="true"
+SETUP_HOMEDIR="true"            # works! (TODO change wallpaper dir)
 
 # ARCH-SPECIFIC
-SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
+SETUP_SUCKLESS="true"           # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
-SETUP_FONTS="false"
+SETUP_FONTS="true"
 # MACOS-SPECIFIC
 SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
 UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
@@ -108,9 +108,9 @@ function install_from_pkg_file {
 
     grep -v '^#' $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
-            echo -e "$COLOR_BLUE**$COLOR_DEFAULT $line"
+            echo -e "\n$COLOR_BLUE**$COLOR_DEFAULT$line"
         else 
-            echo -e "$COLOR_GREEN++$COLOR_DEFAULT $line"
+            echo -e "\n$COLOR_GREEN++$COLOR_DEFAULT$line"
             $1 "$line"  # run installer-function passed as 1st argument
             echo "$line" >> "$ALREADY_INSTALLED"
         fi
@@ -118,13 +118,19 @@ function install_from_pkg_file {
 }
 export -f install_from_pkg_file
 
+function printc {
+    MSG="$1"
+    echo -e "\n$COLOR_BLUE$MSG$COLOR_DEFAULT"
+}
+export -f printc
+
 function echo_separator {
     CHAR="$1"
-    SEPARATOR="$COLOR_BLUE"
+    SEPARATOR=""
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
         SEPARATOR="$SEPARATOR$CHAR"
     done
-    echo -e "$SEPARATOR$COLOR_DEFAULT"
+    echo -e "$SEPARATOR"
 }
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
@@ -132,18 +138,18 @@ export SEPARATOR_2=$(echo_separator "=")
 function echo_title {
     AUTHOR="Vincent C. Mader"
     PROJECT_NAME="AUTO-RICE SCRIPTS"
-    MSG="\n$SEPARATOR_1$COLOR_BLUE$PROJECT_NAME$COLOR_DEFAULT"
 
+    MSG="$PROJECT_NAME"
     START_IDX=0
     END_IDX=$(( $(tput cols) - ${#PROJECT_NAME} - ${#AUTHOR} - 1 ))
     for (( col_idx=$START_IDX; col_idx<=$END_IDX; col_idx++ )); do
         MSG="$MSG "
     done
+    MSG="$MSG$AUTHOR"
 
-    MSG="$MSG$COLOR_BLUE$AUTHOR$COLOR_DEFAULT\n$SEPARATOR_1"
-    echo -e "$MSG"
+    echo
+    printc "$SEPARATOR_1$MSG$SEPARATOR_1"
 }
-
 
 # MAIN SCRIPT
 # =============================================================================
@@ -151,7 +157,8 @@ echo_title
 
 # PRE-INSTALL INITIALIZATION/SETUP
 # =============================================================================
-echo -e "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
+printc "$SEPARATOR_2\nINITIALIZATION\n$SEPARATOR_2"
+
 
 # INSTALL PACKAGE MANAGERS & VERSION CONTROL SYSTEM(S)
 # -----------------------------------------------------------------------------
@@ -162,35 +169,27 @@ echo -e "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
 # [ ] arch-specific initialization
 if [ "$OS" = "arch" ]; then
 
-    # [ ] initialize pacman      
-    if [ "INITIALIZE_PACMAN" = "true" ]; then
-        "$RICE/initialization/os_arch/initiaize_pacman.sh"
+    if [ "$INITIALIZE_PACMAN" = "true" ]; then
+        # [X] initialize pacman 
+        "$RICE/initialization/os_arch/initialize_pacman.sh"
+        # [X] install yay
+        "$RICE/initialization/os_arch/install_yay.sh"
     fi
-
-    # [ ] install yay                TODO: test
-    "$RICE/initialization/os_arch/install_yay.sh"
 
 # [X] macOS-specific initialization
 elif [ "$OS" = "macOS" ]; then
 
     # [X] install brew 
     "$RICE/initialization/os_macOS/install_brew.sh"
-
     # [ ] install macports
     "$RICE/initialization/os_macOS/install_macports.sh"
 
 fi
 
-
-# PERSONAL FILES
-# -----------------------------------------------------------------------------
-
 # [ ] setup home directory
-if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = "true" ]; then
-    "$RICE/initialization/os_arch/setup_home_dir.sh"
-fi
+"$RICE/initialization/default/setup_home_dir.sh"
 
-# [ ] clone config-dotfiles
+# [X] clone config-dotfiles
 "$RICE/initialization/default/clone_config_files.sh"
 
 # [X] create symlinks
@@ -201,10 +200,10 @@ fi
 
 if [ "$OS" = "arch" ]; then
 
-#     # [ ] download/setup fonts
-#     if [ "$SETUP_FONTS" = "true" ]; then
-#         "$RICE/initialization/os_arch/setup_fonts.sh"
-#     fi
+    # [ ] download/setup fonts
+    if [ "$SETUP_FONTS" = "true" ]; then  # TODO fix for st
+        "$RICE/initialization/os_arch/setup_fonts.sh"
+    fi
     
     # [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
     if [ "$SETUP_SUCKLESS" = "true" ]; then
@@ -243,7 +242,7 @@ fi
 
 # INSTALL PACKAGES
 # =============================================================================
-echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATOR_2"
+printc "$SEPARATOR_2\nPACKAGE INSTALLATION\n$SEPARATOR_2"
 
 # [X] os-independent packages    -> via brew or pacman/yay
 # "$RICE/package-installation/default/install_packages_default.sh"
@@ -297,7 +296,7 @@ echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPAR
 
 # POST-INSTALL CONFIGURATION
 # =============================================================================
-echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT$SEPARATOR_2"
+printc "$SEPARATOR_2\nPOST-INSTALL CONFIGURATION\n$SEPARATOR_2"
 
 # configure git
 "$RICE/package-setup/git/configure_git.sh"   # after symlinks
@@ -311,29 +310,29 @@ echo -e "\n\n$SEPARATOR_2$COLOR_BLUE\nPOST-INSTALL CONFIGURATION\n$COLOR_DEFAULT
 #     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
 
 #     # configure mactex install  TODO move to own file?
-#     echo -e "$COLOR_BLUE\nConfiguring macTeX...$COLOR_DEFAULT"
+#     printc "\nConfiguring macTeX..."
 #     eval "$(/usr/libexec/path_helper)"
 #     echo "Configured macTeX."
 
 #     # configure automatic startup-launch of mongod 
 #     # TODO make this system-independent
 #     # TODO move to own file/
-#     echo -e "$COLOR_BLUE\nConfiguring mongodb...$COLOR_DEFAULT"
+#     printc "\nConfiguring mongodb..."
 #     brew services start mongodb/brew/mongodb-community > /dev/null
 #     echo "Started mongod."
 
 #     # configure skhd  TODO auto-start on login?
-#     echo -e "$COLOR_BLUE\nConfiguring skhd...$COLOR_DEFAULT"
+#     printc "\nConfiguring skhd..."
 #     # brew services start skhd > /dev/null
-#     echo -e "$COLOR_YELLOW> WARN: This might need manual setup!"
+#     echo -e "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
 #     echo "        Run 'brew services start skhd' to start the daemon."
 #     echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
 #     # echo "Started skhd."
 
 #     # configure yabai # TODO auto-start on login?
-#     echo -e "$COLOR_BLUE\nConfiguring yabai...$COLOR_DEFAULT"
-#     echo -e "$COLOR_YELLOW> WARN: This might need manual setup!"
-#     echo -e "        Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
+#     printc "Configuring yabai..."
+#     echo -e "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+#     echo -e "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
 # fi
 
