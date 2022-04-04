@@ -99,6 +99,7 @@ elif [ "$OS" = "arch" ]; then
     setup_symlink   "$HOME/org"                     "$SYMLINKS/org"
     setup_symlink   "$HOME/docs"                    "$SYMLINKS/docs"
     setup_symlink   "$HOME/downloads"               "$SYMLINKS/dl"
+    setup_symlink   "$CONF/x/xinitrc"               "/etc/X11/xinit/xinitrc"
 
 fi
 
