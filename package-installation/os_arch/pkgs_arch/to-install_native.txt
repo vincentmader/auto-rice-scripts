@@ -1,8 +1,10 @@
 archlinux-keyring
 chromium
+colorpicker
 curl
 docker
 emacs
+flutter
 fortune-mod
 imagemagick
 inetutils
@@ -17,6 +19,8 @@ python-pip
 qutebrowser 
 rmtrash
 simplescreenrecorder 
+slack-desktop
+spotify
 texlive-most
 unzip
 vlc 
