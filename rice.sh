@@ -124,8 +124,7 @@ function echo_separator {
     for (( col_idx=1; col_idx<=$(tput cols); col_idx++ )); do
         SEPARATOR="$SEPARATOR$CHAR"
     done
-    SEPARATOR="$SEPARATOR$COLOR_DEFAULT"
-    echo $SEPARATOR
+    printf "$SEPARATOR$COLOR_DEFAULT"
 }
 export SEPARATOR_1=$(echo_separator "-")
 export SEPARATOR_2=$(echo_separator "=")
