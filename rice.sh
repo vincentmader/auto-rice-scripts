@@ -11,8 +11,11 @@
 
 DO_FULL_SYSTEM_UPGRADE="false"     # 
 
+# SETUP
+INITIALIZE_PACMAN="true"
+
 # ARCH-SPECIFIC
-SETUP_HOMEDIR="false"           # works! (TODO change wallpaper dir)
+SETUP_HOMEDIR="true"           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="false"
@@ -161,8 +164,10 @@ echo "\n$SEPARATOR_2$COLOR_BLUE\nINITIALIZATION$COLOR_DEFAULT\n$SEPARATOR_2"
 # [ ] arch-specific initialization
 if [ "$OS" = "arch" ]; then
 
-    # [ ] initialize pacman          TODO: test
-    "$RICE/initialization/os_arch/initialize_pacman.sh"
+    # [ ] initialize pacman      
+    if [ "INITIALIZE_PACMAN" = "true" ]; then
+        "$RICE/initialization/os_arch/initiaize_pacman.sh"
+    fi
 
     # [ ] install yay                TODO: test
     "$RICE/initialization/os_arch/install_yay.sh"
