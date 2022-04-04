@@ -22,7 +22,6 @@ pass
 ranger
 ripgrep
 rtv 
-skype
 sl 
 thefuck
 tldr 

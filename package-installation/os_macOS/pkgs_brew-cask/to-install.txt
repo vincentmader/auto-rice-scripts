@@ -21,6 +21,7 @@ homebrew/cask/onedrive
 paintbrush
 parallels
 qlvideo
+skype
 slack
 spotify
 steam
