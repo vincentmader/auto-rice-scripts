@@ -190,8 +190,8 @@ fi
 # [ ] clone config-dotfiles
 "$RICE/initialization/default/clone_config_files.sh"
 
-# # [X] create symlinks
-# "$RICE/initialization/symlinks/create_symlinks.sh"
+# [X] create symlinks
+"$RICE/initialization/symlinks/create_symlinks.sh"
 
 # OS-SPECIFIC: ARCH LINUX
 # -----------------------------------------------------------------------------
