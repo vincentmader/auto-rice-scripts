@@ -40,7 +40,7 @@ rm $SYMLINKS/* 2> /dev/null
 
 setup_symlink       "$CONF/zsh/zprofile"            "$HOME/.zprofile"
 setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
-setup_symlink       "$CONF/zsh/profile"             "$HOME/.profile"
+setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
 setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 
 setup_symlink       "$CONF"                         "$SYMLINKS/cf"
