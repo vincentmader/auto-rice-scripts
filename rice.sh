@@ -244,11 +244,11 @@ echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATO
 
 # [X] os-independent packages    -> via brew or pacman/yay
 "$RICE/package-installation/default/install_packages_default.sh"
-if [ "$OS" = "macOS" ]; then   # -> via brew
-    "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
-elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
-    "$RICE/package-installation/os_arch/install_packages_arch.sh"
-fi
+# if [ "$OS" = "macOS" ]; then   # -> via brew
+#     "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
+# elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
+#     "$RICE/package-installation/os_arch/install_packages_arch.sh"
+# fi
 # "$RICE/package-installation/gem/install_packages_gem.sh"
 
 # # zsh plugins            (-> via ohmyzsh)

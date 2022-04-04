@@ -13,9 +13,12 @@ function INSTALLER {
         $PACKAGE_MANAGER "$1"
     else 
         $PACKAGE_MANAGER "$1"
-        # $PACKAGE_MANAGER $(cat $RICE/package-installation/default/pkgs-to-install_default.txt)
     fi
 }
 
-install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
+if [ "$OS" = "macOS" ]; then
+    install_from_pkg_file INSTALLER "$TO_INSTALL" "$ALREADY_INSTALLED"
+elif [ "$OS" = "arch" ]; then
+    $PACKAGE_MANAGER $(cat $TO_INSTALL)
+fi
 
