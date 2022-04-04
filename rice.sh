@@ -15,7 +15,7 @@ DO_FULL_SYSTEM_UPGRADE="false"     #
 SETUP_HOMEDIR="false"           # works! (TODO change wallpaper dir)
 SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
-SETUP_FONTS="true"
+SETUP_FONTS="false"
 # MACOS-SPECIFIC
 SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
 UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
@@ -27,6 +27,9 @@ INSTALL_RUST="false"            # works (?)
 INSTALL_PKGS_NVIM="false"       # works!
 INSTALL_PKGS_TMUX="false"       # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
+INSTALL_PKGS_RANGER="false"     # works!
+INSTALL_PKGS_PYTHON="false"     # works!
+INSTALL_PKGS_NODE="false"       # works!
 
 
 # RICE-SETUP
@@ -254,10 +257,14 @@ if [ "$INSTALL_PKGS_ZSH" = "true" ]; then
 fi
 
 # python packages        (-> via pip3)
-"$RICE/package-installation/python/install_packages_python.sh"
+if [ "$INSTALL_PKGS_PYTHON" = "true" ]; then
+    "$RICE/package-installation/python/install_packages_python.sh"
+fi
 
 # node packages          (-> via npm)
-"$RICE/package-installation/node/install_packages_node.sh"
+if [ "$INSTALL_PKGS_NODE" = "true" ]; then
+    "$RICE/package-installation/node/install_packages_node.sh"
+fi
 
 # nvim plugins           (-> via vim-plug + conquer-of-completion)
 if [ "$INSTALL_PKGS_NVIM" = "true" ]; then
@@ -270,7 +277,9 @@ if [ "$INSTALL_PKGS_TMUX" = "true" ]; then
 fi
 
 # ranger plugins         (-> via git)
-"$RICE/package-installation/ranger/install_packages_ranger.sh"
+if [ "$INSTALL_PKGS_RANGER" = "true" ]; then
+    "$RICE/package-installation/ranger/install_packages_ranger.sh"
+fi
 
 # rust                   (-> via installer script)
 if [ "$INSTALL_RUST" = "true" ]; then
