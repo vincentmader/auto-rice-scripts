@@ -3,6 +3,9 @@
 *** system-independent
 - install tmux plugins by running "prefix+I"
 *** arch-specific
+- symlink creation
+  + delete /etc/X11/xinit/xinitrc on first run
+  + delete ~/bash_profile on first run
 - update pacman mirrorlist
   + "nano /etc/pacman.d/mirrorlist"
   + uncomment German mirrors

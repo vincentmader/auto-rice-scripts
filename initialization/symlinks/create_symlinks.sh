@@ -41,6 +41,7 @@ rm $SYMLINKS/* 2> /dev/null
 setup_symlink       "$CONF/zsh/zprofile"            "$HOME/.zprofile"
 setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
 setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
+setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
 setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 
 setup_symlink       "$CONF"                         "$SYMLINKS/cf"
@@ -99,7 +100,7 @@ elif [ "$OS" = "arch" ]; then
     setup_symlink   "$HOME/org"                     "$SYMLINKS/org"
     setup_symlink   "$HOME/docs"                    "$SYMLINKS/docs"
     setup_symlink   "$HOME/downloads"               "$SYMLINKS/dl"
-    setup_symlink   "$CONF/x/xinitrc"               "/etc/X11/xinit/xinitrc"
+    sudo setup_symlink   "$CONF/x/xinitrc"          "/etc/X11/xinit/xinitrc"
 
 fi
 
