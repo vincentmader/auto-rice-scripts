@@ -20,13 +20,13 @@
     sudo make clean install
 
 # dmenu
-    echo "Setting up dmenu..."
-    sudo rm -r $CONF/dmenu 2> /dev/null
-    URL_TO_DMENU="https://github.com/vincentmader/dmenu"
-    git clone $URL_TO_DMENU $CONF/dmenu
-    cd $CONF/dmenu
-    rm config.h 2> /dev/null
-    sudo make clean install
+    # echo "Setting up dmenu..."
+    # sudo rm -r $CONF/dmenu 2> /dev/null
+    # URL_TO_DMENU="https://github.com/vincentmader/dmenu"
+    # git clone $URL_TO_DMENU $CONF/dmenu
+    # cd $CONF/dmenu
+    # rm config.h 2> /dev/null
+    # sudo make clean install
 
 # TODO tabbed 
 

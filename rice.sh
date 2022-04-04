@@ -13,7 +13,7 @@ DO_FULL_SYSTEM_UPGRADE="false"     #
 
 # ARCH-SPECIFIC
 SETUP_HOMEDIR="false"           # works! (TODO change wallpaper dir)
-SETUP_SUCKLESS="false"          # works! (TODO only half-way though)
+SETUP_SUCKLESS="true"          # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
 SETUP_FONTS="false"
 # MACOS-SPECIFIC
@@ -187,14 +187,14 @@ if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = "true" ]; then
     "$RICE/initialization/os_arch/setup_home_dir.sh"
 fi
 
-# # [ ] clone config-dotfiles
-# "$RICE/initialization/default/clone_config_files.sh"
+# [ ] clone config-dotfiles
+"$RICE/initialization/default/clone_config_files.sh"
 
 # # [X] create symlinks
-# "$RICE/initialization/symlinks/create_symlinks.sh"
+"$RICE/initialization/symlinks/create_symlinks.sh"
 
-# # OS-SPECIFIC: ARCH LINUX
-# # -----------------------------------------------------------------------------
+# OS-SPECIFIC: ARCH LINUX
+# -----------------------------------------------------------------------------
 
 # if [ "$OS" = "arch" ]; then
 
