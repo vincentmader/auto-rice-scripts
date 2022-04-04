@@ -103,7 +103,7 @@ function install_from_pkg_file {
         touch "$ALREADY_INSTALLED"
     fi
 
-    cat $TO_INSTALL | while read line; do
+    grep -v '^#' $TO_INSTALL | while read line; do
         if grep -Fxq "$line" "$ALREADY_INSTALLED"; then
             echo "$COLOR_BLUE**$COLOR_DEFAULT $line"
         else 
@@ -208,10 +208,10 @@ if [ "$OS" = "arch" ]; then
         "$RICE/initialization/os_arch/setup_suckless.sh"
     fi
     
-#     # [ ] initialize xorg
-#     if [ "$INITIALIZE_XORG" = "true" ]; then
-#         "$RICE/initialization/os_arch/initialize_xorg.sh"
-#     fi
+    # [ ] initialize xorg
+    if [ "$INITIALIZE_XORG" = "true" ]; then
+        "$RICE/initialization/os_arch/initialize_xorg.sh"
+    fi
 
 fi
 
@@ -245,7 +245,7 @@ echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATO
 # [X] os-independent packages    -> via brew or pacman/yay
 # "$RICE/package-installation/default/install_packages_default.sh"
 # if [ "$OS" = "macOS" ]; then   # -> via brew
-#     "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
+#    "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
 # elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
 #     "$RICE/package-installation/os_arch/install_packages_arch.sh"
 # fi
