@@ -196,24 +196,24 @@ fi
 # OS-SPECIFIC: ARCH LINUX
 # -----------------------------------------------------------------------------
 
-# if [ "$OS" = "arch" ]; then
+if [ "$OS" = "arch" ]; then
 
 #     # [ ] download/setup fonts
 #     if [ "$SETUP_FONTS" = "true" ]; then
 #         "$RICE/initialization/os_arch/setup_fonts.sh"
 #     fi
     
-#     # [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
-#     if [ "$SETUP_SUCKLESS" = "true" ]; then
-#         "$RICE/initialization/os_arch/setup_suckless.sh"
-#     fi
+    # [ ] setup suckless software (dwm + st + dmenu + tabbed (TODO))
+    if [ "$SETUP_SUCKLESS" = "true" ]; then
+        "$RICE/initialization/os_arch/setup_suckless.sh"
+    fi
     
 #     # [ ] initialize xorg
 #     if [ "$INITIALIZE_XORG" = "true" ]; then
 #         "$RICE/initialization/os_arch/initialize_xorg.sh"
 #     fi
 
-# fi
+fi
 
 # # OS-SPECIFIC: MAC OS
 # # -----------------------------------------------------------------------------
@@ -243,12 +243,12 @@ fi
 echo "\n\n$SEPARATOR_2$COLOR_BLUE\nPACKAGE INSTALLATION\n$COLOR_DEFAULT$SEPARATOR_2"
 
 # [X] os-independent packages    -> via brew or pacman/yay
-"$RICE/package-installation/default/install_packages_default.sh"
-if [ "$OS" = "macOS" ]; then   # -> via brew
-    "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
-elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
-    "$RICE/package-installation/os_arch/install_packages_arch.sh"
-fi
+# "$RICE/package-installation/default/install_packages_default.sh"
+# if [ "$OS" = "macOS" ]; then   # -> via brew
+#     "$RICE/package-installation/os_macOS/install_packages_macOS.sh"
+# elif [ "$OS" = "arch" ]; then  # -> via pacman/yay
+#     "$RICE/package-installation/os_arch/install_packages_arch.sh"
+# fi
 # "$RICE/package-installation/gem/install_packages_gem.sh"
 
 # # zsh plugins            (-> via ohmyzsh)
