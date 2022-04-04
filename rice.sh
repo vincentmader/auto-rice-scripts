@@ -179,13 +179,13 @@ elif [ "$OS" = "macOS" ]; then
 fi
 
 
-# # PERSONAL FILES
-# # -----------------------------------------------------------------------------
+# PERSONAL FILES
+# -----------------------------------------------------------------------------
 
-# # [ ] setup home directory
-# if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = "true" ]; then
-#     "$RICE/initialization/os_arch/setup_home_dir.sh"
-# fi
+# [ ] setup home directory
+if [ "$OS" = "arch" ] && [ "$SETUP_HOMEDIR" = "true" ]; then
+    "$RICE/initialization/os_arch/setup_home_dir.sh"
+fi
 
 # # [ ] clone config-dotfiles
 # "$RICE/initialization/default/clone_config_files.sh"
