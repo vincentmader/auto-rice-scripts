@@ -91,7 +91,7 @@ echo_header_l1 "INITIALIZATION"
 
 INIT_DEFAULT="$RICE/initialization/default"
 INIT_ARCH="$RICE/initialization/os_arch"
-INIT_MACOS="$RICE/initialization/macOS"
+INIT_MACOS="$RICE/initialization/os_macOS"
 
     sh "$INIT_DEFAULT/install_git.sh"
     sh "$INIT_DEFAULT/setup_home_dir.sh"
@@ -203,19 +203,19 @@ if [ "$OS" = "macOS" ]; then
     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
 
     # configure mactex install  TODO move to own file?
-    printc "Configuring macTeX..."
+    echo_header_l2 "Configuring macTeX..."
     eval "$(/usr/libexec/path_helper)"
     echo "Configured macTeX."
 
     # configure automatic startup-launch of mongod 
     # TODO make this system-independent
     # TODO move to own file/
-    printc "Configuring mongodb..."
+    echo_header_l2 "Configuring mongodb..."
     brew services start mongodb/brew/mongodb-community > /dev/null
     echo "Started mongod."
 
     # configure skhd  TODO auto-start on login?
-    printc "Configuring skhd..."
+    echo_header_l2 "Configuring skhd..."
     # brew services start skhd > /dev/null
     printf "$COLOR_YELLOW"
     echo "WARN: This might need manual setup!$COLOR_DEFAULT"
@@ -224,7 +224,7 @@ if [ "$OS" = "macOS" ]; then
     # echo "Started skhd."
 
     # configure yabai   # TODO auto-start on login?
-    printc "Configuring yabai..."
+    echo_header_l2 "Configuring yabai..."
     printf "$COLOR_YELLOW"
     echo "WARN: This might need manual setup!$COLOR_DEFAULT"
     echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"

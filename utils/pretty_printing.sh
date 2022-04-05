@@ -42,13 +42,18 @@ export -f echo_header_l0
 
 # define level-1 header
 function echo_header_l1 {
-    #
     # ======================
-    # MSG
+    #                    MSG
     # ======================
     #
-    #
-    printc "\n\n$SEPARATOR_2\n$1\n$SEPARATOR_2\n\n"
+    LINE=""
+    MSG="$1"
+    END_IDX=$(( $(tput cols) - ${#MSG} - 1 ))
+    for (( col_idx=0; col_idx<=$END_IDX; col_idx++ )); do
+        LINE="$LINE "
+    done
+    LINE="$LINE$MSG"
+    printc "\n$SEPARATOR_2\n$LINE\n$SEPARATOR_2\n"
 }
 export -f echo_header_l1
 
@@ -57,7 +62,7 @@ function echo_header_l2 {
     # MSG
     # ----------------------
     #
-    printc "\n$1\n$SEPARATOR_1\n"
+    printc "\n$1\n$SEPARATOR_1\n" $COLOR_GREEN
 }
 export -f echo_header_l2
 

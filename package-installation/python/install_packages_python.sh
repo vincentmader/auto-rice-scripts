@@ -8,6 +8,7 @@ echo_header_l2 "Upgrading pip3..."
 
 if [[ "$OS" = "macOS" ]]; then
     brew upgrade python
+    # /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -m pip install --upgrade pip
 else 
     pip3 install --upgrade pip
 fi

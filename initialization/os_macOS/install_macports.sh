@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing macports..."
+echo_header_l2 "Installing macports..."
 
 # (re-)install macports
 # -----------------------------------------------------------------------------

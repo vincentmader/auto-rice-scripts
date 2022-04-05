@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Configuring zathura..."
+echo_header_l2 "Configuring zathura..."
 
 mkdir -p $(brew --prefix zathura)/lib/zathura
 
