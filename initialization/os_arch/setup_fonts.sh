@@ -11,9 +11,8 @@ PATH_TO_FONTS="$HOME/.local/share/fonts/"
     # global: PATH_TO_FONTS="/usr/share/fonts/"
 
 mkdir -pv "$PATH_TO_FONTS"
-sudo cp $PATH_TO_HACK_NERD $PATH_TO_FONTS
-sudo cp $PATH_TO_HACK_NERD /usr/share/fonts/
-    # TODO change ownership of directory -> remove `sudo`
+rm "$PATH_TO_FONTS/Hack-Regular.ttf"
+sudo ln -sv $PATH_TO_HACK_NERD $PATH_TO_FONTS
 
 echo "Setup of fonts complete."
 
