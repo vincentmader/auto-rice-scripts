@@ -18,7 +18,6 @@ SETUP_HOMEDIR="true"            # works! (TODO change wallpaper dir)
 # ARCH-SPECIFIC
 SETUP_SUCKLESS="false"           # works! (TODO only half-way though)
 INITIALIZE_XORG="true"          # TODO test
-SETUP_FONTS="true"
 # MACOS-SPECIFIC
 SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
 UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
@@ -26,11 +25,11 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point)
 
 # PACKAGE_INSTALLATION
 INSTALL_PKGS="false"
-INSTALL_EMACS_DOOM="true"      # works (?)
+INSTALL_EMACS_DOOM="true"       # works (?)
 INSTALL_RUST="false"            # works (?)
 INSTALL_PKGS_TMUX="true"        # works!
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
-INSTALL_PKGS_RANGER="true"     # works!
+INSTALL_PKGS_RANGER="true"      # works!
 INSTALL_PKGS_PYTHON="true"      # works!
 INSTALL_PKGS_NODE="false"       # works!
 INSTALL_PKGS_NVIM="false"       # works! (but not really needed)
@@ -205,10 +204,8 @@ fi
 
 if [ "$OS" = "arch" ]; then
 
-    # [ ] download/setup fonts
-    if [ "$SETUP_FONTS" = "true" ]; then  # TODO fix for st
-        "$RICE/initialization/os_arch/setup_fonts.sh"
-    fi
+    # [X] download/setup fonts  (works for emacs, not for st yet!)
+    "$RICE/initialization/os_arch/setup_fonts.sh"  # TODO fix for st
     # [X] setup suckless software (dwm + st + dmenu + tabbed)
     if [ "$SETUP_SUCKLESS" = "true" ]; then
         "$RICE/initialization/os_arch/setup_suckless.sh"
