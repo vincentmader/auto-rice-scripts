@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing ruby packages (gems)...\n$SEPARATOR_1"
+echo_header_l2 "Installing ruby packages (gems)...\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/gem/pkgs_gem/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/gem/pkgs_gem/installed.txt"

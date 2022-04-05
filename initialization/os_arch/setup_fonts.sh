@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Setting up fonts..."
+echo_header_l2 "Setting up fonts..."
     # to show fonts: `fc-list`
     # actual names: `fc-list | awk -F ":" '{ print $2 }' | uniq`
     # get full name from .ttf -> right-click -> Get Info

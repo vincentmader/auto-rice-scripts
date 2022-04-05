@@ -1,8 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing neovim plugins using vim-plug..."
-
+echo_header_l2 "Installing neovim plugins using vim-plug..."
 
 # install nvim plugins using junegunn/vim-plug
 nvim -c PlugInstall &  

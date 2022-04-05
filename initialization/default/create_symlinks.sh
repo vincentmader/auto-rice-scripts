@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Creating symlinks..."
+echo_header_l2 "Creating symlinks..."
 
 
 # define function for setting up link from origin to target in a clean way

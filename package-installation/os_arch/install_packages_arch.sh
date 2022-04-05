@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing arch-specific packages..."
+echo_header_l2 "Installing arch-specific packages..."
 
 TO_INSTALL="$RICE/package-installation/os_arch/pkgs_arch/to-install.txt"
 

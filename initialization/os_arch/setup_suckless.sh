@@ -3,7 +3,7 @@
 
 function clone_suckless_repo {
     PATH_TO_SRC="$CONF/$1"
-    printc "Setting up $1 at \"$PATH_TO_SRC\"..."
+    echo_header_l3 "Setting up $1 at \"$PATH_TO_SRC\"..."
 
     if [ -d "$PATH_TO_SRC" ]; then
         cd "$PATH_TO_SRC"

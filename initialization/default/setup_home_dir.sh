@@ -1,16 +1,15 @@
 #!/bin/sh
 
 
-printc "Setting up home directory at \"$HOME\"..."
+echo_header_l2 "Setting up home directory at \"$HOME\"..."
 
-
-mkdir -p $HOME/code
+mkdir -pv $HOME/code
 
 if [ "$OS" = "arch" ]; then
-    mkdir -p $HOME/docs
-    mkdir -p $HOME/downloads
-    mkdir -p $HOME/media/pictures
-    mkdir -p $HOME/media/videos
+    mkdir -pv $HOME/docs
+    mkdir -pv $HOME/downloads
+    mkdir -pv $HOME/media/pictures
+    mkdir -pv $HOME/media/videos
 
 elif [ "$OS" = "macOS" ]; then
     continue

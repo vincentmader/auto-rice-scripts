@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing yay..."
+echo_header_l2 "Installing yay..."
 
 # exit if yay is already installed
 if command -v "yay" &> /dev/null

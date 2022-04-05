@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Configuring git..."
+echo_header_l2 "Configuring git..."
 
 # setup git-commit username & email address
 git config --global user.name "Vincent C. Mader"

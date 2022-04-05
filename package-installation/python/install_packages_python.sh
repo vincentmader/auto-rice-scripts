@@ -4,7 +4,7 @@
 # UPGRADING PIP3
 # -----------------------------------------------------------------------------            
 
-printc "Upgrading pip3...\n$SEPARATOR_1"
+echo_header_l2 "Upgrading pip3..."
 
 if [[ "$OS" = "macOS" ]]; then
     brew upgrade python
@@ -15,7 +15,7 @@ fi
 # INSTALLING PYTHON PACKAGES
 # -----------------------------------------------------------------------------            
 
-printc "Installing python packages using pip3...\n$SEPARATOR_1"
+echo_header_l2 "Installing python packages using pip3..."
 
 TO_INSTALL="$RICE/package-installation/python/pkgs_python/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/python/pkgs_python/installed.txt"

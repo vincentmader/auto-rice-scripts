@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing node packages using npm...\n$SEPARATOR_1"
+echo_header_l2 "Installing node packages using npm...\n$SEPARATOR_1"
 
 TO_INSTALL="$RICE/package-installation/node/pkgs_node/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/node/pkgs_node/installed.txt"

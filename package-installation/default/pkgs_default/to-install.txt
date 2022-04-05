@@ -1,5 +1,4 @@
 ack
-archey 
 cmake
 cmatrix 
 colordiff

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing system packages...\n$SEPARATOR_1"
+echo_header_l2 "Installing system packages..."
 
 TO_INSTALL="$RICE/package-installation/default/pkgs_default/to-install.txt"
 ALREADY_INSTALLED="$RICE/package-installation/default/pkgs_default/installed.txt"

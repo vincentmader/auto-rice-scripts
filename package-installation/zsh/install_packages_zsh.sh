@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-printc "Installing oh-my-zsh & zsh plugins..."
+echo_header_l2 "Installing oh-my-zsh & zsh plugins..."
 
 # remove old oh-my-zsh files (if existent)
 sudo rm -r $CONF/zsh/oh-my-zsh >> /dev/null;
