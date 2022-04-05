@@ -43,7 +43,7 @@ INSTALL_PKGS_NVIM="false"       # works! (but not really needed)
 
 # get user-name
 USER="$(whoami)"
-# get operating system -> set $OS & $HOME
+# get operating system -> set "$OS" & "$HOME"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export OS="macOS"
     export HOME="/Users/$USER"
@@ -96,7 +96,7 @@ export COLOR_CYAN="\033[1;36m"
 export COLOR_WHITE="\033[1;37m"
 
 if [ "$OS" = "arch" ] ; then
-    alias echo="echo -e"
+    export alias echo="echo -e"
 fi
 
 # INSTALL FROM PKG-FILE
@@ -275,7 +275,7 @@ if [ "$INSTALL_PKGS" = "true" ]; then
         "$RICE/package-installation/node/install_packages_node.sh"
     fi
     
-    # nvim plugins           (-> via vim-plug + conquer-of-completion)
+    # nvim plugins           (-> via vim-plug + conqueror-of-completion)
     if [ "$INSTALL_PKGS_NVIM" = "true" ]; then
         "$RICE/package-installation/nvim/install_packages_nvim.sh"
     fi
@@ -310,8 +310,8 @@ printc "$SEPARATOR_2\nPOST-INSTALL CONFIGURATION\n$SEPARATOR_2"
 # configure git
 "$RICE/package-setup/git/configure_git.sh"   # after symlinks
 
-# # pull git repos
-# "$RICE/package-setup/git/pull_git_repos.sh"
+# pull git repos
+"$RICE/package-setup/git/pull_git_repos.sh"
 
 if [ "$OS" = "macOS" ]; then
 
@@ -319,28 +319,30 @@ if [ "$OS" = "macOS" ]; then
     "$RICE/package-setup/zathura-pdf-mupdf/setup_zathura_pdf_mupdf.sh"
 
     # configure mactex install  TODO move to own file?
-    printc "\nConfiguring macTeX..."
+    printc "Configuring macTeX..."
     eval "$(/usr/libexec/path_helper)"
     echo "Configured macTeX."
 
     # configure automatic startup-launch of mongod 
     # TODO make this system-independent
     # TODO move to own file/
-    printc "\nConfiguring mongodb..."
+    printc "Configuring mongodb..."
     brew services start mongodb/brew/mongodb-community > /dev/null
     echo "Started mongod."
 
     # configure skhd  TODO auto-start on login?
-    printc "\nConfiguring skhd..."
+    printc "Configuring skhd..."
     # brew services start skhd > /dev/null
-    echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
-    echo "        Run 'brew services start skhd' to start the daemon."
-    echo "        Run 'skhd' to enable the necessary authentifications from System Preferencs!"
+    printf "$COLOR_YELLOW"
+    echo "WARN: This might need manual setup!$COLOR_DEFAULT"
+    echo "      Run 'brew services start skhd' to start the daemon."
+    echo "      Run 'skhd' to enable the necessary authentifications from System Preferencs!"
     # echo "Started skhd."
 
     # configure yabai   # TODO auto-start on login?
     printc "Configuring yabai..."
-    echo "$COLOR_YELLOW\nWARN: This might need manual setup!$COLOR_DEFAULT"
+    printf "$COLOR_YELLOW"
+    echo "WARN: This might need manual setup!$COLOR_DEFAULT"
     echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
 fi
