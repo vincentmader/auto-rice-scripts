@@ -36,6 +36,7 @@ mkdir -p $SYMLINKS
 # CONFIG FILES
 # =============================================================================
 
+setup_symlink       "$CONF/zsh/zshenv"              "$HOME/.zshenv"
 setup_symlink       "$CONF/zsh/zprofile"            "$HOME/.zprofile"
 setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
 setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
