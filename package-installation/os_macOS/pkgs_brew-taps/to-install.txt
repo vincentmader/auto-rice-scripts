@@ -1,5 +1,6 @@
-homebrew/cask-fonts
 d12frosted/emacs-plus
+homebrew/cask-fonts
 koekeishiya/formulae
 mongodb/brew
+teamookla/speedtest
 zegervdv/zathura

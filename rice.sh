@@ -15,7 +15,7 @@ DO_FULL_SYSTEM_UPGRADE="false"  # TODO
 
 INSTALL_EMACS_DOOM="false"      # works (?)
 INSTALL_RUST="false"            # works (?)
-INSTALL_PKGS_TMUX="true"        # works!
+INSTALL_PKGS_TMUX="false"       # works!   -> run prefix-I afterwards
 INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
 INSTALL_PKGS_RANGER="true"      # works!
 INSTALL_PKGS_PYTHON="true"      # works!
@@ -184,6 +184,9 @@ fi
 if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
     "$RICE/package-installation/default/install_emacs_doom.sh"
 fi
+
+# TODO move
+cargo install ttyper
 
 
 

@@ -12,6 +12,7 @@ ncdu
 neomutt
 net-tools
 openssh
+postgresql
 python
 python-pip
 qutebrowser 

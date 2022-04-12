@@ -1,10 +1,12 @@
 archey
+brave-browser
 fortune
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 libpq
-mysql-client
 mongodb-community@5.0
+mysql-client
 postgresql
 python@3.9
+speedtest
 telnet

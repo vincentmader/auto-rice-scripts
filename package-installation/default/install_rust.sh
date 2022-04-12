@@ -1,35 +1,54 @@
 #!/bin/sh
 
 
-# uninstall rust (if installed)
-# if command -v "rustup" &> /dev/null; then
-#     rustup self uninstall
-#     # brew uninstall rust  # TODO needed?
-# fi
+# Uninstall Rust
+# -----------------------------------------------------------------------------
 
-printc "Installing rust..."
+UNINSTALL_RUST="false"
+if [ "$UNINSTALL_RUST" = "true" ]; then
+    if command -v "rustup" &> /dev/null; then
+        rustup self uninstall
+    fi
+fi
 
-# download & install base rust
-# printf "$COLOR_YELLOW";
-# echo "NOTE: choose nightly build" && echo
-# printf "$COLOR_DEFAULT"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain nightly -y
+# Install Rust (Stable)
+# -----------------------------------------------------------------------------
 
-# use nightly rust build as default
-# rustup toolchain install nightly
-# rustup install nightly   # TODO needed?
-# rustup default nightly
+echo_header_l2 "Installing rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # -s -- --default-toolchain nightly -y
 
-# install wasm-bindgen
+    # https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file
+
+# Install wasm-bindgen
+# -----------------------------------------------------------------------------
+
+echo_header_l2 "Installing wasm-bindgen..."
 source $HOME/.cargo/env
 cargo install -f wasm-bindgen-cli
 rustup target add wasm32-unknown-unknown
 
-# install diesel
-# TODO cargo install diesel-cli
-# TODO run: brew services start postgre
+# Install development tools
+# -----------------------------------------------------------------------------
 
-# install language server stuff
-rustup component add rust-analysis rust-src  # rls
+echo_header_l2 "Installing rust development tools..."
+rustup component add rust-analysis rust-src rls
 
+# Install Diesel DB CLI
+# -----------------------------------------------------------------------------
 
+cargo install diesel_cli
+# TODO if error:
+#      -> install libpq          (for postgresql)
+#      -> install libmysqlclient (for mysql)
+
+# TODO run: 
+# sudo brew services start postgre
+
+# -----------------------------------------------------------------------------
+
+# rustup toolchain install nightly
+# rustup install nightly
+
+# rustup default nightly
+# rustup default nightly-2020-07-27
