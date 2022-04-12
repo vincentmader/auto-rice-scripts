@@ -62,7 +62,7 @@ function echo_header_l2 {
     # MSG
     # ----------------------
     #
-    printc "\n$1\n$SEPARATOR_1\n" $COLOR_GREEN
+    printc "\n$1\n$SEPARATOR_1\n" $COLOR_CYAN
 }
 export -f echo_header_l2
 
