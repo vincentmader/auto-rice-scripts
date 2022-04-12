@@ -34,13 +34,6 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point)
 #                                  RICE-SETUP
 # =============================================================================
 
-# setup printing
-source "$RICE/utils/get_colors.sh"
-source "$RICE/utils/pretty_printing.sh"
-# setup from-pkg-file installer
-source "$RICE/utils/get_pkg_manager.sh"
-source "$RICE/utils/install_pkgs_from_file.sh"
-
 # setup parameters & environment 
 # -----------------------------------------------------------------------------
 
@@ -66,11 +59,20 @@ export SRC="$RICE/src"
 # create directory for source code files
 mkdir -p "$RICE/src"
 
+# if necessary, clean up files containing installed pkgs
 if [ "$DO_FULL_SYSTEM_UPGRADE" = "true" ]; then
     for i in $RICE/package-installation/**/pkgs_*/installed.txt; do
         > $i  # clear file content
     done
 fi
+
+# setup printing
+source "$RICE/utils/get_colors.sh"
+source "$RICE/utils/pretty_printing.sh"
+# setup from-pkg-file installer
+source "$RICE/utils/get_pkg_manager.sh"
+source "$RICE/utils/install_pkgs_from_file.sh"
+
 
 #                                 MAIN SCRIPT
 # =============================================================================
