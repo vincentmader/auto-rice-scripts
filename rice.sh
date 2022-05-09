@@ -161,8 +161,20 @@ if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
     "$RICE/package-installation/default/install_emacs_doom.sh"
 fi
 
-# TODO move
-cargo install ttyper
+# databases
+cargo install diesel_cli # TODO move
+# brew services start postgres
+# brew services start mysql
+    # TODO run
+    # mysql_secure_installation
+
+# neovide TODO not working atm!
+# "$RICE/package-installation/default/install_neovide.sh"
+
+# various   TODO move
+cargo install ttyper                # touch typing tutor
+cargo install evcxr_repl            # interaction rust repl
+cargo install ripgrep
 
 #                         POST-INSTALL CONFIGURATION
 # =============================================================================
