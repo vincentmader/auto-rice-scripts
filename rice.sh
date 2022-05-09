@@ -55,6 +55,14 @@ mkdir -p "$RICE/src"
 
 # if doing full-system upgrade, clear log-files of already-installed packages
 if [ "$DO_FULL_SYSTEM_UPGRADE" = "true" ]; then
+
+    # TODO
+    # brew update 
+    # brew upgrade 
+    # yay -Syu
+    # npm update?
+    # pip3 update?
+
     for i in $RICE/package-installation/**/pkgs_*/installed.txt; do
         > $i  # clear file content
     done
@@ -86,6 +94,7 @@ INIT_MACOS="$RICE/initialization/os_macOS"
     sh "$INIT_DEFAULT/setup_home_dir.sh"
     sh "$INIT_DEFAULT/create_symlinks.sh"
     sh "$INIT_DEFAULT/clone_config_files.sh"
+    sh "$INIT_DEFAULT/setup_shell.sh"
 
 if [ "$OS" = "arch" ]; then
     sh "$INIT_ARCH/initialize_pacman.sh"
