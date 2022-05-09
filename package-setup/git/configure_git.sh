@@ -5,7 +5,7 @@ echo_header_l2 "Configuring git..."
 
 # setup git-commit username & email address
 git config --global user.name "Vincent C. Mader"
-git config --global user.email "vincent@mader.xyz"
+git config --global user.email "vincent.mader@icloud.com"
 
 # setup auto-saving of git-server credentials
 if [[ "$OSTYPE" == "darwin"* ]]; then
