@@ -39,9 +39,9 @@ mkdir -p $SYMLINKS
 setup_symlink       "$CONF/zsh/zshenv"              "$HOME/.zshenv"
 setup_symlink       "$CONF/zsh/zprofile"            "$HOME/.zprofile"
 setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
-setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
-setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
-setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
+# setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
+# setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
+# setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 
 if [ -d $HOME/.emacs.d ]; then
     setup_symlink   "$HOME/.emacs.d"                "$CONF/emacs"
@@ -57,9 +57,11 @@ setup_symlink       "$CONF"                         "$SYMLINKS/cf"
 
 setup_symlink       "$HOME"                         "$SYMLINKS/home"
 
+# TODO os-specific setup, code ~/code OR $ICLOUD/Documents/code.nosync
 # code
 CODE="$HOME/code"
 PROJECTS="$CODE/projects"
+setup_symlink       "$CODE"                         "$SYMLINKS/code"
 setup_symlink       "$CODE"                         "$SYMLINKS/code"
 setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
 setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
