@@ -42,7 +42,6 @@ setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
 setup_symlink       "$CONF/bash/profile"            "$HOME/.profile"
 setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
 setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
-setup_symlink       "$CONF/git/gitconfig"           "$HOME/.gitconfig"
 
 if [ -d $HOME/.emacs.d ]; then
     setup_symlink   "$HOME/.emacs.d"                "$CONF/emacs"
@@ -93,7 +92,6 @@ if [ "$OS" = "macOS" ]; then
         # setup_symlink   "$BEORG/org"                "$SYMLINKS/org"
 
     # link docs & downloads
-    setup_symlink   "$HOME/Documents"               "$HOME/docs"
     setup_symlink   "$HOME/Documents"               "$SYMLINKS/docs"
     setup_symlink   "$HOME/Downloads"               "$SYMLINKS/dl"
 

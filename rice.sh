@@ -1,35 +1,31 @@
 #!/bin/sh
 
 # =============================================================================
-#                              AUTO-RICE SCRIPTS
-#                                    V.C.M.
+#                              AUTO-RICE SCRIPTS                         V.C.M.
 # =============================================================================
 
 #                                 RICE-CONFIG
 # =============================================================================
 
-#                                OS-INDEPENDENT
-# -----------------------------------------------------------------------------
-DO_FULL_SYSTEM_UPGRADE="false"  
-
-INSTALL_EMACS_DOOM="false"      
-INSTALL_RUST="false"            
-INSTALL_PKGS_TMUX="true"        
-INSTALL_PKGS_ZSH="true"         # TODO lock-file
-INSTALL_PKGS_RANGER="true"      
-INSTALL_PKGS_PYTHON="true"      
-INSTALL_PKGS_NODE="false"       
-INSTALL_PKGS_NVIM="false"       # not really needed
-
 #                                 ARCH-SPECIFIC
 # -----------------------------------------------------------------------------
 INSTALL_SUCKLESS="true"
-
 #                                MACOS-SPECIFIC
 # -----------------------------------------------------------------------------
-SETUP_XCODE="false"             # TODO very unfinished -> test! (at some point) 
-UPDATE_SYSTEM="false"           # TODO very unfinished -> test! (at some point) 
-UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point) 
+SETUP_XCODE="false"             # TODO very unfinished -> test! 
+UPDATE_SYSTEM="false"           # TODO very unfinished -> test! 
+UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! 
+#                                OS-INDEPENDENT
+# -----------------------------------------------------------------------------
+INSTALL_EMACS_DOOM="false"      # TODO test!
+INSTALL_RUST="false"            # TODO test!
+INSTALL_PKGS_TMUX="false"       # NOTE run prefix-I afterwards
+INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
+INSTALL_PKGS_RANGER="false"     
+INSTALL_PKGS_PYTHON="true"      
+INSTALL_PKGS_NODE="false"       
+INSTALL_PKGS_NVIM="false"       # not really needed
+DO_FULL_SYSTEM_UPGRADE="false"  
 
 #                                  RICE-SETUP
 # =============================================================================
@@ -157,6 +153,9 @@ fi
 if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
     "$RICE/package-installation/default/install_emacs_doom.sh"
 fi
+
+# TODO move
+cargo install ttyper
 
 #                         POST-INSTALL CONFIGURATION
 # =============================================================================
