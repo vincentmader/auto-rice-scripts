@@ -7,7 +7,11 @@ echo_header_l2 "Installing git version control system..."
 if command -v "git" &> /dev/null; then
     echo "Already installed."
 else
-    $PACKAGE_MANAGER git
+    if [ ! "$OS" = "macOS"];then
+        $PACKAGE_MANAGER git
+    else
+        echo "Already installed. (git comes with Xcode)"  
+    fi
 fi
 
 

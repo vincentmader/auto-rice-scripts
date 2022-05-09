@@ -32,10 +32,12 @@ rustup target add wasm32-unknown-unknown
 # -----------------------------------------------------------------------------
 
 echo_header_l2 "Installing rust development tools..."
-rustup component add rust-analysis rust-src rls
+rustup component add clippy rustfmt rust-analysis rust-src rls
 
 # Install Diesel DB CLI
 # -----------------------------------------------------------------------------
+
+cargo install cargo-bundle
 
 cargo install diesel_cli
 # TODO if error:
