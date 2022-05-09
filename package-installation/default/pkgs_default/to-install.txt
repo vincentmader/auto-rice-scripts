@@ -19,7 +19,6 @@ nodejs
 npm
 pass
 ranger
-ripgrep
 rtv 
 ruby
 sl 

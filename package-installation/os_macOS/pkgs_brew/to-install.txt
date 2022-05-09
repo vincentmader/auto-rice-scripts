@@ -1,11 +1,13 @@
+alerter
 archey
 brave-browser
 fortune
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 libpq
+microsoft-teams
 mongodb-community@5.0
-mysql-client
+mysql
 postgresql
 python@3.9
 speedtest

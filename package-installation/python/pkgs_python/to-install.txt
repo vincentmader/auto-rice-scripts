@@ -9,6 +9,7 @@ flask
 gspread
 imageio
 instaloader
+instascraper
 jedi
 jupyter
 keras
@@ -18,8 +19,8 @@ neovim
 nltk
 numpy
 oauth2client
-openpyxl
 opencv-python
+openpyxl
 pandas
 pdfreader
 pep8
@@ -36,6 +37,7 @@ seaborn
 selenium
 setuptools
 sklearn
+sympy
 tasklib
 torchvision
 tqdm
