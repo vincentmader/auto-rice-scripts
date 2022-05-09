@@ -34,16 +34,6 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test! (at some point)
 #                                  RICE-SETUP
 # =============================================================================
 
-# setup printing
-source "$RICE/utils/get_colors.sh"
-source "$RICE/utils/pretty_printing.sh"
-# setup from-pkg-file installer
-source "$RICE/utils/get_pkg_manager.sh"
-source "$RICE/utils/install_pkgs_from_file.sh"
-
-# setup parameters & environment 
-# -----------------------------------------------------------------------------
-
 # get info about author & project-name
 export AUTHOR="Vincent C. Mader"
 export PROJECT_NAME="AUTO-RICE SCRIPTS"
@@ -57,6 +47,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
     export OS="arch"  # TODO be more specific: arch / ubuntu / ... ?
     export HOME="/home/$USER"
 fi
+
 # get location of config files
 export CONF="$HOME/.config"
 # get location of auto-rice scripts (location of this file)
@@ -66,11 +57,19 @@ export SRC="$RICE/src"
 # create directory for source code files
 mkdir -p "$RICE/src"
 
+# if doing full-system upgrade, clear log-files of already-installed packages
 if [ "$DO_FULL_SYSTEM_UPGRADE" = "true" ]; then
     for i in $RICE/package-installation/**/pkgs_*/installed.txt; do
         > $i  # clear file content
     done
 fi
+
+# setup printing
+source "$RICE/utils/get_colors.sh"
+source "$RICE/utils/pretty_printing.sh"
+# setup from-pkg-file installer
+source "$RICE/utils/get_pkg_manager.sh"
+source "$RICE/utils/install_pkgs_from_file.sh"
 
 #                                 MAIN SCRIPT
 # =============================================================================
