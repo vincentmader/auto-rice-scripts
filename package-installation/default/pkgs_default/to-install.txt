@@ -15,6 +15,7 @@ lolcat
 mupdf
 neofetch 
 neovim
+netcat
 nodejs
 npm
 pass
@@ -22,6 +23,7 @@ ranger
 rtv 
 ruby
 sl 
+socat
 thefuck
 tldr 
 tmux

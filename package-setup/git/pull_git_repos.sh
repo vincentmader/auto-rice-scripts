@@ -10,8 +10,7 @@ echo_header_l2 "Pulling personal git repos..."
     if [ "$OS" = "arch" ]; then
         PATH_TO_WALLPAPERS="$HOME/media/pictures/wallpapers"
     elif [ "$OS" = "macOS" ]; then
-        # TODO move to ~/Pictures/wallpapers (?)
-        PATH_TO_WALLPAPERS="$CONF/symlinks/docs/wallpapers"  
+        PATH_TO_WALLPAPERS="$CONF/symlinks/icloud/Pictures/wallpapers"  
     fi
     if [ -d "$PATH_TO_WALLPAPERS" ]; then
         printc "** wallpapers\n"
@@ -32,15 +31,15 @@ echo_header_l2 "Pulling personal git repos..."
 
     PATH_TO_CODE="$CONF/symlinks/code"
     
-    PATH_TO_MXYZ="$PATH_TO_CODE/projects/mader.xyz/main"  # TODO adjust path
-    if [ -d $PATH_TO_MXYZ ]; then
-        printc "** mader.xyz\n"
-        cd $PATH_TO_MXYZ && git pull
-    else
-        printc  "++ mader.xyz\n" "$COLOR_GREEN"
-        URL_TO_MXYZ="https://github.com/vincentmader/mader.xyz"
-        git clone $URL_TO_MXYZ $PATH_TO_MXYZ
-    fi
+    # PATH_TO_MXYZ="$PATH_TO_CODE/PROJECTS/MADER.XYZ/main_MSC"  # TODO adjust path
+    # if [ -d $PATH_TO_MXYZ ]; then
+    #     printc "** mader.xyz\n"
+    #     cd $PATH_TO_MXYZ && git pull
+    # else
+    #     printc  "++ mader.xyz\n" "$COLOR_GREEN"
+    #     URL_TO_MXYZ="https://github.com/vincentmader/mader.xyz"
+    #     git clone $URL_TO_MXYZ $PATH_TO_MXYZ
+    # fi
 
     # TODO get other projects
 

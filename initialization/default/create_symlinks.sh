@@ -59,18 +59,23 @@ setup_symlink       "$HOME"                         "$SYMLINKS/home"
 
 # TODO os-specific setup, code ~/code OR $ICLOUD/Documents/code.nosync
 # code
-CODE="$HOME/code"
-PROJECTS="$CODE/projects"
-setup_symlink       "$CODE"                         "$SYMLINKS/code"
-setup_symlink       "$CODE"                         "$SYMLINKS/code"
-setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
-setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
+# CODE="$HOME/code"
+# PROJECTS="$CODE/projects"
+# setup_symlink       "$CODE"                         "$SYMLINKS/code"
+# setup_symlink       "$CODE"                         "$SYMLINKS/code"
+# setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
+# setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
 
 # documents
-UNI="$SYMLINKS/docs/education/uni"
-setup_symlink       "$SYMLINKS/docs"                "$SYMLINKS/dox"
-setup_symlink       "$UNI"                          "$SYMLINKS/uni"
-setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
+PROJECTS="$SYMLINKS/docs/files/Projects"
+setup_symlink       "$PROJECTS"                     "$SYMLINKS/prjs"
+UNI="$PROJECTS/UHD B.Sc. & M.Sc."
+setup_symlink       "$PROJECTS/UHD B.Sc. & M.Sc."   "$SYMLINKS/uni"
+setup_symlink       "$PROJECTS/DPSG Leiter & StaVo" "$SYMLINKS/dpsg"
+setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
+setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
+
+# setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
 
 # macOS-specific links
 # =============================================================================
@@ -82,11 +87,11 @@ if [ "$OS" = "macOS" ]; then
     ICLOUD="$MOBILE_DOCS/com~apple~CloudDocs/"
 
     # link library
-    setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
+    # setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
 
     # link icloud
     setup_symlink   "$ICLOUD"                       "$SYMLINKS/icloud"
-    setup_symlink   "$ICLOUD"                       "$HOME/icloud"
+    setup_symlink   "$ICLOUD"                       "$HOME/iCloud"
 
     # link beorg
         setup_symlink   "$HOME/org"                 "$SYMLINKS/org"
@@ -99,8 +104,8 @@ if [ "$OS" = "macOS" ]; then
 
     # link dpsg
     ONEDRIVE="$LIBRARY/CloudStorage/OneDrive-DPSGUlm-Söflingen"
-    setup_symlink   "$SYMLINKS/docs/dpsg"           "$SYMLINKS/dpsg"
-    setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
+    setup_symlink   "$SYMLINKS/docs/Projects/DPSG  Leiter & StaVo"  "$SYMLINKS/dpsg"
+    # setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
     setup_symlink   "$ONEDRIVE"                     "$SYMLINKS/dpsg/OneDrive"
 
 # arch-specific links

@@ -20,7 +20,7 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test!
 INSTALL_EMACS_DOOM="false"      # TODO test!
 INSTALL_RUST="false"            # TODO test!
 INSTALL_PKGS_TMUX="false"       # NOTE run prefix-I afterwards
-INSTALL_PKGS_ZSH="false"        # works! (TODO lock-file)
+INSTALL_PKGS_ZSH="true"        # works! (TODO lock-file)
 INSTALL_PKGS_RANGER="false"     
 INSTALL_PKGS_PYTHON="true"      
 INSTALL_PKGS_NODE="false"       
@@ -164,19 +164,20 @@ if [ "$INSTALL_EMACS_DOOM" = "true" ]; then
 fi
 
 # databases
-cargo install diesel_cli # TODO move
+cargo install diesel_cli --no-default-features --features postgres # TODO move
 # brew services start postgres
 # brew services start mysql
     # TODO run
     # mysql_secure_installation
 
-# neovide TODO not working atm!
-# "$RICE/package-installation/default/install_neovide.sh"
-
 # various   TODO move
 cargo install ttyper                # touch typing tutor
 cargo install evcxr_repl            # interaction rust repl
 cargo install ripgrep
+
+# neovide TODO not working atm!
+# "$RICE/package-installation/default/install_neovide.sh"
+
 
 #                         POST-INSTALL CONFIGURATION
 # =============================================================================
@@ -217,5 +218,7 @@ if [ "$OS" = "macOS" ]; then
     echo "WARN: This might need manual setup!$COLOR_DEFAULT"
     echo "      Follow this guide: https://github.com/koekeishiya/yabai/wiki$COLOR_DEFAULT"
 
+    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 fi
 

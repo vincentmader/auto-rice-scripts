@@ -1,3 +1,5 @@
+homebrew/cask-versions
+caskroom/cask
 d12frosted/emacs-plus
 homebrew/cask-fonts
 koekeishiya/formulae

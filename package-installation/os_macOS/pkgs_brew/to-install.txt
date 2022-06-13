@@ -2,6 +2,7 @@ alerter
 archey
 brave-browser
 fortune
+java
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 libpq

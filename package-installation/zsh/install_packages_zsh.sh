@@ -20,7 +20,12 @@ rm $HOME/.zshrc $HOME/.*.pre-oh-my-zsh* 2> /dev/null;
 ln -s $CONF/zsh/zshrc $HOME/.zshrc
 
 # install syntax highlighting
-URL_TO_HIGHLIGHTING="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-PATH_TO_HIGHLIGHTING="$CONF/zsh/oh-my-zsh/plugins/zsh-syntax-highlighting"
-git clone $URL_TO_HIGHLIGHTING $PATH_TO_HIGHLIGHTING;
+PKG_URL="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+PKG_PATH="$CONF/zsh/oh-my-zsh/plugins/zsh-syntax-highlighting"
+git clone $PKG_URL $PKG_PATH;
+
+# install syntax auto-suggestions
+PKG_URL="https://github.com/zsh-users/zsh-autosuggestions"
+PKG_PATH="$CONF/zsh/oh-my-zsh/plugins/zsh-autosuggestions"
+git clone "$PKG_URL" "$PKG_PATH"
 
