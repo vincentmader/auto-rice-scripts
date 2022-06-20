@@ -178,7 +178,6 @@ cargo install ripgrep
 # neovide TODO not working atm!
 # "$RICE/package-installation/default/install_neovide.sh"
 
-
 #                         POST-INSTALL CONFIGURATION
 # =============================================================================
 echo_header_l1 "POST-INSTALL CONFIGURATION"
@@ -211,6 +210,9 @@ if [ "$OS" = "macOS" ]; then
     echo "WARN: This might need manual setup!$COLOR_DEFAULT"
     echo "      Run 'brew services start skhd' to start the daemon."
     echo "      Run 'skhd' to enable the necessary authentifications from System Preferencs!"
+
+    # configure jupyter
+    "$RICE/package-setup/jupyter/setup_jupyter.sh"
 
     # configure yabai                               TODO auto-start on login?
     echo_header_l2 "Configuring yabai..."
