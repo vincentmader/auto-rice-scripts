@@ -4,7 +4,7 @@
 # Uninstall Rust
 # -----------------------------------------------------------------------------
 
-UNINSTALL_RUST="false"
+UNINSTALL_RUST="true"
 if [ "$UNINSTALL_RUST" = "true" ]; then
     if command -v "rustup" &> /dev/null; then
         rustup self uninstall
@@ -25,6 +25,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 echo_header_l2 "Installing wasm-bindgen..."
 source $HOME/.cargo/env
+
 cargo install -f wasm-bindgen-cli
 rustup target add wasm32-unknown-unknown
 

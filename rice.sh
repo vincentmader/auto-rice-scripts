@@ -18,7 +18,7 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test!
 #                                OS-INDEPENDENT
 # -----------------------------------------------------------------------------
 INSTALL_EMACS_DOOM="false"      # TODO test!
-INSTALL_RUST="false"            # TODO test!
+INSTALL_RUST="true"            # TODO test!
 INSTALL_PKGS_TMUX="false"       # NOTE run prefix-I afterwards
 INSTALL_PKGS_ZSH="true"        # works! (TODO lock-file)
 INSTALL_PKGS_RANGER="false"     

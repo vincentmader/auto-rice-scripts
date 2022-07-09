@@ -1,6 +1,6 @@
 amethyst
-audacity
 anki
+audacity
 beekeeper-studio
 blender
 curseforge
@@ -14,7 +14,9 @@ google-chrome
 google-earth-pro
 homebrew/cask/emacs
 homebrew/cask/onedrive
+inkscape
 iterm2
+ithoughtsx
 microsoft-excel
 microsoft-word
 minecraft

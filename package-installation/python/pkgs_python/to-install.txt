@@ -12,6 +12,7 @@ instaloader
 instascraper
 jedi
 jupyter
+jupyterthemes
 keras
 latex
 matplotlib

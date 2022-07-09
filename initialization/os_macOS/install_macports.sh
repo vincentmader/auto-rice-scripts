@@ -50,3 +50,10 @@ else
     cd $RICE;
 fi
 
+# TODO also run
+# - sudo port selfupdate
+# - sudo port upgrade outdated
+
+# - sudo port select --set python python310
+# - sudo port select --set python3 python310
+

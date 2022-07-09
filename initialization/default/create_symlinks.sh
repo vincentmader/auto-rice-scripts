@@ -43,21 +43,93 @@ setup_symlink       "$CONF/zsh/zshrc"               "$HOME/.zshrc"
 # setup_symlink       "$CONF/bash/bash_profile"       "$HOME/.bash_profile"
 # setup_symlink       "$CONF/bash/bashrc"             "$HOME/.bashrc"
 
+# link ~/.emacs.d to .config/emacs
 if [ -d $HOME/.emacs.d ]; then
     setup_symlink   "$HOME/.emacs.d"                "$CONF/emacs"
 fi
+# link ~/.doom.d to .config/emacs
 if [ -d $HOME/.doom.d ]; then
     setup_symlink   "$HOME/.doom.d"                 "$CONF/doom"
 fi
 
 setup_symlink       "$CONF"                         "$SYMLINKS/cf"
 
+# macOS-specific links
+# =============================================================================
+if [ "$OS" = "macOS" ]; then
+    # define location of User Sytem Library (needed for e.g. Mobile Documents)
+    LIBRARY="$HOME/Library"
+    # define location of iCloud Mobile Documents
+    MOBILE_DOCS="$LIBRARY/Mobile Documents"
+    # define location of CloudDocs (cloud-synced Documents, Downloads etc.)
+    CDOCS="$MOBILE_DOCS/com~apple~CloudDocs/"
+    # define location of Documents folder (here: equal to "$Mobile\ Docs/Documents")
+    DOCS="$HOME/Documents"
+
+    # link CloudDocs (TODO rename: icloud->cdocs ? -> would be more specific)
+    setup_symlink   "$CDOCS"                       "$SYMLINKS/icloud"
+    setup_symlink   "$CDOCS"                       "$HOME/iCloud"
+
+    # link DPSG stuff
+    ONEDRIVE="$LIBRARY/CloudStorage/OneDrive-DPSGUlm-Söflingen"
+    setup_symlink   "$ONEDRIVE"                     "$SYMLINKS/dpsg/OneDrive"
+    # setup_symlink   "$SYMLINKS/docs/Projects/DPSG  Leiter & StaVo"  "$SYMLINKS/dpsg"
+    # setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
+
+    # link Pictures
+    setup_symlink   "$CDOCS/Pictures"               "$HOME/org/Library/Pictures"
+    # link Movies
+    setup_symlink   "$CDOCS/Movies"               "$HOME/org/Library/Movies"
+
+    # link library
+        # setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
+
+    # link beorg
+        # BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"
+        # setup_symlink   "$BEORG/org"                "$SYMLINKS/org"
+
+# arch-specific links
+# =============================================================================
+elif [ "$OS" = "arch" ]; then
+    # define location of Documents folder (here: equal to "$HOME/docs")
+    DOCS="$HOME/docs"
+
+    # link XORG initialization config file (xinitrc)
+    sudo rm /etc/X11/xinit/xinitrc
+    sudo ln -sv     "$CONF/x/xinitrc"               "/etc/X11/xinit/xinitrc"
+
+else
+    pass  # (will print error/warning message at EOF)
+fi
+
 # HOME/CODE/DOCS
 # =============================================================================
 
+# link Home directory
 setup_symlink       "$HOME"                         "$SYMLINKS/home"
+# link Documents directory
+setup_symlink       "$DOCS/org/Library"             "$SYMLINKS/docs"
+# link Downloads directory
+setup_symlink       "$HOME/Downloads"               "$SYMLINKS/dl"
+# link Org files
+setup_symlink       "$HOME/org"                     "$SYMLINKS/org"
 
-# TODO os-specific setup, code ~/code OR $ICLOUD/Documents/code.nosync
+# define location of Projects directory
+PROJECTS="$SYMLINKS/docs/Projects"
+# link projects
+setup_symlink       "$PROJECTS"                     "$SYMLINKS/prjs"
+setup_symlink       "$PROJECTS/DPSG Leiter & StaVo" "$SYMLINKS/dpsg"
+setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
+setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
+# define location of University notes directory
+UNI="$PROJECTS/UHD B.Sc. & M.Sc."
+# link University notes directory
+setup_symlink       "$PROJECTS/UHD B.Sc. & M.Sc."   "$SYMLINKS/uni"
+
+# link Work directory
+setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
+
+# TODO os-specific setup, code ~/code OR $CDOCS/Documents/code.nosync
 # code
 # CODE="$HOME/code"
 # PROJECTS="$CODE/projects"
@@ -66,59 +138,6 @@ setup_symlink       "$HOME"                         "$SYMLINKS/home"
 # setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
 # setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
 
-# documents
-PROJECTS="$SYMLINKS/docs/files/Projects"
-setup_symlink       "$PROJECTS"                     "$SYMLINKS/prjs"
-UNI="$PROJECTS/UHD B.Sc. & M.Sc."
-setup_symlink       "$PROJECTS/UHD B.Sc. & M.Sc."   "$SYMLINKS/uni"
-setup_symlink       "$PROJECTS/DPSG Leiter & StaVo" "$SYMLINKS/dpsg"
-setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
-setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
-
-# setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
-
-# macOS-specific links
-# =============================================================================
-
-if [ "$OS" = "macOS" ]; then
-
-    LIBRARY="$HOME/Library"
-    MOBILE_DOCS="$LIBRARY/Mobile Documents"
-    ICLOUD="$MOBILE_DOCS/com~apple~CloudDocs/"
-
-    # link library
-    # setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
-
-    # link icloud
-    setup_symlink   "$ICLOUD"                       "$SYMLINKS/icloud"
-    setup_symlink   "$ICLOUD"                       "$HOME/iCloud"
-
-    # link beorg
-        setup_symlink   "$HOME/org"                 "$SYMLINKS/org"
-        # BEORG="$MOBILE_DOCS/iCloud~com~appsonthemove~beorg/Documents"
-        # setup_symlink   "$BEORG/org"                "$SYMLINKS/org"
-
-    # link docs & downloads
-    setup_symlink   "$HOME/Documents"               "$SYMLINKS/docs"
-    setup_symlink   "$HOME/Downloads"               "$SYMLINKS/dl"
-
-    # link dpsg
-    ONEDRIVE="$LIBRARY/CloudStorage/OneDrive-DPSGUlm-Söflingen"
-    setup_symlink   "$SYMLINKS/docs/Projects/DPSG  Leiter & StaVo"  "$SYMLINKS/dpsg"
-    # setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
-    setup_symlink   "$ONEDRIVE"                     "$SYMLINKS/dpsg/OneDrive"
-
-# arch-specific links
-# =============================================================================
-
-elif [ "$OS" = "arch" ]; then
-
-    setup_symlink   "$HOME/org"                     "$SYMLINKS/org"
-    setup_symlink   "$HOME/docs"                    "$SYMLINKS/docs"
-    setup_symlink   "$HOME/downloads"               "$SYMLINKS/dl"
-
-    sudo rm /etc/X11/xinit/xinitrc
-    sudo ln -sv     "$CONF/x/xinitrc"               "/etc/X11/xinit/xinitrc"
-
+if [ "$OS" = "" ]; then
+    echo "\n\033[0;31mPlease specify \`\$OS\` !\033[0m (e.g. with \`OS=\"macOS\"\`)"
 fi
-

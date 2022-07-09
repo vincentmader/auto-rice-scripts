@@ -1,7 +1,8 @@
 body {
- --text-color: white; /* #586e75; */
  --background-color: #111111; /* #002b36; */
- --cell-color: #333333 /* #073642; */
+ --cell-color: #333333; /* #073642; */
+ --text-color: #586e75; 
+ /* --text-color: white; /1* #586e75; *1/ */
 }
 div#notebook {
  font-family: sans-serif;
@@ -3257,4 +3258,3 @@ div#maintoolbar {
     });
 </script>
     
-

@@ -1,3 +1,6 @@
+#!/bin/sh
+
+echo_header_l2 "Configuring yabai..."
 
 # install the scripting addition
 sudo yabai --install-sa
