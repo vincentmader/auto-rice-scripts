@@ -18,6 +18,7 @@ latex
 matplotlib
 neovim
 nltk
+numba
 numpy
 oauth2client
 opencv-python
