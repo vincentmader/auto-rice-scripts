@@ -19,6 +19,7 @@ netcat
 nodejs
 npm
 pass
+protonvpn
 ranger
 rg
 rtv 

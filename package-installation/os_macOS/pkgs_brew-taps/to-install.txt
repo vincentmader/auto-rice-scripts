@@ -1,7 +1,10 @@
-homebrew/cask-versions
 caskroom/cask
 d12frosted/emacs-plus
+homebrew/cask
 homebrew/cask-fonts
+homebrew/cask-versions
+homebrew/cask/docker
+homebrew/cask/neovide
 koekeishiya/formulae
 mongodb/brew
 teamookla/speedtest
