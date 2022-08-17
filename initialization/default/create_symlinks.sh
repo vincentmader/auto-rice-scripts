@@ -119,12 +119,12 @@ PROJECTS="$SYMLINKS/org/PRJs"
 # link projects
 setup_symlink       "$PROJECTS"                     "$SYMLINKS/prjs"
 setup_symlink       "$PROJECTS/dpsg"                "$SYMLINKS/dpsg"
-setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
+setup_symlink  "$PROJECTS/auto-rice-scripts.nosync" "$SYMLINKS/rice"
 setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
 # define location of University notes directory
 UNI="$PROJECTS/UHD B.Sc. & M.Sc."
 # link University notes directory
-setup_symlink       "$PROJECTS/uni"                 "$SYMLINKS/uni"
+setup_symlink       "$PROJECTS/University"          "$SYMLINKS/uni"
 
 # link Work directory
 setup_symlink       "$PROJECTS/_work"           "$SYMLINKS/work"
