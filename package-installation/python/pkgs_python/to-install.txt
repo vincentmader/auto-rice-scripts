@@ -25,7 +25,6 @@ openpyxl
 pandas
 pdfreader
 pep8
-pillow
 pygame
 pymongo
 pytube3
