@@ -2,6 +2,8 @@
 #+author: Vincent C. Mader
 #+title: My Personal Auto-Rice-Scripts
 
+NOTE: this file still needs some clean-up (WIP).
+
 * Some notes on setup steps
 ** system-independent
 - install tmux plugins by running "prefix+I"
