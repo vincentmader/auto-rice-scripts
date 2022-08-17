@@ -77,9 +77,9 @@ if [ "$OS" = "macOS" ]; then
     # setup_symlink   "$PROJECTS/dpsg"                "$SYMLINKS/dpsg/code"
 
     # link Pictures
-    setup_symlink   "$CDOCS/Pictures"               "$HOME/org/Library/Pictures"
+    setup_symlink   "$CDOCS/Pictures"               "$HOME/org/LTM/Pictures"
     # link Movies
-    setup_symlink   "$CDOCS/Movies"               "$HOME/org/Library/Movies"
+    setup_symlink   "$CDOCS/Movies"                 "$HOME/org/LTM/Movies"
 
     # link library
         # setup_symlink   "$HOME/Library"                 "$SYMLINKS/lib"
@@ -108,26 +108,26 @@ fi
 # link Home directory
 setup_symlink       "$HOME"                         "$SYMLINKS/home"
 # link Documents directory
-setup_symlink       "$DOCS/org/Library"             "$SYMLINKS/docs"
+setup_symlink       "$DOCS"                         "$SYMLINKS/docs"
 # link Downloads directory
 setup_symlink       "$HOME/Downloads"               "$SYMLINKS/dl"
 # link Org files
 setup_symlink       "$HOME/org"                     "$SYMLINKS/org"
 
 # define location of Projects directory
-PROJECTS="$SYMLINKS/docs/Projects"
+PROJECTS="$SYMLINKS/org/PRJs"
 # link projects
 setup_symlink       "$PROJECTS"                     "$SYMLINKS/prjs"
-setup_symlink       "$PROJECTS/DPSG Leiter & StaVo" "$SYMLINKS/dpsg"
+setup_symlink       "$PROJECTS/dpsg"                "$SYMLINKS/dpsg"
 setup_symlink       "$PROJECTS/auto-rice-scripts"   "$SYMLINKS/rice"
 setup_symlink       "$PROJECTS/mader.xyz"           "$SYMLINKS/mxyz"
 # define location of University notes directory
 UNI="$PROJECTS/UHD B.Sc. & M.Sc."
 # link University notes directory
-setup_symlink       "$PROJECTS/UHD B.Sc. & M.Sc."   "$SYMLINKS/uni"
+setup_symlink       "$PROJECTS/uni"                 "$SYMLINKS/uni"
 
 # link Work directory
-setup_symlink       "$SYMLINKS/docs/work"           "$SYMLINKS/work"
+setup_symlink       "$PROJECTS/_work"           "$SYMLINKS/work"
 
 # TODO os-specific setup, code ~/code OR $CDOCS/Documents/code.nosync
 # code
