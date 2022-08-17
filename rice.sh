@@ -18,9 +18,9 @@ UPDATE_CMD_LINE_TOOLS="false"   # TODO very unfinished -> test!
 #                                OS-INDEPENDENT
 # -----------------------------------------------------------------------------
 INSTALL_EMACS_DOOM="false"      # TODO test!
-INSTALL_RUST="true"            # TODO test!
+# INSTALL_RUST="true"            # TODO test!
 INSTALL_PKGS_TMUX="false"       # NOTE run prefix-I afterwards
-INSTALL_PKGS_ZSH="true"        # works! (TODO lock-file)
+# INSTALL_PKGS_ZSH="true"        # works! (TODO lock-file)
 INSTALL_PKGS_RANGER="false"     
 INSTALL_PKGS_PYTHON="true"      
 INSTALL_PKGS_NODE="false"       
@@ -222,5 +222,8 @@ if [ "$OS" = "macOS" ]; then
 
     defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+    # TODO v needed? (for xcode auto-close all windows)
+    # defaults write com.apple.XCode NSQuitAlwaysKeepsWindows -bool false
 fi
 
